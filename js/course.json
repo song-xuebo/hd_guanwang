@@ -1,0 +1,154 @@
+[{
+	"title":"Java大数据",
+	"iconA":"./image/java-script.svg",
+	"iconB":"./image/java-scripts.svg",
+	"body":{
+		"bodyTitle":["Java - 高级软件工程师","Java - "],
+		"bodyItem":[["高级软件工程师培训课程","以'周'为单位更新热点/前沿技术","至少包含2个企业级大型项目","项目场景课程占比超50%","技术课程深入且广泛","完成即可应用代码移值便捷","注重底层素质培养"],
+		[{
+			"title":"业务标准",
+			"textA":"业务场景全面,产品需求真实",
+			"textB":"业务功能≥50",
+			"textC":"具备商业模型,产品需求文档",
+			"backgroundImg":"url(img/22.png)"
+			
+		},
+		{
+			"title":"技术标准",
+			"textA":"技术方案主流，企业应用匹配",
+			"textB":"解决方案≥10",
+			"textC":"采用企业技术主流版本",
+			"backgroundImg":"url(img/11.png)"
+		},
+		{
+			"title":"研发标准",
+			"textA":"项目开发真实，研发流程规范",
+			"textB":"文档齐全，多岗位协调开发",
+			"textC":"稳定运行达商用标准",
+			"backgroundImg":"url(img/22.png)"
+		},
+		{
+			"title":"设计标准",
+			"textA":"能力目标清晰，逻辑设计合理",
+			"textB":"基础功能占比<20%",
+			"backgroundImg":"url(img/11.png)"
+		}]]
+		
+	}
+	
+},{
+	"title":"Web前端",
+	"iconA":"./image/8_3前端开发.svg",
+	"iconB":"./image/8_3前端开发s.svg",
+	"body":{
+		"bodyTitle":["HTML&JS+前端 - 高级软件工程师","HTML&JS+前端 - "],
+		"bodyItem":[["高级软件工程师培训课程","以'周'为单位更新热点/前沿技术","全平台项目+7大领域项目","项目课程占比超70%","全平台+全业务各平台产品密切联动","深度场景定制，打造商业级业务模型场景","工程化,提升企业生产效率","交付解决企业实际问题能力"],
+		[{
+			"title":"项目实战天数≥9天",
+			"textA":"实实在在的项目干货",
+			"textB":"不用框架基础来凑数",
+			"backgroundImg":"url(img/11.png)"
+			
+		},
+		{
+			"title":"页面数量≥8个",
+			"textA":"足够的页面数量",
+			"textB":"支撑完整的业务体系",
+			"backgroundImg":"url(img/22.png)"
+		},
+		{
+			"title":"主业务类型数≥6个",
+			"textA":"企业真实开发场景",
+			"textB":"从容应对主流业务",
+			"backgroundImg":"url(img/11.png)"
+		},
+		{
+			"title":"解决方案数量≥8个",
+			"textA":"专业定制的全方位解决方案",
+			"textB":"为工作保驾护航",
+			"backgroundImg":"url(img/22.png)"
+		},
+		{
+			"title":"接口数量≥30个",
+			"textA":"足够的接口数量",
+			"textB":"体现项目的规模化",
+			"backgroundImg":"url(img/11.png)"
+		}]]
+		
+	}
+},
+{
+	"title":"UI/UE设计",
+	"iconA":"./image/画笔.svg",
+	"iconB":"./image/画笔s.svg",
+	"body":{
+		"bodyTitle":["UI/UE设计 -","UI/UE设计 -"],
+		"bodyItem":[["20+主流设计软件覆盖","完整学员作品审批体系让你与众不同","进阶中级设计师实现你的完美蜕变","轻松学习不苦逼课程有趣又好玩","注重设计师美学培养拒绝做制图员","实现课程项目定制化成就不一样的你"],
+		[{
+			"title":"项目课程差异化",
+			"textA":"项目实施个性化,更灵活",
+			"textB":"机动有针对性",
+			"backgroundImg":"url(img/22.png)"
+		},
+		{
+			"title":"业务全流程贯穿",
+			"textA":"真实还原项目从无到有",
+			"textB":"从有到优的全过程",
+			"backgroundImg":"url(img/11.png)"
+		},
+		{
+			"title":"设计风格主流",
+			"textA":"项目紧跟主流风格与主流行业",
+			"textB":"保持风格紧随潮流",
+			"backgroundImg":"url(img/22.png)"
+		},
+		{
+			"title":"项目类型全面",
+			"textA":"涵盖不同行业的设计风格属性",
+			"textB":"业务场景,参与真实项目实战",
+			"backgroundImg":"url(img/11.png)"
+		},
+		{
+			"title":"项目开发真实",
+			"textA":"真实还原上线互联网类项目",
+			"textB":"营造真实工作环境",
+			"backgroundImg":"url(img/22.png)"
+		}]]
+		
+	}
+},{
+	"title":"软件测试",
+	"iconA":"./image/测试.svg",
+	"iconB":"./image/测试s.svg",
+	"body":{
+		"bodyTitle":["软件测试 -","软件测试 -"],
+		"bodyItem":[["中级测试工程师培养课程","以'月'为单位更新热点/前沿技术","至少积累2个企业级大型项目经验","项目场景课程占比超50%","核心课程技能必须有对应的独立项目实战课程","课程核心技术点必须采用企业主流技术","课程技术深入且全面","注重培养分析问题和实际动手解决问题的能力"],
+		[{
+			"title":"业务场景全面",
+			"textA":"实现完整的核心业务流程",
+			"textB":"业务功能模块>5个",
+			"backgroundImg":"url(img/11.png)"
+		},
+		{
+			"title":"技术方案主流",
+			"textA":"选择主流的框架和工具",
+			"textB":"完整的解决方案>3个",
+			"backgroundImg":"url(img/22.png)"
+		},
+		{
+			"title":"课程设计深入",
+			"textA":"覆盖电商、资讯、金融等行业",
+			"textB":"项目课程天数≥5天",
+			"backgroundImg":"url(img/11.png)"
+		},
+		{
+			"title":"项目开发真实",
+			"textA":"能够独立部署",
+			"textB":"能够进行功能定制",
+			"backgroundImg":"url(img/22.png)"
+		}]]
+		
+	}
+}
+
+]

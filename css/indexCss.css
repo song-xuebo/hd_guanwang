@@ -1,0 +1,775 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	overflow-x: auto;
+	overflow-y: auto;
+}
+
+img {
+	width: 100%;
+}
+.lat{
+	width: 1400px;
+	margin: 0 auto;
+}
+
+#app {
+	width: 100%;
+	overflow: hidden;
+}
+
+#banner {
+	position: relative;
+}
+
+#top {
+	width: 100vw;
+	height: 110px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	display: flex;
+	display: inline-flex;
+	justify-content: center;
+}
+
+.top {
+	width: 92%;
+	height: 100%;
+	display: flex;
+	display: inline-flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+#img {
+	width: 70px;
+	height: 50px;
+	overflow: hidden;
+}
+
+.top_logo {
+	display: flex;
+	display: inline-flex;
+}
+
+.top_text {
+	display: flex;
+	display: inline-flex;
+	font-size: 20px;
+	color: #eee;
+	font-weight: 300;
+}
+
+.top_text-div {
+	padding: 0 15px;
+	cursor: pointer;
+	border-right: 1px solid #eee;
+}
+
+.top_text-div:hover {
+	font-weight: 700;
+}
+
+.top_text-div:last-child {
+	border-right: none;
+}
+
+#topText {
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+	background: rgba(0, 0, 0, .5);
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+	transition: 5s;
+}
+
+.topText {
+	width: 40%;
+	height: 95%;
+	background: #fff;
+	margin-left: 50%;
+	padding: 5%;
+}
+
+#topText_div {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-bottom: 1px solid #000;
+	padding: 15px 0;
+	cursor: pointer;
+}
+
+#topText_div:last-child {
+	border-bottom: none;
+}
+
+#course {
+	position: absolute;
+	width: 120px;
+	padding: 100px 35px 30px;
+	color: #fff;
+	/* background: rgba(0, 0, 0, .2); */
+	z-index: 10022;
+	left: 200px;
+	bottom: 0;
+	background-image: url(../image/矩形%20190.svg);
+}
+
+.courseText {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	font-size: 14px;
+	margin: 45px 0;
+	cursor: pointer;
+}
+
+/* banner下收费标准 */
+#bannerNext {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-bottom: 1px solid rgb(172, 172, 172);
+}
+
+.bannerNext {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.bannerNextText {
+	width: 200px;
+	height: 100%;
+	color: #000;
+	display: flex;
+	/* display: inline-flex; */
+	align-items: center;
+	justify-content: space-between;
+	margin: 20px 0;
+	cursor: pointer;
+}
+
+/* 课程介绍标题 */
+#centre {
+	overflow: hidden;
+}
+
+#headline {
+	height: 100px;
+	padding: 40px 0 60px;
+	position: relative;
+	
+}
+
+.headline_tit {
+	font-size: 48px;
+	color: #101010;
+	text-align: center;
+}
+
+.headline_titNext {
+	font-size: 16px;
+	color: #777;
+	text-align: center;
+}
+
+/* 精品课程 */
+#synopsis {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#synopsis_content {
+	/* width: 92%; */
+	/* height: 1000px; */
+	margin-bottom: 64px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.synopsis_content {
+	position: relative;
+	width: 338px;
+	height: 440px;
+	text-align: center;
+	margin: 4px;
+	overflow: hidden;
+}
+/*  */
+.synopsis_content_a {
+	width: calc(100% - 2px);
+	padding-top: 76px;
+	height: calc(100% - 78px);
+	border: 1px solid #bbb;
+	border-radius: 20px;
+	/* box-shadow: 10px 10px 5px 5px rgba(0,0,0,0.07); */
+}
+
+.synopsis_content_a h4 {
+	font-size: 28px;
+	color: #101010;
+	padding-bottom: 24px;
+}
+
+.synopsis_content span {
+	font-size: 18px;
+	color: #777;
+}
+
+.synopsis_content_div {
+	width: 257px;
+	height: 154px;
+	margin: 76px auto 0;
+}
+
+.synopsis_content_div img {
+	width: 100%;
+	height: 100%;
+}
+
+/* 动画 */
+.synopsis_content_b {
+	position: absolute;
+	top: -444px;
+	left: -1px;
+	width: 340px;
+	height: calc(100% - 84px);
+	background: #fff;
+	padding-top: 86px;
+	background: ;
+	/* border: 1px solid #bbb; */
+}
+
+.synopsis_content_b h4 {
+	font-size: 36px;
+	margin-bottom: 81px;
+}
+
+.synopsis_content_b_btn {
+
+	background: #888;
+	width: 269px;
+	height: 73px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 150px;
+	margin: 20px auto;
+	font-size: 24px;
+	color: #fff;
+	cursor: pointer;
+}
+
+.centreBtn {
+	width: 387px;
+	height: 68px;
+	line-height: 68px;
+	border-radius: 6px;
+	background-color: #3258E5;
+	color: rgba(255, 255, 255, 100);
+	font-size: 24px;
+	text-align: center;
+	font-family: Microsoft Yahei;
+	margin: 0 auto;
+	cursor: pointer;
+	margin-bottom: 63px;
+}
+
+.centreBtn:hover {
+	height: 64px;
+	color: #3258E5;
+	background-color: #fff;
+	font-family: Microsoft Yahei;
+	border: 2px solid #3258E5;
+}
+
+.centreBtns {
+	width: 550px;
+	height: 68px;
+	line-height: 68px;
+	border-radius: 10px;
+	background-color: #E1E1E1;
+	color: #0C2D63;
+	font-size: 24px;
+	text-align: center;
+	font-family: Microsoft Yahei;
+	margin: 46px auto;
+	cursor: pointer;
+	transform:translateY(30px)
+}
+
+.centreBtns:hover {
+	width: 383px;
+	height: 64px;
+	color: rgba(255, 255, 255, 100);
+	background-color: #E1E1E1;
+	font-family: Microsoft Yahei;
+	border: 2px solid #E1E1E1;
+}
+
+.outline {
+	/* width: 100vw; */
+	display: flex;
+	align-items: center;
+	/* justify-content: center; */
+	margin: 60px auto; width: 1420px;
+}
+
+.outline_box {
+	/* width: 88%; */
+	position: relative;
+	color:rgba(12,45,99,1);
+	padding-left: 10px;
+	/* border-left: 12px solid rgba(50,88,229,0.3); */
+}
+
+.outline_box h4 {
+	font-size: 28px;
+}
+
+/* .outline_box span {
+	
+	color: #777;
+}
+ */
+.outlineTab {
+	margin-top: 52px;
+	/* width: 100vw; */
+	display: flex;
+	align-items: center;
+	/* justify-content: center; */
+}
+
+.outlineTab_box {
+	width: calc(88% + 22px);
+	height: 40px;
+	display: flex;
+}
+
+.outlineTab_boxDiv {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 78%;
+}
+
+.outlineTab_boxDiv span {
+	font-size: 24px;
+	color: #B0BDD0;
+}
+
+.box {
+	display: flex;
+	padding-bottom: 2px;
+	cursor: pointer;
+	padding-bottom: 15px;
+	border-bottom: 10px solid #fff;
+	align-items:center;
+}
+
+.box:first-child {
+	border-bottom: 10px solid #3258E5;
+}
+.box:first-child span{
+	color:#3258E5;
+}
+
+.outlinebodyTitle_item {
+	width: 100vw;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.outlinebodyTitle_item-box {
+	/* width: 85%; */
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.miss {
+	height: 88px;
+	position: relative;
+	margin-bottom: 20px;
+}
+
+.heng {
+	width: 100%;
+	height: 1px;
+	background: #bbb;
+	position: absolute;
+	top: 45%;
+	left: 0;
+}
+
+.xie {
+	width: 1px;
+	height: 70%;
+	background: #bbb;
+	position: absolute;
+	top: 15%;
+	left: 22%;
+	transform: skewX(-45deg);
+}
+
+.outlinebodyTitle_item-box_div {
+	width: 220px;
+	height: 110px;
+	border: 1px solid #bbb;
+	padding: 30px;
+	margin-bottom: 20px;
+	/* background-image: url(img/11.png); */
+	background-repeat: no-repeat;
+	border-radius: 20px;
+}
+
+.outlinebodyTitle_item-box_div p {
+	font-size: 14px;
+	color: #fff;
+
+}
+
+.advantages {
+	width: 100vw;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 60px;
+}
+
+.advantagesItem {
+	/* width: 85%; */
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.advantagesItem_box {
+	width: 190px;
+	height: 200px;
+	box-shadow: 0 5px 18px rgb(174, 174, 174);
+	border-radius: 20px;
+	text-align: center;
+}
+
+.advantagesItem_boxDiv {
+	margin: 30px auto 0;
+}
+
+.advantagesItem_box:hover .advantagesItem_boxDiv {
+	margin-top: 25px;
+	margin-bottom: 5px;
+}
+
+.advantagesItem_box h4 {
+	font-size: 20px;
+	padding: 14px 0;
+	font-weight: 500;
+	color: #202020;
+}
+
+.advantagesItem_box p {
+	font-size: 14px;
+	color: #6b6b6b;
+}
+
+/* 教研团队 */
+.teamTalents,
+.teamTop {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 50px;
+}
+
+.teamTopItemz {
+	/* width: 85%; */
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.teamTopItem-box {
+	width: 250px;
+	height: 380px;
+	background: #fff;
+	position: relative;
+	overflow: hidden;
+	border-radius: 20px;
+	box-shadow: 0 5px 18px rgb(175, 175, 175);
+	margin-bottom: 30px;
+}
+
+.teamTopItem-boxFu {
+	width: 250px;
+	height: 380px;
+	background: #eee;
+	position: absolute;
+	top: 380px;
+	left: 0;
+}
+
+.teamTalentsBox {
+	/* background: #000; */
+	width: 1200px;
+	margin: 0 auto;
+	border: 1px solid #bbb;
+}
+
+.teamTalentsBoxB,
+.teamTalentsBoxA {
+	width: 90%;
+	padding: 45px 0;
+	align-items: center;
+	margin: 0 auto;
+	border-bottom: 1px solid #bbb;
+}
+
+.teamTalentsBoxB,
+.teamTalentsBoxA {
+	display: flex;
+	justify-content: space-between;
+	/* flex-wrap: wrap; */
+}
+
+.teamTalentsBoxBb,
+.teamTalentsBoxAB {
+	width: calc(100% - 152px);
+	display: flex;
+	flex-wrap: wrap;
+	margin-left: 60px;
+}
+
+.teamTalentsBoxAB {
+	margin-left: 120px;
+}
+
+.teamTalentsBoxAB div {
+	height: 41px;
+	line-height: 41px;
+}
+
+/* 用心为每一位学员 */
+.diligently {
+	width: 100vw;
+	background-image:url("../image/组45.svg");
+	padding-bottom: 60px;
+}
+
+.diligentlyBox, .diligentlyBox2{
+	
+	display: flex;
+	justify-content: space-around;
+	margin-bottom: 60px;
+	color: #f0f0f0;
+}
+.diligentlyBox2{
+	width:1595px;
+	margin:0 auto;
+}
+.diligentlyBox_div {
+	width: 160px;
+	height: 260px;
+}
+.diligentlyBox_div>div:nth-child(1){
+	background:#fff;
+
+}
+/* 校园环境 辉达动态*/
+.dynamicBox {
+	/* width: 90%; */
+	margin: 0 auto 60px;
+	display: flex;
+}
+
+.dynamicBox_divA {
+	width: 60%;
+	padding: 40px;
+	border: 1px solid #F0F0F0;
+	border-radius: 20px;
+	background: #F0F0F0;
+}
+
+.dynamicBox_divAImg {
+	width: 330px;
+	height: 360px;
+	margin-right: 24px;
+}
+
+.dynamicBox_divA_img {
+	width: 48px;
+	height: 48px;
+}
+
+.dynamicBox_divASpan {
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	width: 100%;
+	height: 60px;
+	line-height: 30px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.dynamicBox_divB {
+	width: 38%;
+	padding: 40px;
+	font-size: 18px;
+	color: #848484;
+}
+
+.dynamicTitle {
+	height: 378px;
+	overflow: hidden;
+	overflow-y: scroll;
+}
+
+.dynamicBox_divBSpan {
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	line-height: 30px;
+	border: 1px solid #bbb;
+	border-radius: 3px;
+}
+/* 滚动条样式 */
+::-webkit-scrollbar {
+	width: 5px;
+	background: #eee;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #4a4a4a;
+}
+
+.subtitle {
+	color: #8a8a8a;
+	display: flex;
+	margin-bottom: 40px;
+	font-size: 18px;
+}
+
+.subtitle:last-child {
+	margin-bottom: 0;
+}
+
+.campusNav {
+	border-top: 2px solid #777;
+	margin-top: 20px;
+}
+
+.campusNavTop {
+	display: flex;
+	/* width: 90%; */
+	/* margin: 0 auto; */
+	justify-content: space-around;
+	font-size: 32px;
+	/* border-top:2px solid #777; */
+}
+
+.campusNavTopDiv {
+	padding-top: 10px;
+}
+
+.campusNavTopDiv:first-child {
+	padding-top: 6px;
+	border-top: 4px solid #000;
+}
+
+.campusImg {
+	width: 450px;
+	margin-bottom: 10px;
+	overflow: hidden;
+	border-radius: 20px;
+	position: relative;
+}
+/* 校园环境 */
+.campusBoxImg {
+	/* width: 90%; */
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+
+}
+
+/* 页脚 */
+.footing {
+	width: 100vw;
+	height: 380px;
+	background: #000;
+	color: #fff;
+	margin-top: 40px;
+	padding-top: 60px;
+}
+
+.footingBox {
+	width: 90%;
+	display: flex;
+	margin: 0 auto;
+}
+
+.footingBoxLeft {
+	width: 70%;
+	display: flex;
+	justify-content: space-around;
+}
+
+.footingBoxLeft h4 {
+	font-size: 18px;
+}
+
+.footingBoxLeft p {
+	margin-top: 24px;
+	color: #ACACAC;
+}
+
+.footingBoxRight {
+	width: 30%;
+	display: flex;
+	justify-content: space-around;
+}
+
+.footingBoxRight .footingBoxRightDiv {
+	width: 128px;
+	height: 178px;
+	font-size: 14px;
+	text-align: center;
+}
+
+.footingBoxRightDiv div {
+	width: 100%;
+	height: 128px;
+	margin-bottom: 32px;
+}
+
+.footingBox {
+	width: 90%;
+	margin: 36px auto;
+	padding-top: 36px;
+	border-top: 2px solid #777;
+	font-size: 14px;
+	color: #ACACAC;
+	display: flex;
+	justify-content: center;
+}

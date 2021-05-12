@@ -1,0 +1,2006 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>辉达子</title>
+		<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+		<script src="./js/axios.min.js"></script>
+		<link rel="stylesheet" href="./css/swiper.min.css">
+		<link rel="stylesheet" href="./css/Swiper.css">
+		<link rel="stylesheet" type="text/css" href="css/coursePageCss.css" />
+		<style>
+			/* 全链路+UI/UE设计职业发展路径 */
+			.developItem {
+				border: 1px solid #bbb;
+				width: 100%;
+				height: 440px;
+				border-radius: 10px;
+				margin-bottom: 70px;
+			}
+
+			/*  全链路+UI/UE设计职业发展路径 A */
+			.progressItem {
+				display: flex;
+				width: 100%;
+				justify-content: space-between;
+				margin-bottom: 60px;
+			}
+
+			.progressItemZi {
+				width: 220px;
+				height: 120px;
+				background: #8A8A8A;
+				text-align: center;
+				padding: 20px 0;
+				color: #fff;
+				border-radius: 10px;
+			}
+
+			.progressItemZi:hover {
+				background: #101010;
+			}
+
+			.progressItemZi p {
+				font-size: 20px;
+				line-height: 30px;
+			}
+
+			.project {
+				position: relative;
+			}
+
+			/* 5大标准 */
+			.projectBox {
+				width: 100%;
+				height: 380px;
+				margin-top: 200px;
+				margin-bottom: 128px;
+				/* border: 1px solid #f00; */
+				position: relative;
+				display: flex;
+				justify-content: space-between;
+
+			}
+
+			.projectBoxItem {
+				border: 1px solid #000;
+				width: 260px;
+				height: 380px;
+				border-radius: 10px;
+				position: relative;
+				text-align: center;
+			}
+
+			.projectBoxItem p {
+				font-size: 20px;
+				line-height: 30px;
+				color: #777;
+			}
+
+			.projectWire {
+				width: 1000px;
+				height: 80px;
+				border: 1px solid #bbb;
+				border-bottom: none;
+				position: absolute;
+				top: -80px;
+				left: 50%;
+				margin-left: -500px;
+			}
+
+			.projectBtn {
+				position: absolute;
+				top: -110px;
+				left: 50%;
+				margin-left: -138px;
+				width: 276px;
+				height: 60px;
+				line-height: 60px;
+				border: 1px solid #4a4a4a;
+				text-align: center;
+				border-radius: 30px;
+				background: #4a4a4a;
+				color: #fff;
+				font-size: 20px;
+				cursor: default;
+			}
+
+			.projectBtn:hover {
+				background: #fff;
+				color: #000;
+
+			}
+
+			.projectBoxItemBtn {
+				width: 210px;
+				height: 60px;
+				border: 1px solid #bbb;
+				position: absolute;
+				bottom: -30px;
+				left: 50%;
+				margin-left: -105px;
+				line-height: 60px;
+				border-radius: 30px;
+				background: #fff;
+				text-align: center;
+				font-size: 20px;
+			}
+
+			.projectBoxItemBtn:hover {
+				color: #fff;
+				background: #bbb;
+				cursor: default;
+			}
+
+			.projectBoxItemImg {
+				width: 140px;
+				height: 140px;
+				overflow: hidden;
+				border-radius: 50%;
+				margin: 45px auto 21px;
+			}
+
+			.projectBoxItem:hover .projectBoxItemImg {
+				margin: 40px auto 26px;
+			}
+
+			/* 学员实训结果保障 */
+			.safeguardBox {
+				padding: 40px 0;
+				width: 100%;
+				height: 160px;
+				margin-bottom: 10px;
+				border-radius: 10px;
+				display: flex;
+				border: 1px solid #fff;
+			}
+
+			.safeguardBox:hover {
+				border: 1px solid #bbb;
+			}
+
+			.safeguardBoxDiv {
+				width: 50%;
+				height: 100%;
+				/* border: 1px solid #f00; */
+				padding: 0 40px;
+				display: flex;
+			}
+
+			.safeguardBoxDivImg {
+				width: 130px;
+				height: 100%;
+				margin-right: 25px;
+			}
+
+			.safeguardBoxDiv p {
+				display: -webkit-box;
+				-webkit-line-clamp: 4;
+				-webkit-box-orient: vertical;
+				color: #BBBBBB;
+				font-size: 18px;
+				overflow: hidden;
+			}
+
+			/* .safeguardBox:last-child{
+				border: none;
+			} */
+			.box {
+				position: absolute;
+				font-size: 72px;
+				color: #ACACAC;
+				line-height: 160px;
+				left: 50%;
+				margin-left: -140px;
+			}
+
+			.safeguard {
+				margin-bottom: 60px;
+			}
+
+			.details {
+				display: flex;
+				height: 640px;
+				/* border: 1px solid #f00; */
+				margin-bottom: 50px;
+			}
+
+			.detailsLeft {
+				padding: 52px 0;
+			}
+
+			.detailsLeft div {
+				width: 309px;
+				height: 78px;
+				line-height: 78px;
+				text-align: center;
+				border: 1px solid #bbb;
+				border-radius: 36px 0 0 36px;
+				margin-bottom: 34px;
+				border-right: none;
+			}
+
+			.detailsRight {
+				width: 1020px;
+				height: calc(100% - 80px);
+				border: 1px solid #bbb;
+				padding: 40px;
+			}
+
+			.detailsRightItemImg {
+				display: flex;
+				align-items: center;
+				width: 22px;
+				height: 22px;
+				margin-right: 10px;
+			}
+
+			img {
+				width: 100%;
+				height: 100%;
+			}
+
+			.detailsRightItem {
+
+				font-size: 24px;
+				color: #777;
+			}
+			.detailsLeftBox:hover{
+				cursor: pointer;
+			}
+			.detailsLeftBox:first-child{
+				background: #777;
+				color:#fff;
+			}
+			
+			
+			.teamTalents,
+			.teamTop {
+				width: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				margin-bottom: 50px;
+			}
+			
+			.teamTopItemz {
+				/* width: 85%; */
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				flex-wrap: wrap;
+			}
+			
+			.teamTopItem-box {
+				width: 250px;
+				height: 380px;
+				background: #fff;
+				position: relative;
+				overflow: hidden;
+				border-radius: 20px;
+				box-shadow: 0 5px 18px rgb(175, 175, 175);
+				margin-bottom: 30px;
+			}
+			
+			.teamTopItem-boxFu {
+				width: 250px;
+				height: 380px;
+				background: #eee;
+				position: absolute;
+				top: 380px;
+				left: 0;
+			}
+			.teamTalentsBox {
+				/* background: #000; */
+				width: 1200px;
+				margin: 0 auto;
+				border: 1px solid #bbb;
+			}
+			
+			.teamTalentsBoxB,
+			.teamTalentsBoxA {
+				width: 90%;
+				padding: 45px 0;
+				align-items: center;
+				margin: 0 auto;
+				border-bottom: 1px solid #bbb;
+			}
+			
+			.teamTalentsBoxB,
+			.teamTalentsBoxA {
+				display: flex;
+				justify-content: space-between;
+				/* flex-wrap: wrap; */
+			}
+			
+			.teamTalentsBoxBb,
+			.teamTalentsBoxAB {
+				width: calc(100% - 152px);
+				display: flex;
+				flex-wrap: wrap;
+				margin-left: 60px;
+			}
+			
+			.teamTalentsBoxAB {
+				margin-left: 120px;
+			}
+			
+			.teamTalentsBoxAB div {
+				height: 41px;
+				line-height: 41px;
+			}
+			
+			
+			/*  全链路+UI/UE设计实战标准及流程*/
+			.flow{
+				margin-bottom: 70px;
+			}
+			.flowItem{
+				width: 100%;
+				height: 780px;
+				border: 1px solid #bbb;
+				border-radius: 20px;
+			}
+			.flowItemTop{
+				height: 90px;
+				width:calc(100% - 160px);
+				border-bottom: 1px solid #bbb;
+				padding: 0 80px;
+				display: flex;
+				justify-content:space-between;
+				align-items:center;
+				font-size: 36px;
+				
+			}
+			.flowItemTop div{
+				height: calc(100% - 10px);
+				border-bottom: 10px solid #bbb;
+				display: flex;
+				align-items:center;
+			}
+			.flowItemBtn{
+				width: calc(100% - 80px);
+				height: calc(100% - 121px);
+				padding: 30px 40px 0;
+				display: flex;
+				justify-content:space-around;
+			}
+			
+			.flowItemBtn-box{
+				width: 180px;
+				height:100%;
+				/* border: 1px solid #f00; */
+			}
+			.flowItemBtn-box div{
+				width: 100%;
+				height: 50px;
+				border: 1px solid #bbb;
+				line-height: 50px;
+				text-align: center;
+				border-radius: 25px;
+				margin-bottom: 18px;
+			}
+			.BoxBtn:hover{
+				background: #bbb;
+			}
+			/* 就业指导 */
+			.take{
+				width: 100%;
+				height: 180px;
+				margin-bottom: 70px;
+				display: flex;
+				justify-content:space-between;
+			}
+			
+			/* 资讯 */
+			.dynamicBox_divB {
+				width: 38%;
+				font-size: 18px;
+				color: #848484;
+			}
+			
+			.dynamicTitle {
+				width: 436px;
+				font-family: SourceHanSansSC-regular;
+			}
+			
+			.dynamicBox_divBSpan {
+				display: inline-block;
+				width: 30px;
+				height: 30px;
+				text-align: center;
+				line-height: 30px;
+				border: 1px solid #bbb;
+				border-radius: 3px;
+			}
+			.obtain-list{
+				display: flex;
+				justify-content: space-between;
+			}
+			.obtain-list_item{
+				width: 436px;
+			}
+			.obtain-list_top{
+				display: flex;
+				justify-content: space-between;
+				height: 42px;
+				line-height: 42px;
+				border-bottom: 1px solid #9CACACAC;
+				margin-bottom: 26px;
+			}
+			
+			.obtain-list_item-title{
+				color: rgba(74, 74, 74, 100);
+				font-size: 28px;
+			}
+			.obtain-list_item-title-right{
+				
+				font-size: 18px;
+				color:#101010;
+			}
+			.station{
+				width: 100%;
+				height: 455px;
+				margin-bottom: 60px;
+				display: flex;
+			}
+			.stationImg{
+				width: 730px;
+				height: 100%;
+				border: 5px solid #bbb;
+				display: flex;
+				flex-wrap:wrap;
+			}
+			.stationImg div{
+				width: 239px;
+				height:150px;
+				border: 1px solid #f00;
+			}
+			.stationItem{
+				width: calc(100% - 810px);
+				height: 100%;
+				/* border: 1px solid #f00; */
+				padding: 0 40px;
+			}
+			.stationItem p{
+				font-size: 18px;
+				color:#8a8a8a;
+			}
+			.tale{
+				width: 100%;
+				margin-top: 70px;
+			}
+			.tale_h{
+				margin-bottom: 40px; border-bottom: 1px solid #bbb; padding-bottom: 5px; display: flex;
+				justify-content: space-between;
+				align-items:center;
+			}
+			.taleimg{
+				width: 620px;
+				height: 380px;
+			}
+			.taleText{
+				width: calc(100% - 650px);
+				margin-left: 30px;
+				color:#848484;
+				font-size: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="coursePage">
+			<!-- 头部导航 -->
+			<div id="top">
+				<div class="top">
+					<div class="top_logo">
+						<!-- <div style="display: flex; 
+						            display:inline-flex;
+									align-items:center;
+									font-size: 36px;
+									color:#000;
+									text-align: center;
+									margin-left:50px;
+									">
+							LOGO
+						</div> -->
+						<div id="img">
+							<img src="./img/load.png" alt="logo" style="width: 100%; height: 130%;">
+						</div>
+						<div style="width: 90px; text-align: center;">
+							<p style="font-size: 20px; font-weight: 700; margin: 0;">辉达时代</p>
+							<span style="font-size: 12px;">www.hd521.com</span>
+						</div>
+						<span style="display: flex; 
+						            display:inline-flex;
+									align-items:center;
+									margin: 0 10px;
+									">|</span>
+						<div style="display: flex; 
+						            display:inline-flex;
+									align-items:center;
+									font-size: 20px;
+									">
+							·IT·人才孵化基地
+						</div>
+					</div>
+					<div class="top_text" v-if="textShow==true">
+						<div v-for="item in itemNam" class="top_text-div" @click="topTextClick(item)">{{item}}</div>
+					</div>
+				</div>
+			</div>
+			<div id="banner">
+				<!-- 轮播 -->
+				<div class="swiper-container">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide" v-for="item in srcImg">
+							<img :src="item.src" alt="" style="width: 100%;">
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- banner下收费标准 -->
+			<div id="bannerNext" v-if="bannerNextshow==true">
+				<div class="bannerNext">
+					<div v-for="item in bannerNext" class="bannerNextText">
+						<div style="height: 30px; font-size: 48px;line-height: 30px;font-weight: 800;">{{item.bigFont}}
+						</div>
+						<div class="jia" style="margin-top:-15px;font-size: 20px;" v-show="item.bigFont-1">+</div>
+						<div style="font-size: 20px;line-height: 50px;margin-top: 10px;margin-left: 4px;">
+							{{item.course}}
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 全链路 -->
+			<div class="TheWholeLink lat">
+				<div class="tou">{{TheWholeLinkTop.title}}</div>
+				<span>{{TheWholeLinkTop.text}}</span>
+			</div>
+			<!-- 全链路主体 -->
+			<div class="TheWholeLink-box lat">
+				<div class="TheWholeLink-left">
+					<img :src="bigImg" alt="">
+				</div>
+				<div class="TheWholeLink-right">
+					<div class="TheWholeLink-right-box" v-for="(item,index) in TheWholeLink">
+						<div class="TheWholeLink-img">
+							<img :src="item.icon" alt="">
+						</div>
+						<span class="yinwt">{{item.course}}</span>
+					</div>
+				</div>
+			</div>
+			<!-- 解答区 -->
+			<div class="issue lat">
+				{{TheWholeLinkTop.why}}
+			</div>
+			<div class="answerArea lat">
+				<div class="answerArea-left">
+					<ul>
+						<li v-for="(item,index) in TheWholeLinkTop.answerArea" @click="Problemofswitch(item,index)">
+							{{item.btn}}
+						</li>
+
+					</ul>
+				</div>
+				<div class="answerArea-right">
+					<div class="answerArea-right-top">
+						{{answerArea.tltle}}
+					</div>
+					<div class="answerArea-right-img">
+						<img style="width: 100%;height: 100%;" :src="answerArea.img" alt="">
+					</div>
+				</div>
+			</div>
+			<!-- 深灰背景 -->
+			<div class="darkgray"></div>
+			<!-- 设计课程 -->
+			<div class="course lat" style="padding-top: 1px;">
+				<div class="course-top">
+					<div class="course-top-left">{{TheWholeLinkTop.answerAreaTitle}}</div>
+					<div class="course-top-right">{{TheWholeLinkTop.answerAreaText}}</div>
+				</div>
+				<div class="course-body">
+					<img style="height: 100%;" :src="TheWholeLinkTop.answerAreaImg" alt="">
+				</div>
+			</div>
+			<!-- 课程标准 -->
+			<div class="curriculumStandards lat">
+				<div class="curriculumStandards-text">{{staggerText.staggerTitle}}</div>
+				<ul class="stagger">
+					<li v-for="(item,index) in staggerText.staggerItem">
+						<h1>0{{index+1}}</h1>
+						<span>{{item.span1Text}}</span><br />
+						<span>{{item.span2Text}}</span>
+					</li>
+					<ul class="dian">
+						<li v-for="(item,index) in staggerText.staggerItem"></li>
+					</ul>
+				</ul>
+			</div>
+
+			<!-- UI/UE设计课程大纲 -->
+			<div class="lat" id="outline">
+				<h4 style="font-size: 28px; margin-bottom: 30px;">{{outlineItem.outlineTitle}}</h4>
+				<div class="outline">
+					<div class="outlineNav">
+						<div class="outlineNavBox" v-for="(item,index) in outlineItem.outline"
+							@click="outlineClick(item,index)">
+							{{item.title}}
+						</div>
+					</div>
+					<div class="outline_item">
+						<div style="display: flex; justify-content:space-between;">
+							<h4 style="font-size: 28px;">{{outlines.title}} <span
+									style="display: inline-block; margin-left: 43px;">课时: {{outlines.period}}</span>
+							</h4>
+							<div class="outline_item-btn" style="">查看课程详情 ></div>
+						</div>
+						<div style="color:#777" v-for="item in outlines.content">
+							<div style="margin: 15px 0; display: flex; align-items:center">
+								<div class="outline_img">
+									<img src="./img/duihaocheckmark17.png" alt="">
+								</div>
+								<span style="font-size: 24px;">{{item.title}}</span>
+							</div>
+							<p style="font-size: 18px;">{{item.contentText}}</p>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+			<!-- 学设计适合人群 -->
+			<div class="crowd lat">
+				<h4 style="font-size: 28px; margin-bottom: 60px;">学设计适合人群</h4>
+				<div class="crowdItem">
+					<div class="crowdItemBox" v-for="item in crowdItem">
+						<h4 style="margin-bottom: 18px; font-size: 28px; font-weight: 400;">{{item.title}}</h4>
+						<p v-for="itemText in item.text">{{itemText}}</p>
+						<div class="crowdItemBoxImg">
+							<img :src="item.img" alt="" style="width: 100%; height: 100%;">
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 全链路+UI/UE设计职业发展路径 -->
+			<div class="develop lat">
+				<h4 style="font-size: 28px; margin-bottom: 60px;">全链路+UI/UE设计职业发展路径</h4>
+				<div class="developItem">
+					<div class="developItemBox">
+						<div class="developItemImg">
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 全链路+UI/UE设计职业发展路径 A-->
+			<div class="progress lat">
+				<h4 style="font-size: 28px; margin-bottom: 60px;">全链路+UI/UE设计职业发展路径</h4>
+				<div class="progressItem">
+					<div class="progressItemZi" v-for="item in progressBoxItem">
+						<h4 style="margin-bottom: 10px; font-size: 28px; font-weight: 500;">{{item.title}}</h4>
+						<p v-for="itemText in item.text">{{itemText}}</p>
+					</div>
+				</div>
+			</div>
+			<!-- 专业项目五大标准 -->
+			<div class="project lat">
+				<div class="projectBox">
+					<div class="projectBoxItem" v-for="item in projectItem.project">
+						<div class="projectBoxItemImg">
+							<img :src="item.img" alt="" style="width: 100%; height: 100%;">
+						</div>
+						<h4 style="font-size: 28px; font-weight: 500; color:#101010;margin-bottom: 6px;">
+							{{item.title}}
+						</h4>
+						<p v-for="itemText in item.text">{{itemText}}</p>
+
+						<div class="projectBoxItemBtn">
+							{{item.btn}}
+						</div>
+					</div>
+				</div>
+				<div class="projectWire">
+				</div>
+				<div class="projectBtn">
+					{{projectItem.title}}
+				</div>
+			</div>
+			<!-- 学员实训结果保障 -->
+			<div class="safeguard lat">
+				<h4 style="font-size: 28px; margin-bottom: 60px;">{{safeguardItem.title}}</h4>
+				<div class="safeguardBox">
+					<div class="safeguardBoxDiv" v-for="item in safeguardItem.safeguard">
+						<div class="safeguardBoxDivImg">
+							<img :src="item.img" alt="" style="width: 100%; height: 100%;">
+						</div>
+						<div style="width: 460px; ">
+							<h4 style="margin-bottom: 15px; font-size: 22px; font-weight: 500; ">{{item.title}}</h4>
+							<p>{{item.text}}</p>
+						</div>
+					</div>
+				</div>
+				<div class="safeguardBox" style="position: relative;">
+					<div class="safeguardBoxDiv" v-for="item in safeguardItem.safeguardVs">
+						<div class="safeguardBoxDivImg">
+							<img :src="item.img" alt="" style="width: 100%; height: 100%;">
+						</div>
+						<div style="width: 460px; ">
+							<h4 style="margin-bottom: 15px; font-size: 22px; font-weight: 500; ">{{item.title}}</h4>
+							<p v-for="(itemText,index) in item.textItem"><span
+									style="margin-right: 10px;">{{index+1}}</span>{{itemText}}</p>
+						</div>
+					</div>
+					<div class="box">
+						V/S
+					</div>
+				</div>
+			</div>
+			<!-- 学员实训结果详情 -->
+			<div class="details lat">
+				<div class="detailsLeft">
+					<div v-for="(item,index) in detailsItem" @click="detailsClisk(item,index)" class="detailsLeftBox">{{item.title}}</div>
+				</div>
+				<div class="detailsRight">
+					<h4 style="font-size: 28px; color:#4a4a4a">{{detailsData.title}}</h4>
+					<div class="detailsRightItem" v-for="item in detailsData.details">
+						<div style="display: flex; margin: 14px 0 11px; align-items:center;">
+							<div class="detailsRightItemImg">
+								<img src="img/duihaocheckmark17.png" alt="">
+							</div>
+							<span>{{item.detailsTitle}}</span>
+						</div>
+						<p v-for="items in item.detailsText">{{items}}</p>
+					</div>
+				</div>
+			</div>
+			<!-- 教研团队 -->
+			<div class="teachers lat">
+				<div style="margin-bottom: 40px;">
+					<h4 style="font-size: 28px; font-weight: 500;color:#101010">教研团队</h4>
+					<span style="font-size: 14px; color:#777;">年薪80万持续引入大厂技术大牛，建立全链路+UI/UE设计专职课研团队及专职教学团队，制定严格师资筛选培训体系，不断提高行业课程标准及教学质量</span>
+				</div>
+			
+				
+				<!-- v-if="teamTalentsShow==true" -->
+				<div class="teamTalents" v-if="teamTalentsShow==true">
+					<div class="teamTalentsBox">
+						<div class="teamTalentsBoxA">
+							<h4 style="font-size: 20px; font-weight: 500; width: 160px; white-space: nowrap;">人才筛选4项标准
+							</h4>
+							<div class="teamTalentsBoxAB">
+								<div>人才筛选4项标准</div>
+								<div style="width: 41px; margin: 0 10px;">
+									<img src="./img/tu.png" alt="" style="width: 100%;">
+								</div>
+								<div>多为面试（五面）</div>
+								<div style="width: 41px; margin: 0 10px; ">
+									<img src="./img/tu.png" alt="" style="width: 100%;">
+								</div>
+								<div>研究小组诊断测评</div>
+								<div style="width: 41px; margin: 0 10px;">
+									<img src="./img/tu.png" alt="" style="width: 100%;">
+								</div>
+								<div>全链路面试流程监控</div>
+							</div>
+						</div>
+						<div class="teamTalentsBoxB" style="align-items:flex-start; padding-bottom: 0;">
+							<h4 style="font-size: 20px; font-weight: 500; width: 160px; white-space: nowrap;">人才考核8大环节
+							</h4>
+							<div class="teamTalentsBoxBb">
+								<div v-for="(item,index) in teamItem" style="margin-left: 60px; margin-bottom: 30px;">
+									<span
+										style="display: inline-block; width: 20px; height: 20px; border-radius: 50%; color:#fff;background-color: #bbb; line-height: 20px; text-align: center;">{{index+1}}</span>{{item}}
+								</div>
+							</div>
+						</div>
+						<div class="teamTalentsBoxB" style="align-items:flex-start; border-bottom: none;">
+							<h4
+								style="font-size: 20px; font-weight: 500; width: 160px; margin-right: 55px; white-space: nowrap;">
+								人才培训及发展计划</h4>
+							<div style="display: flex; font-size: 16px; width: 160px; " v-for="item in 4">
+								<div style="width: 40px; height: 40px; margin-right: 10px;">
+									<img src="img/11.png" alt="" style="width: 100%; height: 100%;">
+								</div>
+								<span style="width: 110px;">
+									平台、组件技术开源历练
+								</span>
+				
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="teamTop">
+					<div class="teamTopItemz lat">
+						<div class="teamTopItem-box" v-for="(item,index) in 5" @mouseenter='teamEnter(index)'
+							@mouseleave='teamOut(index)'>
+							<div class="teamTopItem-boxShow" style="text-align: center; line-height: 380px;">
+								主
+							</div>
+							<div class="teamTopItem-boxFu" style="text-align: center; line-height: 380px;">
+								次
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 全链路+UI/UE设计实战标准及流程 -->
+			<div class="flow lat">
+				<div style="margin-bottom: 40px;">
+					<h4 style="font-size: 28px; font-weight: 500;color:#101010">全链路+UI/UE设计实战标准及流程</h4>
+					<span style="font-size: 14px; color:#777;">企业标准流程完成项目实战，保障所学即为所用</span>
+				</div>
+				<div class="flowItem">
+					<div class="flowItemTop">
+						<div>项目前期</div>
+						<div>项目中期</div>
+						<div>项目后期</div>
+					</div>
+					<div class="flowItemBtn">
+						<div class="flowItemBtn-box" v-for="item in flowItemBtnBox">
+							<div v-for="btn in item" class="BoxBtn">{{btn}}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 就业服务 -->
+			
+			<div class="obtain lat">
+				<div style="margin-bottom: 40px;">
+					<h4 style="font-size: 28px; font-weight: 500;color:#101010">就业服务</h4>
+					<span style="font-size: 14px; color:#777;">老学员毕业后持续帮助学员终身成长，一次学习，永久服务</span>
+				</div>
+				
+				<!-- 就业流程 -->
+				<div class="take">
+					<div v-for="item in takeItem" style="width: 102px; height: 100%; text-align: center;">
+						 <div style="margin-bottom: 10px; width: 100%; height: 132px; border: 1px solid #bbb; overflow: hidden; border-radius: 50px;">
+							<img :src="item.img" alt=""> 
+						 </div>
+						 <p v-for="itemText in item.text">{{itemText}}</p>
+						
+					</div>
+				</div>
+				<!-- 就业基站 -->
+				<div style="margin-bottom: 40px;">
+					<h4 style="font-size: 28px; font-weight: 500;color:#101010">9大服务基站</h4>
+				</div>
+				<!-- 基站 -->
+							
+				<div class="station">
+					<div class="stationImg">
+						<div v-for="i in 9">
+							<img src="./img/11.png" alt="">
+						</div>
+					</div>
+					<div class="stationItem">
+						<h4 style="width: 144px; height: 54px; line-height: 54px; font-size: 36px;">北京基地</h4>
+						<div style="width: 70px; height: 8px; background-color: #bbb; margin: 11px 0;"></div>
+						<p>随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。</p>
+					</div>
+				</div>
+				<!-- 资讯 -->
+				<div class="obtain-list">
+					<div class="obtain-list_item" v-for="item in obtains">
+						<div class="obtain-list_top">
+							<div class="obtain-list_item-title">{{item.title}}</div>
+							<div class="obtain-list_item-title-right">更多></div>
+						</div>
+						<div class="obtain-list_bottom">
+							<div class="dynamicBox_divB">
+								<div class="dynamicTitle">
+									<div style="cursor: pointer; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 22px;" v-for="(item,index) in item.dynamicItem" @click="dynamicItemClick(item)">
+										<span class="dynamicBox_divBSpan"  v-if="index==0" style="background:#4A4A4A; color:#fff">{{index+1}}</span>
+										<span class="dynamicBox_divBSpan"  v-if="index==1" style="background:#808080; color:#fff">{{index+1}}</span>
+										<span class="dynamicBox_divBSpan"  v-if="index==2" style="background:#B6B6B6; color:#fff">{{index+1}}</span>
+										<span class="dynamicBox_divBSpan"  v-if="index==3" >{{index+1}}</span>
+										<span class="dynamicBox_divBSpan"  v-if="index>3">{{index+1}}</span>
+										{{item.title}}
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- 故事 -->
+				<div class="tale"> 
+					<div class="tale_h" style="">
+						<h4 style="font-size: 28px; font-weight: 500;color:#101010">学员故事</h4>
+						<div style="font-size: 18px;">更多></div>
+					</div>
+					<div  style="display: flex; width: 100%;">
+						<div class="taleimg">
+							<img src="img/11.png" alt="">
+						</div>
+						<div class="taleText">
+							<h4 style="font-size: 36px; margin-bottom: 15px; font-weight: 500; ">我在辉达的故事</h4>
+							<div style="display: flex;justify-content: space-between;">
+								<span>作者：奥特曼小姐姐</span>
+								<span>2021-5-1</span>
+							</div>
+							<div style="width: 70px; height: 8px; background-color: #bbb; margin: 11px 0;"></div>
+							<p>随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。</p>
+						</div>
+					</div>
+					
+				</div>
+				
+			
+			</div>
+			
+			
+			
+			<!-- 页脚    -->
+			<div class="footing">
+				<div class="footingBox">
+					<div class="footingBoxLeft">
+						<div>
+							<h4>精品课程</h4>
+							<p v-for="item in footingBoxLeftAB">{{item}}</p>
+						</div>
+						<div>
+							<h4>课程推荐</h4>
+							<p v-for="item in footingBoxLeftAB">{{item}}课程</p>
+						</div>
+						<div>
+							<h4>关于辉达</h4>
+							<p v-for="item in footingBoxLeftC">{{item}}</p>
+						</div>
+						<div>
+							<h4>常见问题</h4>
+							<p v-for="item in footingBoxLeftD">{{item}}课程</p>
+						</div>
+						<div>
+							<h4>如何报名</h4>
+							<p v-for="item in footingBoxLeftF">{{item}}课程</p>
+						</div>
+					</div>
+					<div class="footingBoxRight">
+						<div class="footingBoxRightDiv">
+							<div>
+								<img src="./img/11.png" alt="" style="width: 100%; height: 100%;">
+							</div>
+							<p>扫码关注辉达公众号</p>
+						</div>
+						<div class="footingBoxRightDiv">
+							<div>
+								<img src="./img/11.png" alt="" style="width: 100%; height: 100%;">
+							</div>
+							<p>扫码添加客服咨询</p>
+						</div>
+					</div>
+				</div>
+				<div class="footingBox">
+					北京辉达IT科技有限公司  版权所有Copyright 2006-2021, All Rights Reserved   苏ICP备16007882号-1  营业执照 增值电信业务经营许可证
+				</div>
+			</div>
+		</div>
+		<script src="js/swiper.min.js"></script>
+		<script src="js/vue.js"></script>
+		<script>
+			var vm = new Vue({
+				el: "#coursePage",
+				data: {
+					takeItem:[
+						{
+							img:"./img/11.png",
+							text:["就业流程","全信息化处理"]
+						},
+						{
+							img:"./img/11.png",
+							text:["就业流程","全信息化处理"]
+						},
+						{
+							img:"./img/11.png",
+							text:["就业流程","全信息化处理"]
+						},
+						{
+							img:"./img/11.png",
+							text:["就业流程","全信息化处理"]
+						},
+						{
+							img:"./img/11.png",
+							text:["就业流程","全信息化处理"]
+						},
+						{
+							img:"./img/11.png",
+							text:["就业流程","全信息化处理"]
+						},
+						{
+							img:"./img/11.png",
+							text:["就业流程","全信息化处理"]
+						},
+						{
+							img:"./img/11.png",
+							text:["就业流程","全信息化处理"]
+						},
+						{
+							img:"./img/11.png",
+							text:["就业流程","全信息化处理"]
+						},
+						{
+							img:"./img/11.png",
+							text:["就业流程","全信息处理"]
+						}
+					],
+					obtains:[
+						{
+							title:'学院资讯',
+							dynamicItem:[//新闻动态数据，里面有标题一个，图片一张，小标题最多三个和相对应的内容
+							{
+								"title":"新征程，再出发 | 辉达教育2021年成立新媒体学院",
+								"img":"https://vkceyugu.cdn.bspapp.com/VKCEYUGU-35900c1e-febd-49c2-9057-d09ab1785bdb/5dbc8db6-3437-4f8a-8bcc-8c4a86a7e735.png",
+								"subtitle":[
+									{
+										"title":"辉达Java学院V6.1.0课程上线",
+										"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+									},
+									{
+										"title":"辉达Java学院V6.1.0课程上线",
+										"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+									},
+									{
+										"title":"辉达Java学院V6.1.0课程上线",
+										"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+									}
+								]
+							},
+							{
+								"title":"【官宣】辉达IT教育使命升级",
+								"img":"https://vkceyugu.cdn.bspapp.com/VKCEYUGU-35900c1e-febd-49c2-9057-d09ab1785bdb/5dbc8db6-3437-4f8a-8bcc-8c4a86a7e735.png",
+								"subtitle":[
+									{
+										"title":"辉达IT教育使命升级",
+										"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+									},
+									{
+										"title":"重磅退出：辉达IT教育UI学院教学升级",
+										"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+									},
+									{
+										"title":"辉达IT教育使命升级",
+										"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+									}
+								]
+							},
+							{
+								"title":"重磅退出：辉达IT教育UI学院教学升级",
+								"img":"https://vkceyugu.cdn.bspapp.com/VKCEYUGU-35900c1e-febd-49c2-9057-d09ab1785bdb/5dbc8db6-3437-4f8a-8bcc-8c4a86a7e735.png",
+								"subtitle":[
+									{
+										"title":"重磅退出：辉达IT教育UI学院教学升级",
+										"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+									},
+									{
+										"title":"辉达IT教育使命升级",
+										"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+									},
+									{
+										"title":"重磅退出：辉达IT教育UI学院教学升级",
+										"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+									}
+								]
+							},
+							{
+								"title":"新征程，再出发 | 辉达教育2021年成立新媒体学院",
+								"img":"https://vkceyugu.cdn.bspapp.com/VKCEYUGU-35900c1e-febd-49c2-9057-d09ab1785bdb/5dbc8db6-3437-4f8a-8bcc-8c4a86a7e735.png",
+								"subtitle":[
+									{
+										"title":"辉达IT教育使命升级",
+										"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+									},
+									{
+										"title":"辉达IT教育使命升级",
+										"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+									},
+									{
+										"title":"辉达IT教育使命升级",
+										"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+									}
+								]
+								
+							},
+							{
+								"title":"【官宣】辉达IT教育使命升级",
+								"img":"https://vkceyugu.cdn.bspapp.com/VKCEYUGU-35900c1e-febd-49c2-9057-d09ab1785bdb/5dbc8db6-3437-4f8a-8bcc-8c4a86a7e735.png",
+								"subtitle":[
+									{
+										"title":"辉达IT教育使命升级",
+										"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+									},
+									{
+										"title":"重磅退出：辉达IT教育UI学院教学升级",
+										"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+									},
+									{
+										"title":"辉达IT教育使命升级",
+										"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+									}
+								]
+							},
+							],
+						},
+						{
+							title:'学院资讯',
+							dynamicItem:[//新闻动态数据，里面有标题一个，图片一张，小标题最多三个和相对应的内容
+							{
+								"title":"新征程，再出发 | 辉达教育2021年成立新媒体学院",
+								"img":"https://vkceyugu.cdn.bspapp.com/VKCEYUGU-35900c1e-febd-49c2-9057-d09ab1785bdb/5dbc8db6-3437-4f8a-8bcc-8c4a86a7e735.png",
+								"subtitle":[
+									{
+										"title":"辉达Java学院V6.1.0课程上线",
+										"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+									},
+									{
+										"title":"辉达Java学院V6.1.0课程上线",
+										"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+									},
+									{
+										"title":"辉达Java学院V6.1.0课程上线",
+										"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+									}
+								]
+							},
+							{
+								"title":"【官宣】辉达IT教育使命升级",
+								"img":"https://vkceyugu.cdn.bspapp.com/VKCEYUGU-35900c1e-febd-49c2-9057-d09ab1785bdb/5dbc8db6-3437-4f8a-8bcc-8c4a86a7e735.png",
+								"subtitle":[
+									{
+										"title":"辉达IT教育使命升级",
+										"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+									},
+									{
+										"title":"重磅退出：辉达IT教育UI学院教学升级",
+										"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+									},
+									{
+										"title":"辉达IT教育使命升级",
+										"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+									}
+								]
+							},
+							{
+								"title":"重磅退出：辉达IT教育UI学院教学升级",
+								"img":"https://vkceyugu.cdn.bspapp.com/VKCEYUGU-35900c1e-febd-49c2-9057-d09ab1785bdb/5dbc8db6-3437-4f8a-8bcc-8c4a86a7e735.png",
+								"subtitle":[
+									{
+										"title":"重磅退出：辉达IT教育UI学院教学升级",
+										"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+									},
+									{
+										"title":"辉达IT教育使命升级",
+										"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+									},
+									{
+										"title":"重磅退出：辉达IT教育UI学院教学升级",
+										"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+									}
+								]
+							},
+							{
+								"title":"新征程，再出发 | 辉达教育2021年成立新媒体学院",
+								"img":"https://vkceyugu.cdn.bspapp.com/VKCEYUGU-35900c1e-febd-49c2-9057-d09ab1785bdb/5dbc8db6-3437-4f8a-8bcc-8c4a86a7e735.png",
+								"subtitle":[
+									{
+										"title":"辉达IT教育使命升级",
+										"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+									},
+									{
+										"title":"辉达IT教育使命升级",
+										"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+									},
+									{
+										"title":"辉达IT教育使命升级",
+										"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+									}
+								]
+								
+							},
+							{
+								"title":"【官宣】辉达IT教育使命升级",
+								"img":"https://vkceyugu.cdn.bspapp.com/VKCEYUGU-35900c1e-febd-49c2-9057-d09ab1785bdb/5dbc8db6-3437-4f8a-8bcc-8c4a86a7e735.png",
+								"subtitle":[
+									{
+										"title":"辉达IT教育使命升级",
+										"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+									},
+									{
+										"title":"重磅退出：辉达IT教育UI学院教学升级",
+										"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+									},
+									{
+										"title":"辉达IT教育使命升级",
+										"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+									}
+								]
+							},
+							],
+						},
+						{
+							title:'学院资讯',
+							dynamicItem:[//新闻动态数据，里面有标题一个，图片一张，小标题最多三个和相对应的内容
+							{
+								"title":"新征程，再出发 | 辉达教育2021年成立新媒体学院",
+								"img":"https://vkceyugu.cdn.bspapp.com/VKCEYUGU-35900c1e-febd-49c2-9057-d09ab1785bdb/5dbc8db6-3437-4f8a-8bcc-8c4a86a7e735.png",
+								"subtitle":[
+									{
+										"title":"辉达Java学院V6.1.0课程上线",
+										"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+									},
+									{
+										"title":"辉达Java学院V6.1.0课程上线",
+										"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+									},
+									{
+										"title":"辉达Java学院V6.1.0课程上线",
+										"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+									}
+								]
+							},
+							{
+								"title":"【官宣】辉达IT教育使命升级",
+								"img":"https://vkceyugu.cdn.bspapp.com/VKCEYUGU-35900c1e-febd-49c2-9057-d09ab1785bdb/5dbc8db6-3437-4f8a-8bcc-8c4a86a7e735.png",
+								"subtitle":[
+									{
+										"title":"辉达IT教育使命升级",
+										"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+									},
+									{
+										"title":"重磅退出：辉达IT教育UI学院教学升级",
+										"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+									},
+									{
+										"title":"辉达IT教育使命升级",
+										"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+									}
+								]
+							},
+							{
+								"title":"重磅退出：辉达IT教育UI学院教学升级",
+								"img":"https://vkceyugu.cdn.bspapp.com/VKCEYUGU-35900c1e-febd-49c2-9057-d09ab1785bdb/5dbc8db6-3437-4f8a-8bcc-8c4a86a7e735.png",
+								"subtitle":[
+									{
+										"title":"重磅退出：辉达IT教育UI学院教学升级",
+										"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+									},
+									{
+										"title":"辉达IT教育使命升级",
+										"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+									},
+									{
+										"title":"重磅退出：辉达IT教育UI学院教学升级",
+										"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+									}
+								]
+							},
+							{
+								"title":"新征程，再出发 | 辉达教育2021年成立新媒体学院",
+								"img":"https://vkceyugu.cdn.bspapp.com/VKCEYUGU-35900c1e-febd-49c2-9057-d09ab1785bdb/5dbc8db6-3437-4f8a-8bcc-8c4a86a7e735.png",
+								"subtitle":[
+									{
+										"title":"辉达IT教育使命升级",
+										"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+									},
+									{
+										"title":"辉达IT教育使命升级",
+										"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+									},
+									{
+										"title":"辉达IT教育使命升级",
+										"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+									}
+								]
+								
+							},
+							{
+								"title":"【官宣】辉达IT教育使命升级",
+								"img":"https://vkceyugu.cdn.bspapp.com/VKCEYUGU-35900c1e-febd-49c2-9057-d09ab1785bdb/5dbc8db6-3437-4f8a-8bcc-8c4a86a7e735.png",
+								"subtitle":[
+									{
+										"title":"辉达IT教育使命升级",
+										"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+									},
+									{
+										"title":"重磅退出：辉达IT教育UI学院教学升级",
+										"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+									},
+									{
+										"title":"辉达IT教育使命升级",
+										"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+									}
+								]
+							},
+							],
+						}
+					],
+					flowItemBtnBox:[
+						["项目需求分析","项目需求BRD","项目需求BRD","项目需求BRD","人群画像","竞品分析","头脑风暴","创意设计","项目需求分析"],
+						["项目需求分析","项目需求BRD","人群画像",],
+						["竞品分析","头脑风暴","创意设计"],
+						["项目需求分析","人群画像","竞品分析","头脑风暴","创意设计"],
+						["项目需求分析","项目需求BRD","头脑风暴","创意设计"],
+						["项目需求分析","头脑风暴","创意设计"],
+					],
+					footingBoxLeftAB:["Java大数据","web前端","UI/UE设计","软件测试"],
+					footingBoxLeftC:["辉达概况","联系我们","对外合作","1024程序员节"],
+					footingBoxLeftD:["学费价格","校区分布","教学团队"],
+					footingBoxLeftF:["报名流程","来校地图","住宿环境"],
+					teamTalentsShow:true,
+					teamItem: [
+						"科研人员素质考核",
+						"课程设计考核",
+						"科研人员素质考核",
+						"课程设计考核",
+						"科研人员素质考核",
+						"课程设计考核",
+						"科研人员素质考核",
+						"课程设计考核"
+					],
+					detailsData: {
+						title: "【分组】工作室模式",
+						details: [{
+								detailsTitle: '老师:',
+								detailsText: ["扮演审核官角色，认真听取每一组学员的设计答辩，并作出点评、指导。总结项目设计过程中的共性问题，并提供解决方案。分享项目设计中的工作经验。"]
+							},
+							{
+								detailsTitle: '学员:',
+								detailsText: ["扮演审核官角色，认真听取每一组学员的设计答辩，并作出点评、指导。总结项目设计过程中的共性问题，并提供解决方案。分享项目设计中的工作经验。"]
+							},
+							{
+								detailsTitle: '目标:',
+								detailsText: ["将班级学习状态，调整为设计工作室的工作状态，组建好各设计团队。", "营造好的学习氛围，让学员以最佳状态进入实战阶段。",
+									"增强学员之间的凝聚力，为后面的就业互帮互助打好基础。", "给学员建立好的就业信心。"
+								]
+							}
+						]
+					},
+					detailsItem: [{
+							title: "【分组】工作室模式",
+							details: [{
+									detailsTitle: '老师',
+									detailsText: [
+										"扮演审核官角色，认真听取每一组学员的设计答辩，并作出点评、指导。总结项目设计过程中的共性问题，并提供解决方案。分享项目设计中的工作经验。"
+									]
+								},
+								{
+									detailsTitle: '老师',
+									detailsText: [
+										"扮演审核官角色，认真听取每一组学员的设计答辩，并作出点评、指导。总结项目设计过程中的共性问题，并提供解决方案。分享项目设计中的工作经验。"
+									]
+								},
+								{
+									detailsTitle: '老师',
+									detailsText: ["将班级学习状态，调整为设计工作室的工作状态，组建好各设计团队。", "营造好的学习氛围，让学员以最佳状态进入实战阶段。",
+										"增强学员之间的凝聚力，为后面的就业互帮互助打好基础。", "给学员建立好的就业信心。"
+									]
+								}
+							]
+						},
+						{
+							title: "【分组】工作室模式",
+							details: [{
+									detailsTitle: '老师',
+									detailsText: [
+										"扮演审核官角色，认真听取每一组学员的设计答辩，并作出点评、指导。总结项目设计过程中的共性问题，并提供解决方案。分享项目设计中的工作经验。"
+									]
+								},
+								{
+									detailsTitle: '老师',
+									detailsText: [
+										"扮演审核官角色，认真听取每一组学员的设计答辩，并作出点评、指导。总结项目设计过程中的共性问题，并提供解决方案。分享项目设计中的工作经验。"
+									]
+								},
+								{
+									detailsTitle: '老师',
+									detailsText: ["将班级学习状态，调整为设计工作室的工作状态，组建好各设计团队。", "营造好的学习氛围，让学员以最佳状态进入实战阶段。",
+										"增强学员之间的凝聚力，为后面的就业互帮互助打好基础。", "给学员建立好的就业信心。"
+									]
+								}
+							]
+						},
+						{
+							title: "【设计】进行项目设计",
+							details: [{
+									detailsTitle: '老师',
+									detailsText: [
+										"扮演审核官角色，认真听取每一组学员的设计答辩，并作出点评、指导。总结项目设计过程中的共性问题，并提供解决方案。分享项目设计中的工作经验。"
+									]
+								},
+								{
+									detailsTitle: '老师',
+									detailsText: [
+										"扮演审核官角色，认真听取每一组学员的设计答辩，并作出点评、指导。总结项目设计过程中的共性问题，并提供解决方案。分享项目设计中的工作经验。"
+									]
+								},
+								{
+									detailsTitle: '老师',
+									detailsText: ["将班级学习状态，调整为设计工作室的工作状态，组建好各设计团队。", "营造好的学习氛围，让学员以最佳状态进入实战阶段。",
+										"增强学员之间的凝聚力，为后面的就业互帮互助打好基础。", "给学员建立好的就业信心。"
+									]
+								}
+							]
+						},
+						{
+							title: "【分组】工作室模式",
+							details: [{
+									detailsTitle: '老师',
+									detailsText: [
+										"扮演审核官角色，认真听取每一组学员的设计答辩，并作出点评、指导。总结项目设计过程中的共性问题，并提供解决方案。分享项目设计中的工作经验。"
+									]
+								},
+								{
+									detailsTitle: '老师',
+									detailsText: [
+										"扮演审核官角色，认真听取每一组学员的设计答辩，并作出点评、指导。总结项目设计过程中的共性问题，并提供解决方案。分享项目设计中的工作经验。"
+									]
+								},
+								{
+									detailsTitle: '老师',
+									detailsText: ["将班级学习状态，调整为设计工作室的工作状态，组建好各设计团队。", "营造好的学习氛围，让学员以最佳状态进入实战阶段。",
+										"增强学员之间的凝聚力，为后面的就业互帮互助打好基础。", "给学员建立好的就业信心。"
+									]
+								}
+							]
+						},
+						{
+							title: "【调研】确定项目方向",
+							details: [{
+									detailsTitle: '老师',
+									detailsText: [
+										"扮演审核官角色，认真听取每一组学员的设计答辩，并作出点评、指导。总结项目设计过程中的共性问题，并提供解决方案。分享项目设计中的工作经验。"
+									]
+								},
+								{
+									detailsTitle: '老师',
+									detailsText: ["以在职设计师的身份进入项目实训阶段，迅速熟悉新团队，新组员，发挥自己擅长方向，确定在项目中的设计内容。"]
+								},
+								{
+									detailsTitle: '老师',
+									detailsText: ["将班级学习状态，调整为设计工作室的工作状态，组建好各设计团队。", "营造好的学习氛围，让学员以最佳状态进入实战阶段。",
+										"增强学员之间的凝聚力，为后面的就业互帮互助打好基础。", "给学员建立好的就业信心。"
+									]
+								}
+							]
+						}
+					],
+					safeguardItem: {
+						title: "学员实训结果保障",
+						safeguard: [{
+								img: "./img/11.png",
+								title: "实训的意义",
+								text: "为了让学员有更好的学习结果，让学员专业技能与企业人才需求完美结合，我们开展了独具特色的阶段项目实训，理论联系实际，让学员在项目实训过程中学到更多专业技能、工作经验，在实训过程中发现自己的不足，并通过强化特训，补齐自己的短板，最终成为一名合格的全链路+UI/UE设计师。"
+							},
+							{
+								img: "./img/11.png",
+								title: "实训保障体系",
+								text: "学员在实训的过程中，会遇到各种问题、困难，没有一套完善的保障体系，就无法让实训变得充实、有意义，而沦为普通的练习课。传智教育设计学院独创的立体化实训结果保障体系，360度无死角保障每一位学员通过实训，掌握设计工作中所需的专业技能与工作经验，轻松应对全链路+UI/UE设计师工作。"
+							}
+						],
+						safeguardVs: [{
+								img: "./img/11.png",
+								title: "实训结果保障",
+								textItem: ["学员听懂了理论，缺乏实践练习", "盲目练习，缺乏老师有效指导", "学习氛围较差，没有良性竞争", "结果不可控，部分学员项目完不成"]
+							},
+							{
+								img: "./img/11.png",
+								title: "传智学员实训结果保障",
+								textItem: ["练习为主，理论为辅，理论联系实际", "老师随时指导学员在项目进程中存在的各类问题", "打造良好班级氛围，提供优质教学服务",
+									"确保每一个项目完整性、美观度、可行性"
+								]
+							}
+						]
+					},
+
+					projectItem: {
+						title: "专业项目五大标准",
+						project: [{
+								img: './img/11.png',
+								title: "业务标准",
+								text: ['业务场景全面', '项目需求真实'],
+								btn: '应用场景 > 10个'
+							},
+							{
+								img: './img/11.png',
+								title: "项目标准",
+								text: ['项目完整，全流程覆盖', '跨平台大型综合设计项目'],
+								btn: '应用场景 > 10个'
+							},
+							{
+								img: './img/11.png',
+								title: "业务标准",
+								text: ['业务场景全面', '项目需求真实'],
+								btn: '应用场景 > 10个'
+							},
+							{
+								img: './img/11.png',
+								title: "项目标准",
+								text: ['项目完整，全流程覆盖', '跨平台大型综合设计项目'],
+								btn: '应用场景 > 10个'
+							},
+							{
+								img: './img/11.png',
+								title: "业务标准",
+								text: ['业务场景全面', '项目需求真实'],
+								btn: '应用场景 > 10个'
+							}
+						],
+					},
+
+					progressBoxItem: [{
+							title: "高标准",
+							text: ['"亿元级"研发投入', '大厂项目标准']
+						},
+						{
+							title: "高标准",
+							text: ['"亿元级"研发投入', '大厂项目标准']
+						},
+						{
+							title: "高标准",
+							text: ['"亿元级"研发投入', '大厂项目标准']
+						},
+						{
+							title: "高标准",
+							text: ['"亿元级"研发投入', '大厂项目标准']
+						},
+						{
+							title: "高标准",
+							text: ['"亿元级"研发投入', '大厂项目标准']
+						},
+						{
+							title: "高标准",
+							text: ['"亿元级"研发投入', '大厂项目标准']
+						}
+					],
+					crowdItem: [ //学设计适合人群
+						{
+							img: "./img/11.png",
+							title: "毕业生",
+							text: ["缺乏工作经验和技能", "期望通过学习全链路+UI/UE设计", "跻身IT行业的人员"]
+						},
+						{
+							img: "./img/11.png",
+							title: "有追求 有梦想",
+							text: ["对美好事物", "生活有追求", "掌握技能的同时提升自身品味"]
+						},
+						{
+							img: "./img/11.png",
+							title: "毕业生",
+							text: ["缺乏工作经验和技能", "期望通过学习全链路+UI/UE设计", "跻身IT行业的人员"]
+						},
+						{
+							img: "./img/11.png",
+							title: "有追求 有梦想",
+							text: ["对美好事物", "生活有追求", "掌握技能的同时提升自身品味"]
+						}
+					],
+					outlines: { //当前选中的课程大纲数据
+						title: "PS+AI基础",
+						period: "160课时",
+						content: [{
+								title: "课程简介",
+								contentText: "随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。"
+							},
+							{
+								title: "只要内容",
+								contentText: "随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。"
+							},
+							{
+								title: "就业方向",
+								contentText: "随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。"
+							},
+						]
+					},
+					outlineItem: { //课程大纲数据
+						outlineTitle: "UI/UE设计课程大纲",
+						outline: [{
+								title: "PS+AI基础",
+								period: "160课时",
+								content: [{
+										title: "课程简介",
+										contentText: "随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。"
+									},
+									{
+										title: "只要内容",
+										contentText: "随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。"
+									},
+									{
+										title: "就业方向",
+										contentText: "随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。"
+									},
+								]
+							},
+							{
+								title: "创意手绘",
+								period: "120课时",
+								content: [{
+										title: "课程简介",
+										contentText: "随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。"
+									},
+									{
+										title: "只要内容",
+										contentText: "随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。"
+									},
+									{
+										title: "就业方向",
+										contentText: "随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。"
+									},
+								]
+							},
+							{
+								title: "设计进阶",
+								period: "110课时",
+								content: [{
+										title: "课程简介",
+										contentText: "随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。"
+									},
+									{
+										title: "只要内容",
+										contentText: "随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。"
+									},
+									{
+										title: "就业方向",
+										contentText: "随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。"
+									},
+								]
+							},
+							{
+								title: "品牌设计",
+								period: "60课时",
+								content: [{
+										title: "课程简介",
+										contentText: "随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。"
+									},
+									{
+										title: "只要内容",
+										contentText: "随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。"
+									},
+									{
+										title: "就业方向",
+										contentText: "随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。"
+									},
+								]
+							},
+							{
+								title: "电商运营设计",
+								period: "260课时",
+								content: [{
+										title: "课程简介",
+										contentText: "随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。"
+									},
+									{
+										title: "只要内容",
+										contentText: "随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。"
+									},
+									{
+										title: "就业方向",
+										contentText: "随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。"
+									},
+								]
+							},
+							{
+								title: "UI/UE设计",
+								period: "130课时",
+								content: [{
+										title: "课程简介",
+										contentText: "随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。"
+									},
+									{
+										title: "只要内容",
+										contentText: "随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。"
+									},
+									{
+										title: "就业方向",
+										contentText: "随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。"
+									},
+								]
+							},
+							{
+								title: "PC端网页设计",
+								period: "160课时",
+								content: [{
+										title: "课程简介",
+										contentText: "随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。"
+									},
+									{
+										title: "只要内容",
+										contentText: "随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。"
+									},
+									{
+										title: "就业方向",
+										contentText: "随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。"
+									},
+								]
+							},
+							{
+								title: "动效设计",
+								period: "160课时",
+								content: [{
+										title: "课程简介",
+										contentText: "随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。"
+									},
+									{
+										title: "只要内容",
+										contentText: "随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。"
+									},
+									{
+										title: "就业方向",
+										contentText: "随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。"
+									},
+								]
+							},
+							{
+								title: "作品集设计",
+								period: "170课时",
+								content: [{
+										title: "课程简介",
+										contentText: "随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。"
+									},
+									{
+										title: "只要内容",
+										contentText: "随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。"
+									},
+									{
+										title: "就业方向",
+										contentText: "随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。"
+									},
+								]
+							},
+							{
+								title: "插画设计",
+								period: "370课时",
+								content: [{
+										title: "课程简介",
+										contentText: "随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。"
+									},
+									{
+										title: "只要内容",
+										contentText: "随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。"
+									},
+									{
+										title: "就业方向",
+										contentText: "随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。随着自媒体、短视频的不断兴起。使用PR对视频进行后期剪辑已经被越来越多的个人及公司所重视，越来越多的招聘岗位中，任职要求也明确会用PR者优先录取，或者要求候选人拥有相应技能。"
+									},
+								]
+							}
+						],
+					},
+
+					topTextShow: false, //是否显示
+					textShow: true, //大小屏切换
+					srcImg: [ //轮播图
+						{
+							src: "./img/11.png"
+						},
+						{
+							src: "./img/22.png"
+						},
+						{
+							src: "./img/11.png"
+						}
+					],
+					itemNam: [ //头部导航
+						"课程大纲",
+						"课程大纲",
+						"师资力量",
+						"就业服务",
+						"最新动态"
+					],
+					bannerNextshow: true,
+					bannerNext: [ //banner下收费标准
+						{
+							course: "软件全家桶",
+							bigFont: '20'
+						},
+						{
+							course: "大厂实战案例",
+							bigFont: '10'
+						},
+						{
+							course: "最新素材样机",
+							bigFont: '1000'
+						},
+						{
+							course: "职业生态圈",
+							bigFont: '终身'
+						},
+
+					],
+					bigImg: './img/11.png', //全链路大图
+					answerArea: { //当前选中的解答
+						btn: "前景广阔",
+						img: "./img/11.png",
+						tltle: "任何类型产品都离不开设计，岗位体系庞大，各行业、各地域都有大量需求"
+					},
+					TheWholeLinkTop: {
+						title: "关于全链路+UI/UE设计",
+						text: "所有互联网产品都离不开设计",
+						why: "为什么要学习UI/UE设计？",
+						answerArea: [{
+								btn: "前景广阔",
+								img: "./img/11.png",
+								tltle: "任何类型产品都离不开设计，岗位体系庞大，各行业、各地域都有大量需求"
+							},
+							{
+								btn: "有趣易学",
+								img: "./img/22.png",
+								tltle: "任何类型产品都离不庞大，各行业、各地域都有大量需求"
+							},
+							{
+								btn: "需求量大",
+								img: "./img/11.png",
+								tltle: "任何类型产品都离不开设计，岗位体系量需求"
+							}
+						],
+						answerAreaTitle: "全链路+UI/UE设计课程",
+						answerAreaText: "4个月的全链路+UI/UE设计课程，覆盖品牌平面设计、电商运营设计、UI/UE设计等主流设计方向，纯项目实战课程，更贴近企业用人需求。更有海量设计软件课程，想学什么就有什么",
+						answerAreaImg: "./img/22.png"
+					},
+					TheWholeLink: [ //全链路的数据
+						{
+							course: "学费价格",
+							icon: './img/xinxi.png'
+						},
+						{
+							course: "就业薪资",
+							icon: './img//xinxi_1.png'
+						},
+						{
+							course: "学员故事",
+							icon: './img/shouzhi.png'
+						},
+						{
+							course: "报名流程",
+							icon: './img//xinxi.png'
+						},
+
+					],
+					// answerArea: ['前景广阔', '有趣易学', '需求量大'],
+					courseImg: './img/22.png', //设计课程的图片
+					staggerText: {
+						staggerTitle: "课程标准",
+						staggerItem: [{
+								span1Text: '设计软件课程全家桶',
+								span2Text: '想学什么有什么'
+							},
+							{
+								span1Text: '以“周”为单位',
+								span2Text: '更新热点/前沿技术'
+							},
+							{
+								span1Text: '纯项目驱动教学',
+								span2Text: '项目课程占比超70%'
+							},
+							{
+								span1Text: '以“周”为单位',
+								span2Text: '更新热点/前沿技术'
+							},
+							{
+								span1Text: '全平台+全业务',
+								span2Text: '培养全链路设计能力'
+							},
+							{
+								span1Text: '实用而有趣',
+								span2Text: '实用性与趣味性结合'
+							},
+							{
+								span1Text: '以终为始',
+								span2Text: '学员产出个性化作品集'
+							},
+							{
+								span1Text: '海量真实企业项目',
+								span2Text: '培养学员解决问题能力'
+							},
+							{
+								span1Text: '紧跟设计趋势',
+								span2Text: '课程热门且深入'
+							}
+						]
+					}
+
+				},
+				methods: {
+					teamEnter(index) {
+						console.log(index)
+						$('.teamTopItem-boxFu').eq(index).animate({
+							"top": "0"
+						}, 200)
+					},
+					teamOut(index) {
+						console.log(index)
+						$('.teamTopItem-boxFu').eq(index).animate({
+							"top": "380px"
+						}, 200)
+					},
+					detailsClisk(val, index) {
+						console.log(val, "---------", index)
+						$(".detailsLeftBox").css({
+							'background': '#fff',
+							"color": "#4a4a4a"
+						})
+						$(".detailsLeftBox").eq(index).css({
+							"background": "#777",
+							"color":"#fff"
+						})
+						this.detailsData=val
+					},
+					outlineClick(val, index) {
+						console.log(val, index)
+						this.outlines = val
+						$(".outlineNavBox").css({
+							'background': '#101010',
+							"color": "#fff"
+						})
+						$(".outlineNavBox").eq(index).css({
+							'background': '#fff',
+							"color": "#000"
+						})
+
+					},
+					// outlineItem() {
+					// 	axios.get("./js/course.json").then(data => {
+
+					// 	})
+					// },
+					Problemofswitch(val, index) {
+						$(".answerArea-left ul li").css({
+							'background': '#FBFBFB',
+							'color': '#4A4A4A'
+						})
+						$(".answerArea-left ul li").eq(index).css({
+							'background': '#777777',
+							'color': '#fff'
+						})
+						this.answerArea = val
+					}
+				},
+				mounted() {
+					// alert(document.body.clientWidth)
+					let thas = this
+					if (document.body.clientWidth <= 1100) {
+						this.textShow = false
+						this.courseItemShow = false
+					}
+					if (document.body.clientWidth <= 1500) {
+						this.teamTalentsShow = false
+					}
+					if (document.body.clientWidth <= 1100) {
+						this.bannerNextshow = false
+					}
+					window.onresize = function() {
+						console.log(document.body.clientWidth)
+						if (document.body.clientWidth <= 1000) {
+							thas.textShow = false
+							thas.courseItemShow = false
+						} else {
+							thas.textShow = true
+							thas.courseItemShow = true
+						}
+						if (document.body.clientWidth <= 1100) {
+							thas.bannerNextshow = false
+						} else {
+							thas.bannerNextshow = true
+						}
+						if (document.body.clientWidth <= 1500) {
+							thas.teamTalentsShow = false
+						} else {
+							thas.teamTalentsShow = true
+						}
+
+					}
+
+				}
+			})
+		</script>
+		<script>
+			var swiper = new Swiper('.swiper-container', {
+				nextButton: '.swiper-button-next',
+				prevButton: '.swiper-button-prev',
+				paginationClickable: true,
+				centeredSlides: true,
+				autoplay: 3000,
+				autoplayDisableOnInteraction: false
+			});
+		</script>
+	</body>
+</html>
