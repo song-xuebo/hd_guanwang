@@ -12,7 +12,64 @@
 		<!-- <script src="./map/js/china.js"></script> -->
 		<script src="./js/china.js"></script>
 		<style>
-			   
+			/* 增加师资 */
+			.teamText {
+				height: 80px;
+				margin: 0 auto 120px;
+				display: flex;
+				justify-content: space-around;
+			}
+
+			.teamText .teamTextBox {
+				width: 300px;
+				border-right: 2px solid rgba(12, 45, 99, 1);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				color: rgba(12, 45, 99, 1);
+			}
+
+			.teamText .teamTextBox:last-child {
+				border: none;
+
+			}
+
+			/* 师资样式 */
+			.teamTopImg {
+				height: 254px;
+				overflow: hidden;
+			}
+
+			/* 16级标准严选专职课研老师，严控课程研发质量 */
+			 
+			.teamTalentsBox h4 {
+				border-radius: 80px 0 80px 0;
+				overflow: hidden;
+				font-size: 28px;
+				font-weight: 500;
+				width: 112px;
+				height: 80px;
+				padding: 50px 54px;
+				color:#fff;
+				text-align: left;
+				}
+				.teamTalentsBoxA{
+					display: flex;
+					margin-bottom: 30px;
+					border-radius: 80px 0 80px 0;
+					overflow: hidden;
+					box-shadow: 0px 10px 28px 0px #e9f2fb; 
+				}
+				.teamTalentsBox_div{
+					display: flex;
+					width: calc(100% - 220px);
+				}
+				.Box_div{
+					margin-left: 40px; width: 246px; padding: 33px 0 64px; border: 1px solid #f00;
+				}
+				.teamTalentsBoxBb{
+					display: flex;
+				}
 		</style>
 	</head>
 	<body>
@@ -60,15 +117,20 @@
 				</div>
 			</div>
 			<!-- 课程中心 -->
-
 			<div id="centre">
 				<!-- 标题 -->
 				<div id="headline">
 					<p class="headline_tit">课程中心</p>
 					<p class="headline_titNext">完善的课程研发体系紧跟技术发展及企业需求</p>
-					<div style="position: absolute; left:50%;top:50px; margin-left: -130px; opacity:0.3; width: 35px; height: 35px; background-color: #6232E5; border-radius: 50%;"></div>
-					<div style="position: absolute; left:50%;top:80px; margin-left: 88px; opacity:0.3; width: 28px; height: 28px; background-color: #FFE290; border-radius: 50%;"></div>
-					<div style="position: absolute; left:50%;top:36px; margin-left: -110px; opacity:0.3; width: 31px; height: 31px; background-color: #3258E5; "></div>
+					<div
+						style="position: absolute; left:50%;top:50px; margin-left: -130px; opacity:0.3; width: 35px; height: 35px; background-color: #6232E5; border-radius: 50%;">
+					</div>
+					<div
+						style="position: absolute; left:50%;top:80px; margin-left: 88px; opacity:0.3; width: 28px; height: 28px; background-color: #FFE290; border-radius: 50%;">
+					</div>
+					<div
+						style="position: absolute; left:50%;top:36px; margin-left: -110px; opacity:0.3; width: 31px; height: 31px; background-color: #3258E5; ">
+					</div>
 				</div>
 				<!-- 课程简介 -->
 				<div id="synopsis">
@@ -109,7 +171,9 @@
 					<div class="outline_box lat">
 						<h4>课程大纲</h4>
 						<span>高标准研发培训课程及项目教学质量有保障</span>
-						<div style="position: absolute; width: 12px; height: 34px; background-color: rgba(50,88,229,0.3); top:-10px; left:-17px" ></div>
+						<div
+							style="position: absolute; width: 12px; height: 34px; background-color: rgba(50,88,229,0.3); top:-10px; left:-17px">
+						</div>
 					</div>
 				</div>
 				<!-- 课程切换 -->
@@ -118,7 +182,7 @@
 						<div class="outlineTab_boxDiv">
 							<div class="box" v-for="(item,index) in outlineItems" @click="outlineTabboxDiv(item,index)">
 								<div style="width: 24px; height: 26px; margin-right: 8px;">
-									<img :src="item.img" :alt="item.title" >
+									<img :src="item.img" :alt="item.title">
 								</div>
 								<span>
 									{{item.title}}
@@ -129,7 +193,6 @@
 					</div>
 
 				</div>
-				
 				<!-- 高级软件工程师课程培训标准标题 -->
 				<div class="outline" style="">
 					<div class="outline_box" style="border-color: #E1E1E1; font-size: 22px;">
@@ -139,36 +202,21 @@
 				<!-- 高级软件工程师课程培训标准 -->
 				<div class="outlinebodyTitle_item">
 					<div class="outlinebodyTitle_item-box lat">
-						<div class="miss" :style="{width:styleWidth}" v-for="(item,index) in outlinebodyTitleItem"
-							v-if="outlinebodyTitleItem.length>0">
-							<div class="heng"></div>
-							<div class="xie"></div>
-							<div style="font-size: 36px; margin-left: 20px; color:#777777">{{index+1}} </div>
-							<div style="margin-left: 40px; font-size: 14px; color:rgba(16, 16, 16, 100)">{{item}}</div>
+						<div class="outlinebodyNumber">
+							<div class="outlinebodyNumberBox" v-for="(item,index) in outlinebodyTitleItem">
+								<div class="number">{{index+1}}</div>
+								<span></span>
+								<div class="outlinebodyItem">
+									{{item}}
+								</div>
+							</div>
+							<div class="xian"></div>
 						</div>
-
 					</div>
 				</div>
 
 				<!--  项目标准 标题-->
-			<!-- 	<div class="outline">
-					<div class="outline_box" style="border-color: #E1E1E1; font-size: 22px;">
-						<span>{{outlinebodyTitleB}}<span style="color:#000">项目标准</span></span>
-					</div>
-				</div>
-				<div class="outlinebodyTitle_item">
-					<div class="outlinebodyTitle_item-box lat">
-						<div class="outlinebodyTitle_item-box_div" v-for="item in outlinebodyTitleItemNext"
-							v-if="outlinebodyTitleItemNext.length>0" :style="{'background-image': item.backgroundImg}">
-							<h4 style="color:#101010;font-size: 18px; font-weight: 500; margin-bottom: 12px;">
-								{{item.title}}
-							</h4>
-							<p>{{item.textA}}</p>
-							<p style="margin: 12px 0;">{{item.textB}}</p>
-							<p>{{item.textC}}</p>
-						</div>
-					</div>
-				</div> -->
+
 				<!-- 项目特色 -->
 				<div class="outline">
 					<div class="outline_box" style="border-color: #E1E1E1; font-size: 22px;">
@@ -198,67 +246,98 @@
 				<div id="headline">
 					<p class="headline_tit">教研团队</p>
 					<p class="headline_titNext">技术大牛+硬核讲师为教学质量保驾护航，保障课程与企业需求实时接轨；10余年经验的教学老师更懂“教”与“学”！</p>
-					<div style="position: absolute; left:50%;top:50px; margin-left: -130px; opacity:0.3; width: 35px; height: 35px; background-color: #6232E5; border-radius: 50%;"></div>
-					<div style="position: absolute; left:50%;top:80px; margin-left: 88px; opacity:0.3; width: 28px; height: 28px; background-color: #FFE290; border-radius: 50%;"></div>
-					<div style="position: absolute; left:50%;top:36px; margin-left: -110px; opacity:0.3; width: 31px; height: 31px; background-color: #3258E5; "></div>
+					<div
+						style="position: absolute; left:50%;top:50px; margin-left: -130px; opacity:0.3; width: 35px; height: 35px; background-color: #6232E5; border-radius: 50%;">
+					</div>
+					<div
+						style="position: absolute; left:50%;top:80px; margin-left: 88px; opacity:0.3; width: 28px; height: 28px; background-color: #FFE290; border-radius: 50%;">
+					</div>
+					<div
+						style="position: absolute; left:50%;top:36px; margin-left: -110px; opacity:0.3; width: 31px; height: 31px; background-color: #3258E5; ">
+					</div>
+				</div>
+				<div class="teamText lat">
+					<div v-for="item in teamTextItem" class="teamTextBox">
+						<div style="font-size: 56px; position: relative; ">{{item.number}}<span
+								style="font-size: 12px;">{{item.unit}}</span> <span
+								style="font-size: 16px; position: absolute; left:65px;top:15px">{{item.monad}}</span>
+						</div>
+						<div class="teamTextBoxDiv" style="margin-left: 20px;">
+							<h4 style="font-size: 22px; font-weight: 500; color:rgba(12,45,99,1)">{{item.title}}</h4>
+							<span style="font-size: 18px; color:rgba(12,45,99,1);">{{item.text}}</span>
+						</div>
+					</div>
 				</div>
 				<div class="teamTop">
 					<div class="teamTopItemz lat">
-						<div class="teamTopItem-box" v-for="(item,index) in 10" @mouseenter='teamEnter(index)'
+						<div class="teamTopItem-box" v-for="(item,index) in teacherItem" @mouseenter='teamEnter(index)'
 							@mouseleave='teamOut(index)'>
-							<div class="teamTopItem-boxShow" style="text-align: center; line-height: 380px;">
-								主
+							<div class="teamTopItem-boxShow">
+								<div class="teamTopImg">
+									<img :src="item.img" alt="">
+								</div>
+								<h4
+									style="font-size: 22px; color:rgba(12,45,99,1); font-weight: 500; margin: 18px 13px 5px;">
+									{{item.teacher}}
+								</h4>
+								<div
+									style="width: 50px; height: 5px; background: rgba(12,45,99,1); margin: 0px 13px 8px;">
+								</div>
+								<p
+									style="font-size: 14px; display: -webkit-box; overflow: hidden; margin: 0 13px 30px;-webkit-line-clamp: 3;-webkit-box-orient: vertical;">
+									{{item.intro}}
+								</p>
 							</div>
-							<div class="teamTopItem-boxFu" style="text-align: center; line-height: 380px;">
-								次
+							<div class="teamTopItem-boxFu" style="">
+								<h4 style="font-size: 22px; font-weight: 500; margin-bottom: 10px; ">
+									{{item.teacher}}
+								</h4>
+
+								<p style="display: flex; ">{{item.intro}}</p>
 							</div>
 						</div>
 					</div>
 				</div>
-				
+				<div class="outline" style="">
+					<div class="outline_box" style="border-color: #E1E1E1; font-size: 22px;">
+						16级标准严选专职课研老师，严控课程研发质量
+					</div>
+				</div>
 				<div class="teamTalents" v-if="teamTalentsShow==true">
-					<div class="teamTalentsBox">
+					<h4></h4>
+					<div class="teamTalentsBox lat">
 						<div class="teamTalentsBoxA">
-							<h4 style="font-size: 20px; font-weight: 500; width: 160px; white-space: nowrap;">人才筛选4项标准
+							<h4 style="background: linear-gradient(to left, rgba(132, 158, 255, 1), rgba(59, 98, 246, 1);">人才筛选4项标准
 							</h4>
-							<div class="teamTalentsBoxAB">
-								<div>人才筛选4项标准</div>
-								<div style="width: 41px; margin: 0 10px;">
-									<img src="./img/tu.png" alt="" style="width: 100%;">
+							<div class="teamTalentsBox_div">
+								<div class="teamBox_div" v-for="item in teamBoxItem" style="margin-left: 25px; width: 250px; padding-top: 33px;">
+									<p style="font-size: 24px; color:rgba(12,45,99,1);">{{item.title}}</p>
+									<p style="font-size: 18px; color:rgba(117,127,162,1);">{{item.text}}</p>
 								</div>
-								<div>多为面试（五面）</div>
-								<div style="width: 41px; margin: 0 10px; ">
-									<img src="./img/tu.png" alt="" style="width: 100%;">
-								</div>
-								<div>研究小组诊断测评</div>
-								<div style="width: 41px; margin: 0 10px;">
-									<img src="./img/tu.png" alt="" style="width: 100%;">
-								</div>
-								<div>全链路面试流程监控</div>
 							</div>
 						</div>
-						<div class="teamTalentsBoxB" style="align-items:flex-start; padding-bottom: 0;">
-							<h4 style="font-size: 20px; font-weight: 500; width: 160px; white-space: nowrap;">人才考核8大环节
+						<div class="teamTalentsBoxA" style="align-items:flex-start; padding-bottom: 0;">
+							<h4 style="background: linear-gradient(to left, rgba(132, 158, 255, 1), rgba(59, 98, 246, 1);">人才考核8大环节
 							</h4>
-							<div class="teamTalentsBoxBb">
-								<div v-for="(item,index) in teamItem" style="margin-left: 60px; margin-bottom: 30px;">
+							<div class="teamTalentsBoxBb" style="margin-left:25px;">
+								<div v-for="(item,index) in teamItem" style="text-align: center; width: 140px; height: 100%; padding-top: 20px;">
 									<span
-										style="display: inline-block; width: 20px; height: 20px; border-radius: 50%; color:#fff;background-color: #bbb; line-height: 20px; text-align: center;">{{index+1}}</span>{{item}}
+										style="margin: 0 auto; display: block; width: 68px; height: 80px; font-size: 57px; color:rgba(12,45,99,1); text-align: center;">0{{index+1}}</span>{{item}}
 								</div>
 							</div>
 						</div>
-						<div class="teamTalentsBoxB" style="align-items:flex-start; border-bottom: none;">
-							<h4
-								style="font-size: 20px; font-weight: 500; width: 160px; margin-right: 55px; white-space: nowrap;">
+						<div class="teamTalentsBoxA" style="align-items:flex-start; border-bottom: none;">
+							<h4 style=" width: 140px;height: 80px;padding: 50px 40px;background: linear-gradient(to left, rgba(132, 158, 255, 1), rgba(59, 98, 246, 1);">
 								人才培训及发展计划</h4>
-							<div style="display: flex; font-size: 16px; width: 160px; " v-for="item in 4">
-								<div style="width: 40px; height: 40px; margin-right: 10px;">
-									<img src="img/11.png" alt="" style="width: 100%; height: 100%;">
+							<div style="display: flex; width: calc(100% - 220px); height: 180px; align-items: center;justify-content: space-around;">
+								<div style="display: flex; width: 220px; height: 80px; border: 1px solid rgba(176,189,208,1); border-radius: 10px; " v-for="item in teamTalents">
+									<div style="width: 46px; height: 42px; margin: 17px;">
+										<img :src="item.img" alt="" style="width: 100%; height: 100%;">
+									</div>
+									<div style="width: calc(100% - 100px); font-size: 18px; color:rgba(56,77,157,1);margin: 17px 17px 17px 0">
+										{{item.text}}
+									</div>
 								</div>
-								<span style="width: 110px;">
-									平台、组件技术开源历练
-								</span>
-
 							</div>
 						</div>
 					</div>
@@ -271,13 +350,14 @@
 				<div id="headline">
 					<p class="headline_tit" style="color:#fff">用心为每一位学员</p>
 					<p class="headline_titNext" style="color:#ACACAC">为毕业学员提供高质量人脉、职场资源、技术研习等众多学习交流机会</p>
-					
+
 				</div>
 				<div class="diligentlyBox">
 					<div class="diligentlyBox_div" v-for="item in diligentlyItemA">
 						<div style="width: 170px; height: 170px; border-radius: 50%;background-color:#5E7EF6;">
-							<div style="width: 152px; height: 152px; border-radius: 50%; overflow: hidden;background:#fff;margin:0px auto;transform:translateY(9px)">
-							<img :src="item.icon" alt="" style="width: 100%; height: 100%;">
+							<div
+								style="width: 152px; height: 152px; border-radius: 50%; overflow: hidden;background:#fff;margin:0px auto;transform:translateY(9px)">
+								<img :src="item.icon" alt="" style="width: 100%; height: 100%;">
 							</div>
 						</div>
 						<div style="font-size: 28px; text-align: center; margin: 0 auto; margin-top: 24px;">
@@ -289,11 +369,12 @@
 				<div class="diligentlyBox2">
 					<div class="diligentlyBox_div" v-for="item in diligentlyItemB">
 						<div style="width: 170px; height: 170px; border-radius: 50%;background-color:#5E7EF6;">
-							<div style="width: 152px; height: 152px; border-radius: 50%; overflow: hidden;background:#fff;margin:0px auto;transform:translateY(9px)">
-							<img :src="item.icon" alt="" style="width: 100%; height: 100%;">
+							<div
+								style="width: 152px; height: 152px; border-radius: 50%; overflow: hidden;background:#fff;margin:0px auto;transform:translateY(9px)">
+								<img :src="item.icon" alt="" style="width: 100%; height: 100%;">
 							</div>
 						</div>
-						
+
 						<div style="font-size: 28px; text-align: center; margin: 0 auto; margin-top: 24px;">
 							<p>{{item.textA}}</p>
 							<p>{{item.textB}}</p>
@@ -309,13 +390,20 @@
 				<div id="headline">
 					<p class="headline_tit">9大服务基站</p>
 					<p class="headline_titNext">技术大牛+硬核讲师为教学质量保驾护航，保障课程与企业需求实时接轨；10余年经验的教学老师更懂“教”与“学”！</p>
-					<div style="position: absolute; left:50%;top:50px; margin-left: -160px; opacity:0.3; width: 35px; height: 35px; background-color: #6232E5; border-radius: 50%;"></div>
-					<div style="position: absolute; left:50%;top:80px; margin-left: 120px; opacity:0.3; width: 28px; height: 28px; background-color: #FFE290; border-radius: 50%;"></div>
-					<div style="position: absolute; left:50%;top:36px; margin-left: -140px; opacity:0.3; width: 31px; height: 31px; background-color: #3258E5; "></div>
+					<div
+						style="position: absolute; left:50%;top:50px; margin-left: -160px; opacity:0.3; width: 35px; height: 35px; background-color: #6232E5; border-radius: 50%;">
+					</div>
+					<div
+						style="position: absolute; left:50%;top:80px; margin-left: 120px; opacity:0.3; width: 28px; height: 28px; background-color: #FFE290; border-radius: 50%;">
+					</div>
+					<div
+						style="position: absolute; left:50%;top:36px; margin-left: -140px; opacity:0.3; width: 31px; height: 31px; background-color: #3258E5; ">
+					</div>
 				</div>
 				<div style="display: flex; position: relative;" class="lat">
 					<div id="echarts" ref="echarts"
-						style="margin-left: 300px; margin-bottom: 60px; width: 100%; height: 600px; text-align: center;"></div>
+						style="margin-left: 300px; margin-bottom: 60px; width: 100%; height: 600px; text-align: center;">
+					</div>
 					<div style="width: 25%; position: absolute; top:0; left:300px">
 						<div v-if="echaItem.text!=''"
 							style="padding: 30px; width: 100%; height: 500px; border-radius: 30px; box-shadow: 0 5px 18px rgb(174 174 174);">
@@ -329,7 +417,7 @@
 							<h3>{{echaItem.name}}基站 <span>正在开发</span></h3>
 						</div>
 					</div>
-					
+
 				</div>
 				<div class="centreBtn">
 					咨询基站信息
@@ -339,9 +427,15 @@
 				<div id="headline">
 					<p class="headline_tit">辉达动态</p>
 					<p class="headline_titNext">顺应市场需求，不断改革、创新，构建前沿的课程体系，拓宽学员的知识深度与广度，为学员发展保驾护航</p>
-					<div style="position: absolute; left:50%;top:50px; margin-left: -130px; opacity:0.3; width: 35px; height: 35px; background-color: #6232E5; border-radius: 50%;"></div>
-					<div style="position: absolute; left:50%;top:80px; margin-left: 88px; opacity:0.3; width: 28px; height: 28px; background-color: #FFE290; border-radius: 50%;"></div>
-					<div style="position: absolute; left:50%;top:36px; margin-left: -110px; opacity:0.3; width: 31px; height: 31px; background-color: #3258E5; "></div>
+					<div
+						style="position: absolute; left:50%;top:50px; margin-left: -130px; opacity:0.3; width: 35px; height: 35px; background-color: #6232E5; border-radius: 50%;">
+					</div>
+					<div
+						style="position: absolute; left:50%;top:80px; margin-left: 88px; opacity:0.3; width: 28px; height: 28px; background-color: #FFE290; border-radius: 50%;">
+					</div>
+					<div
+						style="position: absolute; left:50%;top:36px; margin-left: -110px; opacity:0.3; width: 31px; height: 31px; background-color: #3258E5; ">
+					</div>
 				</div>
 				<div class="dynamicBox lat">
 					<div class='dynamicBox_divA'>
@@ -351,15 +445,14 @@
 								<img :src="dynamic.img" alt="" style="width: 100%; height: 100%;">
 							</div>
 							<div style="width: calc(100% - 360px);">
-								
+
 								<div class="subtitle" style="" v-for="item in dynamic.subtitle">
 									<div class="dynamicBox_divA_img">
 										<img src="./img/star_full%20(1).png" alt="" style="width: 100%; height: 100%;">
 									</div>
 									<div style=" width: calc(100% - 68px); margin-left: 20px;">
 										<p style="margin-bottom: 10px; color:#101010">{{item.title}}</p>
-										<span
-											class="dynamicBox_divASpan">{{item.text}}</span>
+										<span class="dynamicBox_divASpan">{{item.text}}</span>
 									</div>
 								</div>
 							</div>
@@ -367,13 +460,18 @@
 						</div>
 					</div>
 					<div class="dynamicBox_divB">
-						<h4 style="width: 120px; height: 42px; font-size: 28px; margin-bottom: 24px; color:#101010">新闻动态</h4>
+						<h4 style="width: 120px; height: 42px; font-size: 28px; margin-bottom: 24px; color:#101010">新闻动态
+						</h4>
 						<div class="dynamicTitle">
-							<div style="cursor: pointer; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 22px;" v-for="(item,index) in dynamicItem" @click="dynamicItemClick(item)">
-								<span class="dynamicBox_divBSpan"  v-if="index==0" style="background:#4A4A4A; color:#fff">{{index+1}}</span>
-								<span class="dynamicBox_divBSpan"  v-if="index==1" style="background:#808080; color:#fff">{{index+1}}</span>
-								<span class="dynamicBox_divBSpan"  v-if="index==2" style="background:#B6B6B6; color:#fff">{{index+1}}</span>
-								<span class="dynamicBox_divBSpan"  v-if="index>2">{{index+1}}</span>
+							<div style="cursor: pointer; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 22px;"
+								v-for="(item,index) in dynamicItem" @click="dynamicItemClick(item)">
+								<span class="dynamicBox_divBSpan" v-if="index==0"
+									style="background:#4A4A4A; color:#fff">{{index+1}}</span>
+								<span class="dynamicBox_divBSpan" v-if="index==1"
+									style="background:#808080; color:#fff">{{index+1}}</span>
+								<span class="dynamicBox_divBSpan" v-if="index==2"
+									style="background:#B6B6B6; color:#fff">{{index+1}}</span>
+								<span class="dynamicBox_divBSpan" v-if="index>2">{{index+1}}</span>
 								{{item.title}}
 							</div>
 						</div>
@@ -384,20 +482,29 @@
 				<div id="headline">
 					<p class="headline_tit">校园环境</p>
 					<p class="headline_titNext">高配置学习环境让你安心学习</p>
-					<div style="position: absolute; left:50%;top:50px; margin-left: -130px; opacity:0.3; width: 35px; height: 35px; background-color: #6232E5; border-radius: 50%;"></div>
-					<div style="position: absolute; left:50%;top:80px; margin-left: 88px; opacity:0.3; width: 28px; height: 28px; background-color: #FFE290; border-radius: 50%;"></div>
-					<div style="position: absolute; left:50%;top:36px; margin-left: -110px; opacity:0.3; width: 31px; height: 31px; background-color: #3258E5; "></div>
+					<div
+						style="position: absolute; left:50%;top:50px; margin-left: -130px; opacity:0.3; width: 35px; height: 35px; background-color: #6232E5; border-radius: 50%;">
+					</div>
+					<div
+						style="position: absolute; left:50%;top:80px; margin-left: 88px; opacity:0.3; width: 28px; height: 28px; background-color: #FFE290; border-radius: 50%;">
+					</div>
+					<div
+						style="position: absolute; left:50%;top:36px; margin-left: -110px; opacity:0.3; width: 31px; height: 31px; background-color: #3258E5; ">
+					</div>
 				</div>
 				<div class="campusBoxImg lat">
 					<div class="campusImg" v-for="(item,index) in campusImgs.img">
 						<img :src="item" alt="" style="width: 100%; height: 100%;">
-						<div style=" position: absolute;width: 100%; height: 100%; line-height: 200px; text-align: center; top:0;left:0;color:#fff">{{campusImgs.title}}</div>
+						<div
+							style=" position: absolute;width: 100%; height: 100%; line-height: 200px; text-align: center; top:0;left:0;color:#fff">
+							{{campusImgs.title}}
+						</div>
 					</div>
 				</div>
 				<div class="campusNav">
 					<div class="campusNavTop lat">
 						<div v-for="(item,index) in campusNav" style="cursor: pointer;" class="campusNavTopDiv"
-						 @click="campusNavClick(item,index)">{{item.title}}</div>
+							@click="campusNavClick(item,index)">{{item.title}}</div>
 					</div>
 				</div>
 			</div>
@@ -441,7 +548,7 @@
 					</div>
 				</div>
 				<div class="footingBox">
-					北京辉达IT科技有限公司  版权所有Copyright 2006-2021, All Rights Reserved   苏ICP备16007882号-1  营业执照 增值电信业务经营许可证
+					北京辉达IT科技有限公司 版权所有Copyright 2006-2021, All Rights Reserved 苏ICP备16007882号-1 营业执照 增值电信业务经营许可证
 				</div>
 			</div>
 		</div>
@@ -451,133 +558,233 @@
 			var vm = new Vue({
 				el: '#app',
 				data: {
-					footingBoxLeftAB:["Java大数据","web前端","UI/UE设计","软件测试"],
-					footingBoxLeftC:["辉达概况","联系我们","对外合作","1024程序员节"],
-					footingBoxLeftD:["学费价格","校区分布","教学团队"],
-					footingBoxLeftF:["报名流程","来校地图","住宿环境"],
-					campusImgs:{
-						title:"学习环境",
-						img:['img/11.png','img/11.png','img/11.png','img/11.png','img/11.png','img/11.png']
-					},
-					campusNav:[
+					teamTalents:[//人才培训及发展计划
 						{
-							title:"学习环境",
-							img:['img/11.png','img/11.png','img/11.png','img/11.png','img/11.png','img/11.png']
+							img:"./image/平台管理.svg",
+							text:"平台、组件技术开源历练"
 						},
 						{
-							title:"校区环境",
-							img:['img/11.png','img/11.png','img/11.png','img/11.png','img/11.png','img/11.png']
+							img:"./image/技术服务.svg",
+							text:"技术分享会"
 						},
 						{
-							title:"餐饮环境",
-							img:['img/11.png','img/11.png','img/11.png','img/11.png','img/11.png','img/11.png']
+							img:"./image/赞.svg",
+							text:"大牛技术沙龙"
 						},
-						{
-							title:"宿舍环境",
-							img:['img/11.png','img/11.png','img/11.png','img/11.png','img/11.png','img/11.png']
-						},
-						{
-							title:"基地环境",
-							img:['img/11.png','img/11.png','img/11.png','img/11.png','img/11.png','img/11.png']
-						}
 						
+						{
+							img:"./image/共享_常规.svg",
+							text:"大厂资源技术共享"
+						},
 						
 					],
-					dynamic:{
-							"title":"新征程，再出发 | 辉达教育2021年成立新媒体学院",
-							"img":"https://vkceyugu.cdn.bspapp.com/VKCEYUGU-35900c1e-febd-49c2-9057-d09ab1785bdb/5dbc8db6-3437-4f8a-8bcc-8c4a86a7e735.png",
-							"subtitle":[
-								{
-									"title":"辉达Java学院V6.1.0课程上线",
-									"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+					teamTalentsShow: true,
+					teamItem: [
+						"科研人员素质考核",
+						"课程设计考核",
+						"大纲设计考核",
+						"讲义撰写考核",
+						"视频录制考核",
+						"课程设计考核",
+						"产品全方位审评",
+						"考核答辩"
+					],
+					teamBoxItem:[//人才筛选4项标准
+						{ 
+							title:"标准化研发人才画像",
+							text:"大厂背景，技术深度、广度，大型项目经验"
+						},
+						{
+							title:"多维面试（五面）",
+							text:"背景调查，技术360°鉴定，新课题设计，课程随机演绎，职业定位、发展规划"
+						},
+						{
+							title:"研究院小组诊断测评",
+							text:"教育情怀、价值观，进取精神、培养潜力"
+						},
+						{
+							title:"全链路面试流程监控",
+							text:"校长审核，信息存档"
+						}
+						],
+					teacherItem: [{
+							img: "image/邬老师.jpg",
+							teacher: "邬老师",
+							intro: "全栈讲师、重庆科技学院、多年开发和教学经验，曾负责大型企业商业BI项目，参与过多个后台管理系统的开发和设计,熟练动用前沿前端技术，熟悉三大前端框架,Nodejs 全栈开发及自动化流程工具的使用.能快速定位解决项目中遇到的问题.讲课特点：条理清楚，结构严谨，用思维的逻辑力量吸引学生的注意力，用理智控制课堂教学进程。学生不仅学到知识，也受到思维的训练，还受到教师严谨的治学态度的熏陶和感染。"
+						},
+						{
+							img: "image/UI张老师.png",
+							teacher: "张老师",
+							intro: "UI班专业课老师，从事UI/UE设计8余年，教学实践2年+，曾经参与全是瑜APP、全是瑜官网、瑜塘约课系统、瑜塘小程序，I献血APP、启奥血站公众管理平台、GolfTime高球时光APP等众多大型项目，涉及高尔夫、医疗、献血、瑜伽、视频、教育等多种行业，职位包括UI设计师、资深UI设计师（带领设计团队）、交互设计师、产品经理。专业院校艺术设计专业本科毕业，有多年美术基础，有良好的手绘和插画能力；熟知iOS与安卓的系统界面和交互方式；善于运用各类软件达成设计细节需求；多年积累行业经验及团队合作经验。"
+						},
+						{
+							img: "image/刘老师.jpg",
+							teacher: "刘老师",
+							intro: "毕业于东北师范大学。曾就职智博睿通科技有限公司担任前端工程师,后加入京东旗下全资子公司担任全栈开发项目经理。从事多年web前端开发工作,对移动端应用有深入研究,精通HTML，CSS，JavaScript，Bootstrap，VUE，Node.js..等多种编程技术。七年教学经验,授课学员超过千余名。曾受邀参加华北理工大学,山东农业大学等多所大学技术讲座和实训课程讲解。授课风趣幽默,课堂气氛活跃,思路清晰,注重理论和实践的结合,看重学员学习体验,崇尚案例式教学,认为学习编程是一件轻松并快乐的事情,秉承”人人可教,皆可成才”的宗旨。"
+						},
+						{
+							img: "image/邬老师.jpg",
+							teacher: "邬老师",
+							intro: "全栈讲师 重庆科技学院 多年开发和教学经验，曾负责大型企业商业BI项目，参与过多个后台管理系统的开发和设计,熟练动用前沿前端技术，熟悉三大前端框架,Nodejs 全栈开发及自动化流程工具的使用.能快速定位解决项目中遇到的问题.讲课特点：条理清楚，结构严谨，用思维的逻辑力量吸引学生的注意力，用理智控制课堂教学进程。学生不仅学到知识，也受到思维的训练，还受到教师严谨的治学态度的熏陶和感染。"
+						},
+						{
+							img: "image/仲老师.jpg",
+							teacher: "仲老师",
+							intro: "毕业于吉林大学、多年前端开发经验、培训讲师经验、大型教育企业高级前端开发工程师，某科技公司高级前端开发工程师，多年大中型项目开发经验，参与开发过大型商城类网站、企业门户网站、移动Web、APP等项目，从项目的架构搭建到项目开发、性能优化全程参与，积累了丰富的实战开发经验。擅长各种终端产品的开发。授课风格：对前端教学有极大的热情，有较强的沟通能力，分析和解决问题的能力。教学态度耐心细致，能够化繁为简。"
+						},
+
+					],
+					teamTextItem: [{
+							number: "22",
+							unit: "位",
+							monad: "",
+							title: "硬核讲师",
+							text: "授课经验丰富"
+						},
+						{
+							number: "3",
+							unit: "%",
+							monad: "",
+							title: "录取率",
+							text: "严选专职讲师"
+						},
+						{
+							number: "10",
+							unit: "年",
+							monad: "+",
+							title: "教学经验",
+							text: "授课经验丰富"
+						},
+						{
+							number: "5",
+							unit: "大",
+							monad: "",
+							title: "独创教学法",
+							text: "轻松理解技术难点"
+						}
+
+					],
+					footingBoxLeftAB: ["Java大数据", "web前端", "UI/UE设计", "软件测试"],
+					footingBoxLeftC: ["辉达概况", "联系我们", "对外合作", "1024程序员节"],
+					footingBoxLeftD: ["学费价格", "校区分布", "教学团队"],
+					footingBoxLeftF: ["报名流程", "来校地图", "住宿环境"],
+					campusImgs: {
+						title: "学习环境",
+						img: ['img/11.png', 'img/11.png', 'img/11.png', 'img/11.png', 'img/11.png', 'img/11.png']
+					},
+					campusNav: [{
+							title: "学习环境",
+							img: ['img/11.png', 'img/11.png', 'img/11.png', 'img/11.png', 'img/11.png', 'img/11.png']
+						},
+						{
+							title: "校区环境",
+							img: ['img/11.png', 'img/11.png', 'img/11.png', 'img/11.png', 'img/11.png', 'img/11.png']
+						},
+						{
+							title: "餐饮环境",
+							img: ['img/11.png', 'img/11.png', 'img/11.png', 'img/11.png', 'img/11.png', 'img/11.png']
+						},
+						{
+							title: "宿舍环境",
+							img: ['img/11.png', 'img/11.png', 'img/11.png', 'img/11.png', 'img/11.png', 'img/11.png']
+						},
+						{
+							title: "基地环境",
+							img: ['img/11.png', 'img/11.png', 'img/11.png', 'img/11.png', 'img/11.png', 'img/11.png']
+						}
+
+
+					],
+					dynamic: {
+						"title": "新征程，再出发 | 辉达教育2021年成立新媒体学院",
+						"img": "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-35900c1e-febd-49c2-9057-d09ab1785bdb/5dbc8db6-3437-4f8a-8bcc-8c4a86a7e735.png",
+						"subtitle": [{
+								"title": "辉达Java学院V6.1.0课程上线",
+								"text": "Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+							},
+							{
+								"title": "辉达Java学院V6.1.0课程上线",
+								"text": "Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+							},
+							{
+								"title": "辉达Java学院V6.1.0课程上线",
+								"text": "Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+							}
+						]
+
+					},
+					dynamicItem: [ //新闻动态数据，里面有标题一个，图片一张，小标题最多三个和相对应的内容
+						{
+							"title": "新征程，再出发 | 辉达教育2021年成立新媒体学院",
+							"img": "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-35900c1e-febd-49c2-9057-d09ab1785bdb/5dbc8db6-3437-4f8a-8bcc-8c4a86a7e735.png",
+							"subtitle": [{
+									"title": "辉达Java学院V6.1.0课程上线",
+									"text": "Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
 								},
 								{
-									"title":"辉达Java学院V6.1.0课程上线",
-									"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+									"title": "辉达Java学院V6.1.0课程上线",
+									"text": "Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
 								},
 								{
-									"title":"辉达Java学院V6.1.0课程上线",
-									"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+									"title": "辉达Java学院V6.1.0课程上线",
+									"text": "Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
 								}
 							]
-					
-					},
-					dynamicItem:[//新闻动态数据，里面有标题一个，图片一张，小标题最多三个和相对应的内容
-					{
-						"title":"新征程，再出发 | 辉达教育2021年成立新媒体学院",
-						"img":"https://vkceyugu.cdn.bspapp.com/VKCEYUGU-35900c1e-febd-49c2-9057-d09ab1785bdb/5dbc8db6-3437-4f8a-8bcc-8c4a86a7e735.png",
-						"subtitle":[
-							{
-								"title":"辉达Java学院V6.1.0课程上线",
-								"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
-							},
-							{
-								"title":"辉达Java学院V6.1.0课程上线",
-								"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
-							},
-							{
-								"title":"辉达Java学院V6.1.0课程上线",
-								"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
-							}
-						]
-					},
-					{
-						"title":"【官宣】辉达IT教育使命升级",
-						"img":"https://vkceyugu.cdn.bspapp.com/VKCEYUGU-35900c1e-febd-49c2-9057-d09ab1785bdb/5dbc8db6-3437-4f8a-8bcc-8c4a86a7e735.png",
-						"subtitle":[
-							{
-								"title":"辉达IT教育使命升级",
-								"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
-							},
-							{
-								"title":"重磅退出：辉达IT教育UI学院教学升级",
-								"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
-							},
-							{
-								"title":"辉达IT教育使命升级",
-								"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
-							}
-						]
-					},
-					{
-						"title":"重磅退出：辉达IT教育UI学院教学升级",
-						"img":"https://vkceyugu.cdn.bspapp.com/VKCEYUGU-35900c1e-febd-49c2-9057-d09ab1785bdb/5dbc8db6-3437-4f8a-8bcc-8c4a86a7e735.png",
-						"subtitle":[
-							{
-								"title":"重磅退出：辉达IT教育UI学院教学升级",
-								"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
-							},
-							{
-								"title":"辉达IT教育使命升级",
-								"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
-							},
-							{
-								"title":"重磅退出：辉达IT教育UI学院教学升级",
-								"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
-							}
-						]
-					},
-					{
-						"title":"辉达IT教育使命升级",
-						"img":"https://vkceyugu.cdn.bspapp.com/VKCEYUGU-35900c1e-febd-49c2-9057-d09ab1785bdb/5dbc8db6-3437-4f8a-8bcc-8c4a86a7e735.png",
-						"subtitle":[
-							{
-								"title":"辉达IT教育使命升级",
-								"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
-							},
-							{
-								"title":"辉达IT教育使命升级",
-								"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
-							},
-							{
-								"title":"辉达IT教育使命升级",
-								"text":"Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
-							}
-						]
-						
-					},
-					
-						
+						},
+						{
+							"title": "【官宣】辉达IT教育使命升级",
+							"img": "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-35900c1e-febd-49c2-9057-d09ab1785bdb/5dbc8db6-3437-4f8a-8bcc-8c4a86a7e735.png",
+							"subtitle": [{
+									"title": "辉达IT教育使命升级",
+									"text": "Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+								},
+								{
+									"title": "重磅退出：辉达IT教育UI学院教学升级",
+									"text": "Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+								},
+								{
+									"title": "辉达IT教育使命升级",
+									"text": "Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+								}
+							]
+						},
+						{
+							"title": "重磅退出：辉达IT教育UI学院教学升级",
+							"img": "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-35900c1e-febd-49c2-9057-d09ab1785bdb/5dbc8db6-3437-4f8a-8bcc-8c4a86a7e735.png",
+							"subtitle": [{
+									"title": "重磅退出：辉达IT教育UI学院教学升级",
+									"text": "Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+								},
+								{
+									"title": "辉达IT教育使命升级",
+									"text": "Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+								},
+								{
+									"title": "重磅退出：辉达IT教育UI学院教学升级",
+									"text": "Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+								}
+							]
+						},
+						{
+							"title": "辉达IT教育使命升级",
+							"img": "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-35900c1e-febd-49c2-9057-d09ab1785bdb/5dbc8db6-3437-4f8a-8bcc-8c4a86a7e735.png",
+							"subtitle": [{
+									"title": "辉达IT教育使命升级",
+									"text": "Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+								},
+								{
+									"title": "辉达IT教育使命升级",
+									"text": "Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+								},
+								{
+									"title": "辉达IT教育使命升级",
+									"text": "Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…Java大数据专业最新课程正式上线，专业研发团队，经实践研发，符合学生…",
+								}
+							]
+
+						},
+
+
 					],
 					diligentlyshow: true,
 					echaItem: { //当前地图选中标点，初始化北京
@@ -826,17 +1033,7 @@
 						},
 
 					],
-					teamTalentsShow: true,
-					teamItem: [
-						"科研人员素质考核",
-						"课程设计考核",
-						"科研人员素质考核",
-						"课程设计考核",
-						"科研人员素质考核",
-						"课程设计考核",
-						"科研人员素质考核",
-						"课程设计考核"
-					],
+					
 					advantagesItems: [{
 							icon: "./image/icon-rgb_运营数据集成.svg",
 							title: "全行业",
@@ -956,11 +1153,9 @@
 							src: "./image/banner01.svg"
 						},
 						{
-							src: "./image/banner01.svg"
+							src: "./image/banner02.svg"
 						},
-						{
-							src: "./image/banner01.svg"
-						}
+
 					],
 					itemNam: [ //nav
 						"课程中心",
@@ -971,22 +1166,22 @@
 					]
 				},
 				methods: {
-					campusNavClick(val,index){
+					campusNavClick(val, index) {
 						console.log(val)
 						console.log(index)
 						$(".campusNavTopDiv").css({
 							"border": "none",
-							"padding-top":"10px",
+							"padding-top": "10px",
 						})
 						$(".campusNavTopDiv").eq(index).css({
-							"padding-top":"6px",
+							"padding-top": "6px",
 							"border-top": "4px solid #000",
 						})
-						this.campusImgs=val
-						
+						this.campusImgs = val
+
 					},
-					dynamicItemClick(val){
-						this.dynamic=val
+					dynamicItemClick(val) {
+						this.dynamic = val
 					},
 					base() {
 						// this.echartsItem的值应该通过axios来获取
@@ -1201,13 +1396,13 @@
 					outlineItem() {
 						axios.get("./js/course.json").then(data => {
 							this.outlineItems = data.data
-							this.outlineItems.forEach((item,index)=>{
-								if(index==0){
-									item.img=item.iconA
-								}else{
-									item.img=item.iconB
+							this.outlineItems.forEach((item, index) => {
+								if (index == 0) {
+									item.img = item.iconA
+								} else {
+									item.img = item.iconB
 								}
-								console.log(item,"12======")
+								console.log(item, "12======")
 							})
 							this.outlinebodyTitleA = data.data[0].body.bodyTitle[0]
 							this.outlinebodyTitleB = data.data[0].body.bodyTitle[1]
@@ -1258,31 +1453,31 @@
 					teamOut(index) {
 						console.log(index)
 						$('.teamTopItem-boxFu').eq(index).animate({
-							"top": "380px"
+							"top": "400px"
 						}, 200)
 					},
 					outlineTabboxDiv(item, index) {
 						$(".box").css({
 							"border-bottom": "10px solid #fff"
 						}).find("span").css({
-							"color":"#B0BDD0"
+							"color": "#B0BDD0"
 						})
 						$(".box").eq(index).css({
 							"border-bottom": "10px solid #3258E5",
 						}).find("span").css({
-							"color":"#3258E5"
+							"color": "#3258E5"
 						})
 						console.log(this.outlineItems)
 						console.log(item)
-						this.outlineItems.forEach((item,indexs)=>{
-							if(indexs==index){
-								item.img=item.iconA
-							}else{
-								item.img=item.iconB
+						this.outlineItems.forEach((item, indexs) => {
+							if (indexs == index) {
+								item.img = item.iconA
+							} else {
+								item.img = item.iconB
 							}
-							
+
 						})
-						
+
 						console.log(item)
 						this.outlinebodyTitleA = item.body.bodyTitle[0]
 						this.outlinebodyTitleB = item.body.bodyTitle[1]
@@ -1309,6 +1504,9 @@
 
 				},
 				mounted() {
+					axios.get("http://192.168.137.62/admin/php/homepage_img.php?name='主页'").then(data =>{
+						console.log(data)
+					})
 					// alert(document.body.clientWidth)
 					let thas = this
 					if (document.body.clientWidth <= 1250) {
@@ -1318,14 +1516,13 @@
 						this.teamTalentsShow = false
 
 					}
-					if (document.body.clientWidth <= 1300) {
-					}
+					if (document.body.clientWidth <= 1300) {}
 					window.onresize = function() {
 						console.log(document.body.clientWidth)
 						if (document.body.clientWidth <= 1200) {
-							
+
 						} else {
-							
+
 						}
 						if (document.body.clientWidth <= 1250) {
 							thas.teamTalentsShow = false

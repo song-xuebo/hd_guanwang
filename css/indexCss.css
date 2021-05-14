@@ -291,18 +291,18 @@ img {
 .centreBtn:hover {
 	height: 64px;
 	color: #3258E5;
-	background-color: #fff;
+	background-color: rgba(233,242,251,1);
 	font-family: Microsoft Yahei;
 	border: 2px solid #3258E5;
 }
 
 .centreBtns {
-	width: 550px;
+	width: 387px;
 	height: 68px;
 	line-height: 68px;
 	border-radius: 10px;
-	background-color: #E1E1E1;
-	color: #0C2D63;
+	background-color: rgba(233,242,251,1);
+	color: rgba(12,45,99,1);
 	font-size: 24px;
 	text-align: center;
 	font-family: Microsoft Yahei;
@@ -314,10 +314,10 @@ img {
 .centreBtns:hover {
 	width: 383px;
 	height: 64px;
-	color: rgba(255, 255, 255, 100);
+	color: #3258E5;
 	background-color: #E1E1E1;
 	font-family: Microsoft Yahei;
-	border: 2px solid #E1E1E1;
+	border: 2px solid rgba(233,242,251,1);
 }
 
 .outline {
@@ -509,7 +509,7 @@ img {
 
 .teamTopItem-box {
 	width: 250px;
-	height: 380px;
+	height: 400px;
 	background: #fff;
 	position: relative;
 	overflow: hidden;
@@ -519,22 +519,24 @@ img {
 }
 
 .teamTopItem-boxFu {
-	width: 250px;
-	height: 380px;
+	padding: 20px 20px;
+	width: 210px;
+	height: 360px;
 	background: #eee;
 	position: absolute;
-	top: 380px;
+	top: 400px;
 	left: 0;
+	font-size: 14px;
+	background: #3258E5;
+	color:#fff;
 }
 
-.teamTalentsBox {
-	/* background: #000; */
-	width: 1200px;
-	margin: 0 auto;
+/* .teamTalentsBox {
 	border: 1px solid #bbb;
-}
+	overflow: hidden;
+} */
 
-.teamTalentsBoxB,
+/* .teamTalentsBoxB,
 .teamTalentsBoxA {
 	width: 90%;
 	padding: 45px 0;
@@ -547,7 +549,6 @@ img {
 .teamTalentsBoxA {
 	display: flex;
 	justify-content: space-between;
-	/* flex-wrap: wrap; */
 }
 
 .teamTalentsBoxBb,
@@ -565,7 +566,7 @@ img {
 .teamTalentsBoxAB div {
 	height: 41px;
 	line-height: 41px;
-}
+} */
 
 /* 用心为每一位学员 */
 .diligently {
@@ -772,4 +773,52 @@ img {
 	color: #ACACAC;
 	display: flex;
 	justify-content: center;
+}
+/* 更改Java - 高级软件工程师课程培训标准下样式 */
+.outlinebodyNumber {
+	width: 100%;
+	height: 160px;
+	display: flex;
+	justify-content: space-between;
+	position: relative;
+}
+
+.outlinebodyNumberBox {
+	width: 150px;
+	height: 100%;
+}
+
+.outlinebodyNumberBox span {
+	display: block;
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+	background: rgba(159, 201, 250, 1);
+	margin: 12px auto 16px;
+}
+
+.number {
+	width: 50px;
+	height: 50px;
+	font-size: 28px;
+	color: #BEE5FB;
+	text-align: center;
+	line-height: 50px;
+	margin: 0 auto;
+}
+
+.outlinebodyItem {
+	width: 130px;
+	text-align: center;
+	margin: 0 auto;
+	color: rgba(117, 127, 162, 1);
+}
+
+.xian {
+	width: 1250px;
+	position: absolute;
+	height: 2px;
+	background: rgba(159, 201, 250, 1);
+	top: 67px;
+	left: 80px;
 }

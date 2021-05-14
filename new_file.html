@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>任务系统</title>
+    <script src="js/base.js"></script>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/inputImg.css">
+    <link rel="shortcut icon" href="#" />
+	<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+	<script src="js/vue.js"></script>
+    
+	<style>
+		html,
+		body {
+		    width: 100%;
+		    height: 100%;
+		    font-family: "微软雅黑";
+		    background: #F8F8F8 !important;
+		}
+		 
+		#box {
+		    width: 100%;
+		    position: relative;
+		    height: 100%;
+		}
+		 
+		.pingjiaContent {
+		    width: 100%;
+		    border-radius: 0.1rem;
+		    /* border: 1px solid #CACACA; */
+		    padding: 0.2rem;
+		    box-sizing: border-box;
+		    outline: none;
+		    margin-bottom: 0;
+		    border: none;
+		    resize: none;
+		}
+		 
+		.uploadBox {
+		    width: 2rem;
+		    height: 2rem;
+		    position: relative;
+		    margin-right: 0.15rem;
+		    margin-bottom: 0.35rem;
+		}
+		 
+		.uploadImg {
+		    width: 100%;
+		    height: 100%;
+		    overflow: hidden;
+		}
+		 
+		.closeImg {
+		    width: 0.5rem;
+		    height: 0.5rem;
+		    position: absolute;
+		    top: 2%;
+		    right: 1%;
+		}
+		 
+		.inputButton {
+		    width: 2rem;
+		    height: 2rem;
+		    display: flex;
+		    flex-direction: column;
+		    align-items: center;
+		    justify-content: center;
+		    border: 1px solid #cdcdcd;
+		    position: relative;
+		    margin-right: 0.15rem;
+		    margin-bottom: 0.35rem;
+		}
+		 
+		.addImg {
+		    width: 1.2rem;
+		    height: 1.2rem;
+		}
+		 
+		.upload {
+		    width: 100%;
+		    height: 100%;
+		    opacity: 0;
+		    position: absolute;
+		    top: 0;
+		    left: 0;
+		    z-index: 100;
+		}
+		 
+		.imgBox {
+		    width: 100%;
+		    background: #fff;
+		    display: flex;
+		    align-items: center;
+		    flex-wrap: wrap;
+		    padding-bottom: 0.5rem;
+		    box-sizing: border-box;
+		    padding: 0.5rem;
+		}
+		 
+		.submitTask {
+		    background: #EF504D;
+		    width: 100%;
+		    height: 0.8rem;
+		    color: #fff;
+		    font-size: 0.32rem;
+		    line-height: 0.8rem;
+		    text-align: center;
+		    border-radius: 0.1rem;
+		    margin-top: 0.8rem;
+		}
+		 
+		.back {
+		    background: #F7F7F7;
+		    width: 100%;
+		    height: 0.8rem;
+		    color: #4D4D4D;
+		    font-size: 0.32rem;
+		    line-height: 0.8rem;
+		    text-align: center;
+		    border-radius: 0.1rem;
+		    margin-top: 0.4rem;
+		    border: 1px solid #E0E0E0;
+		}
+	</style>
+</head>
+ 
+<body>
+    <div id="app">
+        <textarea class='pingjiaContent' @input="descInput" maxlength='200' placeholder="请描述任务完成情况及截图" name="" id=""
+            cols="30" rows="4" v-model="desc">
+        </textarea>
+        <div class="imgBox">
+            <div class="uploadBox" v-for="(value, key) in imgs">
+                <img :src="getObjectURL(value)" alt="" class="uploadImg">
+                <img src="images/close.png" alt="" class="closeImg" @click='delImg(key)'>
+            </div>
+            <div class="inputButton">
+                <img src="images/add.png" alt="" class="addImg">
+                <input type="file" class="upload" @change="addImg" ref="inputer" multiple
+                    accept="image/png,image/jpeg,image/gif,image/jpg" />
+            </div>
+            <div class="submitTask" @click="submit">
+                提交任务
+            </div>
+            <div class="back">
+                返回
+            </div>
+        </div>
+    </div>
+ 
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                formData: new FormData(),
+                imgs: {},
+                imgLen: 0,
+                txtVal: 0,
+                desc: "",
+ 
+            },
+            created() {
+ 
+            },
+            methods: {
+                descInput() {
+                    // this.txtVal = this.desc.length;
+                },
+                addImg(event) {
+                    let inputDOM = this.$refs.inputer;
+                    // 通过DOM取文件数据
+                    this.fil = inputDOM.files;
+                    console.log(inputDOM.files)
+                    let oldLen = this.imgLen;
+                    for (let i = 0; i < this.fil.length; i++) {
+                        let size = Math.floor(this.fil[i].size / 1024);
+                        if (size > 5 * 1024 * 1024) {
+                            alert('请选择5M以内的图片！');
+                            return false
+                        }
+                        this.imgLen++;
+                        this.$set(this.imgs, this.fil[i].name + '?' + new Date().getTime() + i, this.fil[i]);
+                        console.log(this.imgs);
+                    }
+                },
+                getObjectURL(file) {
+                    var url = null;
+                    if (window.createObjectURL != undefined) { // basic
+                        url = window.createObjectURL(file);
+                    } else if (window.URL != undefined) { // mozilla(firefox)
+                        url = window.URL.createObjectURL(file);
+                    } else if (window.webkitURL != undefined) { // webkit or chrome
+                        url = window.webkitURL.createObjectURL(file);
+                    }
+                    return url;
+                },
+                delImg(key) {
+                    this.$delete(this.imgs, key);
+                    this.imgLen--;
+                },
+                // 提交上传图片
+                submit() {
+                    console.log(this.imgs)
+                    console.log(11)
+                    for (let key in this.imgs) {
+                        let name = key.split('?')[0];
+                        console.log(this.imgs[key]);
+                        this.formData.append(name, this.imgs[key]);
+                    }
+                    // $.ajax({
+                    //     url: '/material/uploadFile',
+                    //     type: 'POST',
+                    //     cache: false, //上传文件不需要缓存
+                    //     data: this.formData,
+                    //     processData: false, // 告诉jQuery不要去处理发送的数据
+                    //     contentType: false, // 告诉jQuery不要去设置Content-Type请求头
+                    //     success: function (data) {
+ 
+                    //     },
+                    //     error: function (data) {
+ 
+                    //     }
+                    // })
+                },
+            }
+        });
+    </script>
+</body>
+ 
+</html>
