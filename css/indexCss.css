@@ -9,9 +9,10 @@ html {
 }
 
 img {
-	width: 100%;
+	/* width: 100%; */
 }
-.lat{
+
+.lat {
 	width: 1400px;
 	margin: 0 auto;
 }
@@ -38,7 +39,6 @@ img {
 }
 
 .top {
-	width: 92%;
 	height: 100%;
 	display: flex;
 	display: inline-flex;
@@ -118,10 +118,10 @@ img {
 	padding: 100px 35px 30px;
 	color: #fff;
 	/* background: rgba(0, 0, 0, .2); */
-	z-index: 10022;
+	z-index: 100;
 	left: 200px;
 	bottom: 0;
-	background-image: url(../image/矩形%20190.svg);
+	background-image: url(../images/矩形%20190.svg);
 }
 
 .courseText {
@@ -168,7 +168,7 @@ img {
 	height: 100px;
 	padding: 40px 0 60px;
 	position: relative;
-	
+
 }
 
 .headline_tit {
@@ -208,6 +208,7 @@ img {
 	margin: 4px;
 	overflow: hidden;
 }
+
 /*  */
 .synopsis_content_a {
 	width: calc(100% - 2px);
@@ -259,8 +260,7 @@ img {
 }
 
 .synopsis_content_b_btn {
-
-	background: #888;
+	background: #19227D;
 	width: 269px;
 	height: 73px;
 	display: flex;
@@ -272,7 +272,6 @@ img {
 	color: #fff;
 	cursor: pointer;
 }
-
 .centreBtn {
 	width: 387px;
 	height: 68px;
@@ -291,7 +290,7 @@ img {
 .centreBtn:hover {
 	height: 64px;
 	color: #3258E5;
-	background-color: rgba(233,242,251,1);
+	background-color: rgba(233, 242, 251, 1);
 	font-family: Microsoft Yahei;
 	border: 2px solid #3258E5;
 }
@@ -301,14 +300,14 @@ img {
 	height: 68px;
 	line-height: 68px;
 	border-radius: 10px;
-	background-color: rgba(233,242,251,1);
-	color: rgba(12,45,99,1);
+	background-color: rgba(233, 242, 251, 1);
+	color: rgba(12, 45, 99, 1);
 	font-size: 24px;
 	text-align: center;
 	font-family: Microsoft Yahei;
 	margin: 46px auto;
 	cursor: pointer;
-	transform:translateY(30px)
+	transform: translateY(30px)
 }
 
 .centreBtns:hover {
@@ -317,7 +316,7 @@ img {
 	color: #3258E5;
 	background-color: #E1E1E1;
 	font-family: Microsoft Yahei;
-	border: 2px solid rgba(233,242,251,1);
+	border: 2px solid rgba(233, 242, 251, 1);
 }
 
 .outline {
@@ -325,13 +324,14 @@ img {
 	display: flex;
 	align-items: center;
 	/* justify-content: center; */
-	margin: 60px auto; width: 1420px;
+	margin: 60px auto;
+	width: 1420px;
 }
 
 .outline_box {
 	/* width: 88%; */
 	position: relative;
-	color:rgba(12,45,99,1);
+	color: rgba(12, 45, 99, 1);
 	padding-left: 10px;
 	/* border-left: 12px solid rgba(50,88,229,0.3); */
 }
@@ -377,14 +377,15 @@ img {
 	cursor: pointer;
 	padding-bottom: 15px;
 	border-bottom: 10px solid #fff;
-	align-items:center;
+	align-items: center;
 }
 
 .box:first-child {
 	border-bottom: 10px solid #3258E5;
 }
-.box:first-child span{
-	color:#3258E5;
+
+.box:first-child span {
+	color: #3258E5;
 }
 
 .outlinebodyTitle_item {
@@ -527,8 +528,8 @@ img {
 	top: 400px;
 	left: 0;
 	font-size: 14px;
-	background: #3258E5;
-	color:#fff;
+	background: rgba(50,88,229,.7);
+	color: #fff;
 }
 
 /* .teamTalentsBox {
@@ -571,29 +572,34 @@ img {
 /* 用心为每一位学员 */
 .diligently {
 	width: 100vw;
-	background-image:url("../image/组45.svg");
+	background-image: url("../images/组45.svg");
 	padding-bottom: 60px;
 }
 
-.diligentlyBox, .diligentlyBox2{
-	
+.diligentlyBox,
+.diligentlyBox2 {
+
 	display: flex;
 	justify-content: space-around;
 	margin-bottom: 60px;
 	color: #f0f0f0;
 }
-.diligentlyBox2{
-	width:1595px;
-	margin:0 auto;
+
+.diligentlyBox2 {
+	width: 1595px;
+	margin: 0 auto;
 }
+
 .diligentlyBox_div {
 	width: 160px;
 	height: 260px;
 }
-.diligentlyBox_div>div:nth-child(1){
-	background:#fff;
+
+.diligentlyBox_div>div:nth-child(1) {
+	background: #fff;
 
 }
+
 /* 校园环境 辉达动态*/
 .dynamicBox {
 	/* width: 90%; */
@@ -615,11 +621,12 @@ img {
 	margin-right: 24px;
 }
 
+/* 
 .dynamicBox_divA_img {
 	width: 48px;
 	height: 48px;
 }
-
+ */
 .dynamicBox_divASpan {
 	display: -webkit-box;
 	-webkit-line-clamp: 2;
@@ -653,6 +660,7 @@ img {
 	border: 1px solid #bbb;
 	border-radius: 3px;
 }
+
 /* 滚动条样式 */
 ::-webkit-scrollbar {
 	width: 5px;
@@ -704,6 +712,7 @@ img {
 	border-radius: 20px;
 	position: relative;
 }
+
 /* 校园环境 */
 .campusBoxImg {
 	/* width: 90%; */
@@ -718,8 +727,8 @@ img {
 .footing {
 	width: 100vw;
 	height: 380px;
-	background: #000;
-	color: #fff;
+	background: rgba(12,45,99,1);
+	color: rgba(200,224,250,1);
 	margin-top: 40px;
 	padding-top: 60px;
 }
@@ -759,8 +768,8 @@ img {
 }
 
 .footingBoxRightDiv div {
-	width: 100%;
-	height: 128px;
+	width: calc(100% - 20px);
+	height: 108px;
 	margin-bottom: 32px;
 }
 
@@ -774,6 +783,7 @@ img {
 	display: flex;
 	justify-content: center;
 }
+
 /* 更改Java - 高级软件工程师课程培训标准下样式 */
 .outlinebodyNumber {
 	width: 100%;
@@ -821,4 +831,137 @@ img {
 	background: rgba(159, 201, 250, 1);
 	top: 67px;
 	left: 80px;
+}
+
+/* 增加师资 */
+.teamText {
+	height: 80px;
+	margin: 0 auto 120px;
+	display: flex;
+	justify-content: space-around;
+}
+
+.teamText .teamTextBox {
+	width: 300px;
+	border-right: 2px solid rgba(12, 45, 99, 1);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: rgba(12, 45, 99, 1);
+}
+
+.teamText .teamTextBox:last-child {
+	border: none;
+
+}
+
+/* 师资样式 */
+.teamTopImg {
+	height: 254px;
+	overflow: hidden;
+}
+
+/* 16级标准严选专职课研老师，严控课程研发质量 */
+
+.teamTalentsBox h4 {
+	border-radius: 80px 0 80px 0;
+	overflow: hidden;
+	font-size: 28px;
+	font-weight: 500;
+	width: 112px;
+	height: 80px;
+	padding: 50px 54px;
+	color: #fff;
+	text-align: left;
+}
+
+.teamTalentsBoxA {
+	display: flex;
+	margin-bottom: 30px;
+	border-radius: 80px 0 80px 0;
+	overflow: hidden;
+	box-shadow: 0px 10px 28px 0px #e9f2fb;
+}
+
+.teamTalentsBox_div {
+	display: flex;
+	width: calc(100% - 220px);
+}
+
+.Box_div {
+	margin-left: 40px;
+	width: 246px;
+	padding: 33px 0 64px;
+	border: 1px solid #f00;
+}
+
+.teamTalentsBoxBb {
+	display: flex;
+}
+
+/* 地图 */
+.echaItemClass {
+	padding: 30px;
+	height: 500px;
+	border-radius: 30px;
+	/* box-shadow: 0 5px 18px rgb(174 174 174); */
+}
+
+.baseImgItemBox {
+	color: rgba(94, 126, 246, 1);
+	opacity: 0.5;
+	width: 100%;
+	height: 58px;
+	margin-bottom: 8px;
+	text-align: center;
+}
+
+.baseImgItemBox:first-child {
+	opacity: 1;
+}
+
+#upload {
+	width: 100vw;
+	height: 100vh;
+	line-height: 100vh;
+	text-align: center;
+	color: rgba(94, 126, 246, 1);
+}
+
+.dynamicBox_divA_img {
+	width: 38px;
+	height: 26px;
+	background: rgba(255, 126, 0, 1);
+	color: #fff;
+	font-size: 14px;
+	line-height: 26px;
+	text-align: center;
+	border-radius: 10px;
+}
+
+#nav {
+	width: 100%;
+	height: 110px;
+	background: #fff;
+	font-size: 24px;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+	display: none;
+}
+
+.nav_box {
+	margin: 0px 20px;
+	padding: 10px 20px;
+	border-radius: 30px;
+	cursor: pointer;
+}
+
+.nav_box:first-child {
+	color: #fff;
+	background: linear-gradient(to left, rgba(132, 158, 255, .8), rgb(59, 98, 246));
 }
