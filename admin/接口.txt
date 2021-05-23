@@ -1,0 +1,87 @@
+ 
+ upload.php 以表单post的方式提交 图片上传
+ all_imgs.php  所有图片
+首页
+	课题大纲  course_center.php      
+		传入 id =1
+		返回  	"id": "1",
+				"title": "Java大数据",
+				"iconA": "./image/java-script.svg",
+				"iconB": "./image/java-scripts.svg",
+				"bodyTitle": "Java -高级软件工程师课程培训标准",
+				"bodyItem": ["高级软件工程师培训课程","以'周'为单位更新热点/前沿技术","至少包含2个企业级大型项目","项目场景课程占比超50%","技术课程深入且广泛","完成即可应用代码移值便捷","注重底层素质培养"]
+			
+				***后台管理 
+					渲染数据----course_center.php 	   传id='all’ 显示所有大数据
+					修改数据----add_course_center.php   传id,kczk,kclx,newlx 以字符串的形式  返回ok 成功  no 失败
+					添加数据----add_course_center.php	传入id=course_center(默认值) kczk,kclx,newlx 以字符串的形式 返回ok 成功  no 失败
+					删除数据----del_course_center.php   传入id  返回ok 成功  no 失败			
+										
+	轮播图	banners.php
+		传入id=5
+		返回		"id": "5",
+				"name": "主页",
+				"imgUrls": ["./images/banner01.svg","./images/banner02.svg"]
+				
+				***后台管理 
+					渲染数据----banners.php 			传id=6 显示所有轮播图片
+					修改数据----add_banners.php   	传入name和imgurls  以字符串的形式  返回ok 成功  no 失败
+					
+	师资力量 faculty.php    直接查找所有老师的信息
+				***后台管理
+					渲染数据----faculty.php				所有老师的信息
+					修改数据----add_faculty.php    		传入id,img,user,info,course 以字符串的形式 返回ok 成功  no 失败
+					添加数据----add_faculty.php	传入id=faculty(默认值) img,user,info,course 以字符串的形式 返回ok 成功  no 失败
+					删除数据----del_faculty.php  		传 id 删除数据 返回ok 成功  no 失败
+				
+	辉达动态 dynamic.php    倒叙获得所有新闻动态
+				***后台管理  
+					渲染数据----dynamic.php 				获得所有新闻动态
+					修改数据----add_dynamic.php   		传id,message,img,mesA,conA,mesB,conB,mesC,conC 以字符串的形式  返回ok 成功  no 失败
+					添加数据----add_dynamic.php	传入id=dynamic(默认值) message,img,mesA,conA,mesB,conB,mesC,conC 以字符串的形式 返回ok 成功  no 失败
+					删除数据----del_dynamic.php			传id 返回ok 成功  no 失败
+					
+	校园环境  environment.php 
+		传入name=学习环境
+		返回  	"id": "1",
+				"name": "学习环境",
+				"img": ["./images/ban1.jpg","./images/ban1.jpg","./images/ban1.jpg","./images/ban2.jpg","./images/ban2.jpg","./images/ban2.jpg"]
+			
+				***后台管理
+					渲染数据----environment.php  	name='all’ 显示所有大数据
+					修改数据----add_environment.php  传入name,imgurls以字符串拼接的方式传递数组   返回ok 成功  no 失败
+					
+					
+	服务基站 echarts.php   直接获取所有基站信息 
+				***后台管理  
+					渲染数据----echarts.php 				获得所有新闻动态
+					修改数据----add_echarts.php 			传id,name,value,base,baseImg,text,phone 以字符串的形式  返回ok 成功  no 失败
+					添加数据----add_echarts.php	传入id=echarts(默认值) name,value,base,baseImg,text,phone 以字符串的形式 返回ok 成功  no 失败
+					删除数据----del_echarts.php			传id 返回ok 成功  no 失败
+					
+
+	全部课程大纲
+			ui_course_center.php  	传入当前title  如title=Web前端 返回当前的所有数据 
+				***后台管理
+					渲染数据----ui_course_center	    	传入当前title  如title=Web前端 返回当前的所有数据
+					添加数据----	add_ui_course_center    传入id=add 	   添加数据
+														传入id         修改数据
+					删除数据----	del_ui_course_center	传入id         删除数据	
+							
+ 	学员实训结果保障
+	practical.php  	获取学员实训结果保障的数据
+				***后台管理
+				add_practical.php  		传入id         修改数据
+		⬆
+	practicals.php  有点区别 
+				***后台管理
+				add_practicals.php   	传入id         	修改数据
+										传入id＝add　添加数据
+	news.php        多个新闻
+			***后台管理
+				渲染数据----news.php	   	 			返回当前的所有数据
+				添加数据----	add_news.php    		传入id=add  title=技术文章 small_title,title_img,title_con	   添加数据
+													传入id  small_title,title_img,title_con       修改数据
+				删除数据----	del_news.php			传入id         删除数据
+				
+	search_news.php  传入当前title  如title=后疫情时代的那些学习者们

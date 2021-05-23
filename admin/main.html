@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>辉达后台管理系统</title>
+		<link rel="icon" href="../images/logos.svg" sizes="50x50">
+		<link rel="stylesheet" type="text/css" href="css/public.css"/>
+		<link rel="stylesheet" type="text/css" href="css/main.css"/>
+		<link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/mui.css"/>
+		<script src="js/mui.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/axios.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<!-- 主页 -->
+		<div class="header">
+			<div class="header_l"  style="display: flex;align-items:center">
+				<img style="width: 50px;height: 50px;" src="../images/logos.svg" alt="">
+				<span style="font-size: 24px;">&nbsp;&nbsp;辉达后台管理系统</span>
+			</div>
+			<div class="header_r">
+				<label class="fa fa-user-circle-o">&nbsp;&nbsp;<span class="show"> admin</span></label> 
+				<a href="javascript:back()">退出</a>
+			</div>
+		</div>
+		<!-- 内容 -->
+		<div class="content">
+		    <div class="content_l">
+		        <li>后台管理系统</li>
+		        <li class="current"><a href="banner.html" target="iframe">轮播背景</a></li>
+				<li><a href="course_center.html" target="iframe">课程大纲</a></li>
+				<li><a href="ui_course.html" target="iframe">UI/UE设计课程大纲</a></li>
+				<li><a href="WEB_course.html" target="iframe">WEB课程大纲</a></li>
+				<li><a href="Java_course.html" target="iframe">Java大数据课程大纲</a></li>
+				<li><a href="SE_course.html" target="iframe">软件测试课程大纲</a></li>
+				<li><a href="faculty.html" target="iframe">师资力量</a></li>
+				<li><a href="server.html" target="iframe">服务器栈</a></li>
+				<li><a href="dynamic.html" target="iframe">辉达动态</a></li>
+				<li><a href="campus.html" target="iframe">校园环境</a></li>
+				<li><a href="practical.html" target="iframe">实训结果保障一</a></li>
+				<li><a href="practicals.html" target="iframe">实训结果保障二</a></li>
+				<li><a href="news.html" target="iframe">新闻资讯</a></li>
+				<li><a href="files_upload.html" target="iframe">图片上传</a></li>
+		    </div>
+		    <div class="content_r">
+		        <div class="content_r_top">
+		            <iframe class="iframe" name="iframe" frameborder="0" src="banner.html"></iframe>
+		        </div>
+		        <div class="content_r_foot">
+		            copyright@2021-5-13  后台维护  tel:15735629946
+		        </div>
+		    </div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		// 防止用户从地址栏直接进入
+		// if(window.sessionStorage.getItem('user')==''|| window.sessionStorage.getItem('user')==null){
+		// 	window.location.href="index.html"
+		// }
+		//退出
+		function back(){
+			mui.confirm('确认要退出嘛！','关闭',(res)=>{
+			    //console.log(res.index)
+			    if(res.index==1){
+					//销毁信息数据
+					window.sessionStorage.removeItem('user');
+			        window.location.href="index.html";
+			    }
+			})
+		}
+		//页面开始将用户名显示出来
+		// $('.show').html(window.sessionStorage.getItem('user'))
+		$('.show').html('admin')
+		//状态
+		$('li~li').click(function(){
+		    //console.log($(this).index())
+		    $(this).addClass('current').siblings().removeClass('current');
+		})
+	</script>
+</html>

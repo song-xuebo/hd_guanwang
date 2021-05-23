@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>学员实训结果保障数据</title>
+		<link href="css/adminStyle.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" type="text/css" href="css/mui.css" />
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/axios.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+		<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		<!-- 背景轮播 -->
+		<div id="box">
+			<div class="wrap">
+				<div class="page-title">
+					<span class="modular fl"><i class="add_user"></i><em>学员实训结果保障数据</em></span>
+				</div>
+				<form>
+					<table class="list-style">
+						<tr style="text-align: center;">
+							<td style="width:30%;">标题</td>
+							<td style="width:30%;">内容</td>
+							<td style="width:30%;">图片</td>
+							<td style="width:10%;">编辑</td>
+						</tr>
+						<tr  v-for="(item,index) in list" :key="index">
+							<td>{{item.title}}</td>
+							<td>
+								<p v-for="(cont,i) in item.content" :key="i">{{i+1}}、{{cont}}</p>
+							</td>
+							<td>
+								<img :src="item.img" style="width: 100%;">
+							</td>
+							<td>
+								<a title="编辑" @click="compile(item.id,index)" data-toggle="modal"
+									data-target="#myModal">
+									<span>编辑</span>
+								</a>
+								<a title="删除" @click="del(item.id)">
+									<span>删除</span>
+								</a>
+							</td>
+							<!-- 模态框 -->
+							<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+								aria-labelledby="myModalLabel" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h4 class="modal-title" id="myModalLabel">
+												数据编辑
+											</h4>
+										</div>
+										<div class="modal-body">
+											<form role="form">
+												<div class="form-group">
+													<label>标题</label>
+													<input class="form-control" v-model="title" placeholder="文本输入" />
+													
+													<label>内容</label>
+													<input type="text" v-for="(cont,i) in content" v-model="content[i]" />
+													<a style="margin: 50%;" @click="pop_up()">
+														<span class="glyphicon glyphicon-plus"></span>
+													</a>
+													<label>图片路径</label>
+													<input  type="text" class="form-control" v-model="img" placeholder="文本输入">
+												</div>
+											</form>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+											</button>
+											<button type="button" class="btn btn-primary" @click="put_in()">
+												提交更改
+											</button>
+										</div>
+									</div><!-- /.modal-content -->
+								</div><!-- /.modal -->
+							</div>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		new Vue({
+			el: '#box',
+			data: {
+				list: [],
+				title:'',
+				content:'',
+				img:'',
+				id:0,
+				newLx:''
+			},
+			methods: {
+				// 提交
+				put_in() {
+					console.log(this.title,this.content,this.img)
+					if (this.title == '' || this.content == '' || this.img == '') {
+						alert('不能为空')
+						return false
+					}
+					for (var i = 0; i < this.content.length; i++) {
+						if (this.content[i] != '') {
+							console.log(i)
+							console.log(this.content[i])
+							this.newLx += this.content[i] + ','
+						}
+					}
+					this.newLx = this.newLx.substring(0, this.newLx.length - 1)
+					console.log(this.newLx)
+					console.log(this.id)
+					var url = "http://192.168.0.68/hd_guanwang/admin/php/add_practicals.php?id=" + this.id + "&title=" + this.title+ "&content=" + this.newLx + "&img=" + this.img 
+					axios.get(url).then(res => {
+						console.log(res)
+						if (res.data == 'ok') {
+							$('#myModal').modal('hide')
+							alert('修改成功')
+							this.loadImage()
+						} else {
+							alert('修改失败')
+						}
+					})
+				},
+				// 添加input
+				pop_up() {
+					this.loadImage()
+					this.content.push('')
+				},
+				// 模态框显示
+				compile(id, index) {
+					console.log(id,index)
+					console.log(this.list[index])
+					this.id=this.list[index].id
+					this.title = this.list[index].title
+					this.content = this.list[index].content
+					
+					this.b=this.list[index].img.lastIndexOf('/')
+					this.img=this.list[index].img.substring(this.b+1)
+				},
+				// 初始化图片
+				loadImage(){
+					let url="http://192.168.0.68/hd_guanwang/admin/php/practicals.php"
+					axios.get(url).then(res=>{
+						this.list=res.data
+					})
+				},
+			},
+			mounted() {
+				this.loadImage()
+			}
+		})
+	</script>
+</html>

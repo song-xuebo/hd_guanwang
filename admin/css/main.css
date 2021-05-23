@@ -1,0 +1,22 @@
+.header{width: 100vw;line-height:9vh; height:10vh;}
+.header_l{float: left;margin-left: 40px;}
+.form{float: left;margin-left: 200px;margin-top: 12px;}
+.form>#info{width: 250px;height: 30px;float: left;}
+.form>button{float: left;height: 30px;}
+.header_l span{font-size: 25px;}
+.header_r a{color: #000000 ;}
+.header_r{float: right;margin-right: 50px;}
+.header_r span{margin: 0 30px 0 0 ;}
+.content{width: 100%;height: auto;overflow: hidden;}
+.content .content_l{float: left;width: 200px;height: calc(100vh - 10vh);}
+.content .content_l li~li:hover{background: beige;transform: scale(1.2);}
+.content .content_l li:nth-child(1){font-size:20px ;}
+.content .content_l li{line-height: 44px;height: 44x; color: black;text-align: center;}
+.content .content_l li a{color: black;}
+.content .content_l li span{color: #000000;}
+.content .content_r{float: left;height: calc(100vh - 10vh); width: calc(100% - 200px);position: relative;}
+.content .content_r_top{width: 100%;height: auto;overflow-y: auto;padding: 30px 3%;}
+.content_r .content_r_foot{letter-spacing:1px; position: fixed;bottom:0;height: 35px; text-align: center;width:100%;font-size: 14px;color: #555555;}
+.iframe{width: 100%;height: calc(100vh - 160px);background-color: #FFFFFF;}
+/* 状态 */
+.current{background: beige;transform: scale(1.2)}

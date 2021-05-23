@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>轮播图背景</title>
+		<link rel="stylesheet" type="text/css" href="css/public.css" />
+		<link href="css/adminStyle.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" type="text/css" href="css/mui.css" />
+		<link rel="stylesheet" type="text/css" href="css/banner.css" />
+		<link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.min.css" />
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/mui.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/axios.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+		<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		<!-- 背景轮播 -->
+		<div id="box">
+			<div class="wrap">
+				<div class="page-title">
+					<span class="modular fl"><i class="add_user"></i><em>轮播图背景</em></span>
+				</div>
+				<p style="text-align: center;">请先编辑在上传</p>
+				<form class="item" v-for="(item,ins) in list" :key="ins">
+					<table class="list-style">
+						<tr style="height: 50px;">
+							<td style="width:20%;text-align:right;">{{item.name}}</td>
+							<td>
+								<div class="item_imgs">
+									<div class="item_image" v-for="(item_url,index) in item.imgUrls" :key="index">
+										<!-- 点击删除的图标 -->
+										<div class="item_image—icon" @click="del(index,ins)" v-if="!item.flag">
+											<svg t="1620956567393" class="icon" viewBox="0 0 1024 1024" version="1.1"
+												xmlns="http://www.w3.org/2000/svg" p-id="10369" width="20" height="20">
+												<path
+													d="M512 0C229.216 0 0 229.216 0 512s229.216 512 512 512 512-229.216 512-512S794.784 0 512 0zM709.184 663.936c16.064 16.064 18.976 39.232 6.464 51.712s-35.648 9.6-51.712-6.464L512 557.248l-151.936 151.936c-16.064 16.064-39.232 18.976-51.712 6.464s-9.6-35.648 6.464-51.712L466.752 512l-151.936-151.936c-16.064-16.064-18.976-39.232-6.464-51.712 12.512-12.512 35.648-9.6 51.712 6.464L512 466.752l151.936-151.936c16.064-16.064 39.232-18.976 51.712-6.464 12.512 12.512 9.6 35.648-6.464 51.712L557.248 512 709.184 663.936z"
+													p-id="10370" fill="#d81e06"></path>
+											</svg>
+										</div>
+										<!-- 轮播的图片 -->
+										<div class="item_image_imgs">
+											<img :src="item_url" style="width: 100%; height: 80%;">
+										</div>
+									</div>
+									<input style="width: 200px;border: 1px solid #ccc;" type="text" name="avatar"
+										class="uppic" id="uppic" value="" disabled="disabled" placeholder="请输入图片路径" />
+								</div>
+							</td>
+							<td style="width:10%;">
+								<!-- 编辑和删除 -->
+								<div class="item_eit" @click="eit(ins)">
+									<span>{{ item.flag?'编辑':'上传' }}</span>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		new Vue({
+			el: '#box',
+			data: {
+				list: []
+			},
+			methods: {
+				// 点击编辑切换按钮
+				eit(index) {
+					var uppic = document.querySelectorAll(".uppic")
+					// uppic[index].value=''
+					this.name = this.list[index].name
+					console.log(this.name)
+					this.list[index].flag = !this.list[index].flag
+					// console.log(this.list[index].flag)
+					if (this.list[index].flag == true) {
+						uppic[index].setAttribute("disabled", "disabled")
+						this.newLx = ''
+						this.b = ''
+						var a = this.list[index].imgUrls
+						for (var i = 0; i < a.length; i++) {
+							this.b = a[i].lastIndexOf('/')
+							this.newLx += a[i].substring(this.b + 1) + ','
+						}
+						console.log(this.newLx.length)
+						this.newLx = this.newLx.substring(0, this.newLx.length - 1)
+						console.log(this.newLx)
+						if (uppic[index].value != '') {
+							var val = uppic[index].value
+							// console.log(uppic[index].value)
+							// console.log(val)
+							this.newLx = this.newLx + ',' + val
+							console.log(this.newLx)
+						} else {
+							uppic[index].setAttribute("disabled", "disabled")
+						}
+						var url = "http://192.168.0.68/hd_guanwang/admin/php/add_banners.php?name=" + this.name + "&imgUrls=" +this.newLx
+						axios.get(url).then(res => {
+							console.log(res)
+							if (res.data == 'ok') {
+								alert('修改成功')
+								uppic[index].value = ''
+								this.loadImage()
+							} else {
+								alert('修改失败')
+							}
+						})
+						// 	// console.log(uppic[index].value)
+
+					} else {
+						// console.log(document.querySelectorAll(".uppic"))
+						uppic[index].removeAttribute("disabled")
+					}
+				},
+				// 点击删除当前的图片
+				del(index, ins) {
+					console.log(this.list[ins].imgUrls.length)
+					if (this.list[ins].imgUrls.length > 1) {
+						this.list[ins].imgUrls.splice(index, 1)
+					} else {
+						// mui.confirm('确认要删除最后一张图片！', '关闭', (res) => {
+						// 	if (res.index == 0) {
+						// 		return
+						// 	} else {
+						// 		this.list[ins].imgUrls.splice(index, 1)
+						// 	}
+						// })
+						alert('不能删除了')
+					}
+				},
+				// 初始化图片
+				loadImage() {
+					let url = "http://192.168.0.68/hd_guanwang/admin/php/banners.php?id=6"
+					axios.get(url).then(res => {
+						console.log(res.data)
+						this.list = res.data
+					})
+				}
+			},
+			mounted() {
+				this.loadImage()
+			}
+		})
+	</script>
+</html>

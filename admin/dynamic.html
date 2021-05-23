@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>辉达动态</title>
+		<link rel="stylesheet" type="text/css" href="css/public.css" />
+		<link href="css/adminStyle.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" type="text/css" href="css/mui.css" />
+		<link rel="stylesheet" type="text/css" href="css/banner.css" />
+		<link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.min.css" />
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/mui.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/axios.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+		<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<div class="wrap">
+				<div class="page-title">
+					<span class="modular fl"><i class="add_user"></i><em>辉达动态</em></span>
+				</div>
+				<form>
+					<table class="list-style">
+						<tr style="text-align: center;">
+							<td>图片</td>
+							<td>动态</td>
+							<td>详情</td>
+							<td>编辑</td>
+						</tr>
+						<tr style="text-align: center;" v-for="(item,index) in list" :key="index">
+							<td style="width: 20%;">
+								<img :src="item.img" style="width: 80%;">
+							</td>
+							<td style="width: 10%;">{{item.message}}</td>
+							<td style="width: 60%;" >
+								<li v-for="(mesArr,i) in item.mesArr" style="text-align: left;">
+									<p><b style="color: orchid">{{i+1}}标题：</b>{{mesArr.mesTitle}}</p>
+									<p><b style="color: lightpink">{{i+1}}内容：</b>{{mesArr.mesCon}}</p>
+								</li>
+							</td>
+							<td style="width: 10%;">
+								<a title="编辑" @click="compile(index)" data-toggle="modal" data-target="#myModal">
+									<span>编辑</span>
+								</a>
+								<a title="删除" @click="del(item.id)">
+									<span>删除</span>
+								</a>
+							</td>
+							<!-- 模态框 -->
+							<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h4 class="modal-title" id="myModalLabel">
+												数据编辑
+											</h4>
+										</div>
+										<div class="modal-body">
+											<form role="form">
+											  <div class="form-group">
+											    <label>照片</label>
+												<!-- <input style="width: 100%;" type="file" value="上传图片" name="avatar" id="uppic"
+															accept="iamges/gif,iamges/jpeg,iamges/jpg,iamges/png/,iamges/svg"
+															@change="changeImage($event)" ref="avatarInput" class="uppic"> -->
+												<input type="text" name="imgs" v-model="img" id="" value="" placeholder="请输入图片路径"  />
+											    <img src="" >
+												<label>动态</label>
+												<input type="text" class="form-control kcbz" placeholder="文本输入" v-model="message">
+												<label>详情</label><br />
+												<div v-for="(mes,info) in this.mesArr" :key="info">
+													
+													标题{{info+1}}：<input class="form-control bz" placeholder="文本输入" v-model="mes.mesTitle">
+													内容{{info+1}}：<input class="form-control bz" placeholder="文本输入" v-model="mes.mesCon">
+												</div>
+												<!-- 添加input -->
+											<!-- <a style="margin: 50%;" @click="pop_up">
+												<span class="glyphicon glyphicon-plus"></span>
+											</a> -->
+											  </div>
+											 
+											 </form>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+											</button>
+											<button type="button" class="btn btn-primary" @click="put_in()">
+												提交更改
+											</button>
+										</div>
+									</div><!-- /.modal-content -->
+								</div><!-- /.modal -->
+							</div>
+						</tr>
+						<tr>
+							<td colspan="7">
+								<a style="margin: 50%;" @click="add()" data-toggle="modal" data-target="#myModal">
+									<span class="glyphicon glyphicon-plus"></span>
+								</a>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+			
+		</div>
+		<script type="text/javascript">
+			new Vue({
+				el: '#app',
+				data: {
+					list: [],
+					img:'',
+					message:'',
+					mesArr:[],
+					mesTitle:'',
+					mesCon:'',
+					index:0,
+					id:'',
+				},
+				methods: {
+					// 添加input
+					pop_up() {
+						this.mesArr.push({})
+					},
+					// 提交
+					put_in() {
+						console.log(this.id)
+						console.log(this.mesTitle)
+						console.log(this.mesCon)
+						console.log(this.message,this.mesArr)
+						console.log(JSON.stringify(this.mesArr))
+						var imgs = $('input[name="imgs"]').val();
+						console.log(imgs)
+						if (imgs==''|| this.message == ''  || this.mesArr == '') {
+							alert('不能为空')
+							return false;
+						}
+						// console.log(this.id)
+						var url = "http://192.168.0.68/hd_guanwang/admin/php/add_dynamic.php?id="+this.id+"&img="+imgs+"&message="+this.message+"&info="+JSON.stringify(this.mesArr)
+						axios.get(url).then(res => {
+							console.log(res)
+							if (res.data == 'ok') {
+								$('#myModal').modal('hide')
+								alert('修改成功')
+								this.load()
+							} else {
+								$('#myModal').modal('hide')
+								alert('修改失败')
+							}
+						})
+					
+					},
+					// 添加
+					add(){
+						this.list.push({})
+						this.id='dynamic'
+						this.message=''
+						this.mesArr=[]
+
+					},
+					// 模态框
+					compile(index){
+						// this.load()
+						this.id=this.list[index].id
+						this.index=index
+						this.img= ''
+						this.message= this.list[index].message
+						this.mesArr= this.list[index].mesArr
+						this.mesTitle=this.list[index].mesArr.mesTitle
+						this.mesCon=this.list[index].mesArr.mesCon
+						console.log(this.mesArr)
+						// console.log(this.index)
+					},
+					// 删除
+					del(index) {
+						console.log(index)
+						let url="http://192.168.0.68/hd_guanwang/admin/php/del_dynamic.php?id="+index
+						axios.get(url).then(res=>{
+							console.log(res)
+							if(res.data=='ok'){
+								alert('删除成功')
+								this.load()
+							}
+						})
+					},
+					// 初始化图片
+					load() {
+						let url = "http://192.168.0.68/hd_guanwang/admin/php/dynamic.php"
+						axios.get(url).then(res => {
+							console.log(res.data)
+							this.list = res.data
+						})
+					},
+				},
+				mounted() {
+					this.load()
+				}
+			})
+		</script>
+	</body>
+</html>

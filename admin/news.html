@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>新闻资讯</title>
+		<link href="css/adminStyle.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" type="text/css" href="css/mui.css" />
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/axios.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+		<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		<!-- 背景轮播 -->
+		<div id="box">
+			<div class="wrap">
+				<div class="page-title">
+					<span class="modular fl"><i class="add_user"></i><em>新闻资讯</em></span>
+				</div>
+				<table class="list-style" v-for="(item,index) of list" :key="index">
+					<tr>
+						<td colspan="4"><b style="font-size: 24px;">{{item.big_title}}</b></td>
+					</tr>
+					<tr style="text-align: center;">
+						<td style="width: 15%;">标题</td>
+						<td style="width: 15%;">图片</td>
+						<td style="width: 60%;">内容</td>
+						<td style="width: 10%;">编辑</td>
+					</tr>
+					<tr v-for="(data1,in1) of item.all">
+						<td>{{data1.small_title}}</td>
+						<td>
+							<img style="width: 100%;" :src="data1.title_img">
+						</td>
+						<td>
+							<p v-for="(con,i) in data1.title_con">{{i+1}}、{{con}}</p>
+						</td>
+						<td>
+							<a title="编辑" @click="compile(item,index,in1)" data-toggle="modal" data-target="#myModal">
+								<span>编辑</span>
+							</a>
+							<a title="删除" @click="del(item.all[in1].id)">
+								<span>删除</span>
+							</a>
+						</td>
+						<!-- 模态框 -->
+						<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h4 class="modal-title" id="myModalLabel">
+											数据编辑
+										</h4>
+									</div>
+									<div class="modal-body">
+										<form role="form">
+											<div class="form-group">
+												<label>标题</label>
+												<input type="text" v-model="small_title"  class="form-control user" placeholder="文本输入">
+												<label>图片</label>
+												<input type="text" v-model="title_img" placeholder="请输入图片路径"  />
+												<img src="">
+												<label>内容</label>
+												<input v-for="(a,i) in title_con" :key="i" type="text" v-model="title_con[i]" placeholder="普通输入框">
+												<a style="margin: 50%;" @click="pop_up()">
+													<span class="glyphicon glyphicon-plus"></span>
+												</a>
+											</div>
+										</form>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+										</button>
+										<button type="button" class="btn btn-primary" @click="put_in()">
+											提交更改
+										</button>
+									</div>
+								</div><!-- /.modal-content -->
+							</div><!-- /.modal -->
+						</div>
+					</tr>
+					<tr>
+						<td colspan="5">
+							<a style="margin: 50%;" @click="add(item,index)"  data-toggle="modal" data-target="#myModal">
+								<span class="glyphicon glyphicon-plus"></span>
+							</a>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		new Vue({
+			el: '#box',
+			data: {
+				list: {},
+				big_title:'',
+				small_title:'',
+				title_img:'',
+				title_con:[],
+				newLx: [],
+				id:0
+			},
+			methods: {
+				// 提交
+				put_in() {
+					console.log(this.id,this.big_title,this.small_title,this.title_img,this.title_con)
+					
+					if (this.big_title == '' || this.small_title == '' || this.title_img == ''|| this.title_con == '') {
+						alert('不能为空')
+						return false
+					}
+					for(var i=0;i<this.title_con.length;i++){
+						if(this.title_con[i]!=''){
+							this.newLx.push(this.title_con[i])
+						}
+					}
+					// console.log(this.newLx)
+					console.log(JSON.stringify(this.newLx) )
+					console.log(this.id)
+					var url = "http://192.168.0.68/hd_guanwang/admin/php/add_news.php?id=" + this.id + "&title=" + this.big_title+ "&small_title=" + this.small_title + "&title_img=" + this.title_img + "&title_con=" +  JSON.stringify(this.newLx)
+					axios.get(url).then(res => {
+						console.log(res)
+						if (res.data == 'ok') {
+							$('#myModal').modal('hide')
+							alert('修改成功')
+							this.loadImage()
+						} else {
+							alert('修改失败')
+						}
+					})
+				},
+				add(item,index){
+					console.log(item,index)
+					this.id='add'
+					this.big_title=item.big_title
+					this.small_title=''
+					this.title_img=''
+					this.title_con=[]
+				},
+				// 添加input
+				pop_up(e) {
+					// this.loadImage()
+					this.title_con.push('')
+				},
+				// 删除
+				del(index) {
+					console.log(index)
+					let url="http://192.168.0.68/hd_guanwang/admin/php/del_news.php?id="+index
+					axios.get(url).then(res=>{
+						console.log(res)
+						if(res.data=='ok'){
+							alert('删除成功')
+							this.loadImage()
+						}
+					})
+				},
+				// 模态框显示
+				compile(item,index,in1) {
+					// console.log(item,index,in1)
+					// console.log(item.big_title)
+					// console.log(item.all[in1].id)
+					this.big_title=item.big_title
+					this.id = item.all[in1].id
+					this.small_title = item.all[in1].small_title
+					this.b=item.all[in1].title_img.lastIndexOf('/')
+					this.title_img = item.all[in1].title_img.substring(this.b+1)
+					this.title_con = item.all[in1].title_con
+					// console.log(this.id,this.small_title,this.title_img,this.title_con)
+				},
+				// 初始化图片
+				loadImage() {
+					let url = "http://192.168.0.68/hd_guanwang/admin/php/news.php"
+					axios.get(url).then(res => {
+						console.log(res.data)
+						this.list = res.data
+					})
+				},
+			},
+			mounted() {
+				this.loadImage()
+			}
+		})
+	</script>
+</html>

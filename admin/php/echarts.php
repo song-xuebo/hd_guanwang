@@ -1,0 +1,14 @@
+<?php
+    include('./public.php');
+	$sql="select * from echarts";
+	$res=$conn->query($sql);
+	while ($row = $res->fetch_assoc()) {
+		$s='http://192.168.0.68/hd_guanwang/admin/php/images/'.$row['baseImg'];
+		unset($row['baseImg']);
+		// echo $s;
+		// $s = substr($s,0,strlen($s)-1);
+		$row['baseImg']=$s;
+		$arrs []= $row;
+	}
+	echo json_encode($arrs);
+?>

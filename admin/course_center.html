@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>课程大纲</title>
+		<link rel="stylesheet" type="text/css" href="css/public.css" />
+		<link href="css/adminStyle.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" type="text/css" href="css/mui.css" />
+		<link rel="stylesheet" type="text/css" href="css/banner.css" />
+		<link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.min.css" />
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/mui.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/axios.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+		<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<div class="wrap">
+				<div class="page-title">
+					<span class="modular fl"><i class="add_user"></i><em>课程大纲</em></span>
+				</div>
+				<form>
+					<table class="list-style">
+						<tr style="text-align: center;">
+							<td>课程中心</td>
+							<td>课程标准</td>
+							<td>标准</td>
+							<td></td>
+						</tr>
+						<tr style="text-align: center;" v-for="(item,index) in list" :key="index">
+							<td style="width:20%;">{{item.title}}</td>
+							<td style="width: 20%;">
+								{{item.bodyTitle}}
+							</td>
+							<td style="width: 50%; text-align: left;">
+								<p v-for="(bodyItem,i) in item.bodyItem" :key="i">{{i+1}}{{bodyItem}}</p>
+							</td>
+							<td style="width: 10%;">
+								<a title="编辑" @click="compile(item.id,index)" data-toggle="modal"
+									data-target="#myModal">
+									<span>编辑</span>
+								</a>
+								<a title="删除" @click="del(item.id)">
+									<span>删除</span>
+								</a>
+							</td>
+							<!-- 模态框 -->
+							<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+								aria-labelledby="myModalLabel" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h4 class="modal-title" id="myModalLabel">
+												数据编辑
+											</h4>
+										</div>
+										<div class="modal-body">
+											<form role="form">
+												<div class="form-group">
+													<label>课程中心</label>
+													<input type="text" class="form-control " name="kczx" placeholder="文本输入"
+														v-model="kczx">
+													<label>课程类型</label>
+													<input type="text" class="form-control " name="kclx" placeholder="文本输入"
+														v-model="kclx">
+													<label>类型</label>
+													<!-- <textarea class="form-control bz" rows="3" v-model="bz"></textarea> -->
+													<input v-for="(a,i) in lx" :key="i" type="text"
+														class="form-control bz" placeholder="文本输入" v-model="lx[i]" name="lx">
+													<a style="margin: 50%;" @click="pop_up">
+														<span class="glyphicon glyphicon-plus"></span>
+													</a>
+												</div>
+
+											</form>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+											</button>
+											<button type="button" class="btn btn-primary" @click="put_in()">
+												提交更改
+											</button>
+										</div>
+									</div><!-- /.modal-content -->
+								</div><!-- /.modal -->
+							</div>
+						</tr>
+						<tr>
+							<td colspan="5">
+								<a style="margin: 50%;" @click="add()"  data-toggle="modal" data-target="#myModal">
+									<span class="glyphicon glyphicon-plus"></span>
+								</a>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+		<script type="text/javascript">
+			new Vue({
+				el: '#app',
+				data: {
+					list: [],
+					kczx: '',
+					kclx: '',
+					lx: [],
+					newLx: '',
+					id: 0
+				},
+				methods: {
+					// 提交
+					put_in() {
+						// console.log(this.list.length)
+						var kczx = $('input[name="kczx"]').val();
+						var kclx = $('input[name="kclx"]').val();
+						// var lx = $('input[name="lx"]').val();
+						// console.log(kczx,kclx,this.lx)
+						this.kczx=kczx
+						this.kclx=kclx
+						if (this.kczx == '' || this.kclx == '' || this.lx == '') {
+							alert('不能为空')
+							return false
+						}
+						this.newLx = ''
+						for (var i = 0; i < this.lx.length; i++) {
+							if (this.lx[i] != '') {
+								console.log(this.lx[i])
+								this.newLx += this.lx[i] + ','
+							}
+						}
+						this.newLx = this.newLx.substring(0, this.newLx.length - 1)
+						// console.log(this.newLx)
+						// console.log(this.id)
+						var url = "http://192.168.0.68/hd_guanwang/admin/php/add_course_center.php?id=" + this.id + "&kczk=" + this.kczx + "&kclx=" +this.kclx + '&newLx=' + this.newLx
+						axios.get(url).then(res => {
+							console.log(res)
+							if (res.data == 'ok') {
+								$('#myModal').modal('hide')
+								alert('修改成功')
+								this.load()
+							} else {
+								alert('修改失败')
+							}
+						})
+
+					},
+					// 添加
+					add(){
+						this.list.push({})
+						this.id='course_center'
+						this.kczx= ''
+						this.kclx= ''
+						this.lx= []
+					},
+					// 模态框
+					compile(id, index) {
+						this.load()
+						console.log(index)
+						this.id = id
+						this.kczx = this.list[index].title
+						this.kclx = this.list[index].bodyTitle
+						this.lx = this.list[index].bodyItem
+					},
+					// 添加input
+					pop_up() {
+						this.lx.push('')
+					},
+					// 删除
+					del(index) {
+						console.log(index)
+						let url="http://192.168.0.68/hd_guanwang/admin/php/del_course_center.php?id="+index
+						axios.get(url).then(res=>{
+							console.log(res)
+							if(res.data=='ok'){
+								alert('删除成功')
+								this.load()
+							}
+						})
+					},
+					load() {
+						let url = 'http://192.168.0.68/hd_guanwang/admin/php/course_center.php?id=all'
+						axios.get(url).then(res => {
+							console.log(res.data)
+							this.list = res.data
+						})
+					},
+				},
+				mounted() {
+					this.load()
+				}
+			})
+		</script>
+	</body>
+</html>

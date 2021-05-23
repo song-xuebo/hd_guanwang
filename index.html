@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title>辉达</title>
+		<link rel="icon" href="./images/logos.svg" sizes="50x50">
 		<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
 		<script src="./js/axios.min.js"></script>
 		<script src="https://cdn.bootcdn.net/ajax/libs/echarts/3.6.0/echarts.min.js"></script>
@@ -12,6 +13,8 @@
 		<link href="https://cdn.bootcdn.net/ajax/libs/animate.css/4.1.1/animate.compat.min.css" rel="stylesheet">
 		<!-- <script src="./map/js/china.js"></script> -->
 		<script src="./js/china.js"></script>
+		<script type="text/javascript" src="https://bot.4paradigm.com/web/assets/ics-web-sdk-js.js"></script>
+		
 		<style>
 			
 		</style>
@@ -66,7 +69,7 @@
 				<!-- banner下收费标准 -->
 				<div id="bannerNext" v-if="bannerNextshow==true">
 					<div class="bannerNext lat">
-						<div v-for="item in bannerNext" class="bannerNextText">
+						<div v-for="item in bannerNext" class="bannerNextText"  @click="IcsWebSdkJs">
 							<div
 								style="width: 27px; height: 23x; display: flex; align-items: center; margin-right: 18px;">
 								<img :src="item.icon" :alt="item.icon" style="width: 100%; ">
@@ -105,15 +108,15 @@
 								</div>
 								<div class="synopsis_content_b">
 									<h4>{{item.title}}</h4>
-									<div class="synopsis_content_b_btn" :style="{background:item.color}">
+									<div  @click="IcsWebSdkJs" class="synopsis_content_b_btn" :style="{background:item.color}">
 										<div style="width: 33px; height: 33px; margin-right: 20px;">
-											<img src="./images/zhangjiekecheng.svg" alt="" style="width: 100%;">
+											<img src="./images/课程大纲icon.svg" alt="" style="width: 100%;">
 										</div>
 										课程大纲
 									</div>
-									<div class="synopsis_content_b_btn" :style="{background:item.color}">
+									<div  @click="IcsWebSdkJs" class="synopsis_content_b_btn" :style="{background:item.color}">
 										<div style="width: 33px; height: 33px; margin-right: 20px;">
-											<img src="./images/mianfeishiting.svg"  alt="" style="width: 100%;">
+											<img src="./images/试听.svg"  alt="" style="width: 100%;">
 										</div>
 										免费试听
 									</div>
@@ -122,7 +125,7 @@
 						</div>
 					</div>
 					<!--立即咨询按钮 -->
-					<div class="centreBtn">
+					<div class="centreBtn" @click="IcsWebSdkJs">
 						立即咨询
 					</div>
 					<!-- 课程大纲 -->
@@ -198,7 +201,7 @@
 						</div>
 					</div>
 					<!-- 哪个学科更适合你 按钮 -->
-					<div class="centreBtn">
+					<div class="centreBtn"  @click="IcsWebSdkJs">
 						哪个学科更适合你
 					</div>
 				</div>
@@ -313,7 +316,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="centreBtn">
+					<div class="centreBtn"  @click="IcsWebSdkJs">
 						咨询更多课程信息
 					</div>
 				</div>
@@ -353,7 +356,7 @@
 						</div>
 					</div>
 
-					<div class="centreBtns">
+					<div class="centreBtns"  @click="IcsWebSdkJs">
 						咨询课程信息
 					</div>
 				</div>
@@ -421,9 +424,8 @@
 								</div>
 							</div>
 						</div>
-
 					</div>
-					<div class="centreBtn">
+					<div class="centreBtn"  @click="IcsWebSdkJs">
 						咨询基站信息
 					</div>
 				</div>
@@ -446,7 +448,7 @@
 							<h4 style="width: 120px; height: 42px; font-size: 28px; margin-bottom: 24px;">学院资讯</h4>
 							<div style="display: flex;">
 								<div class="dynamicBox_divAImg" style="overflow: hidden; text-align: center;">
-									<img :src="dynamic.img" alt="" style="height: 100%;">
+									<img :src="dynamic.img" alt="" style="height: 100%; width: 100%;">
 								</div>
 								<div style="width: calc(100% - 360px);">
 									<div class="subtitle" style="" v-for="item in dynamic.mesArr">
@@ -468,11 +470,11 @@
 								<div style="cursor: pointer; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 22px;"
 									v-for="(item,index) in dynamicItem" @click="dynamicItemClick(item)">
 									<span class="dynamicBox_divBSpan" v-if="index==0"
-										style="background:#4A4A4A; color:#fff">{{index+1}}</span>
+										style="background:#FF7E00; color:#fff">{{index+1}}</span>
 									<span class="dynamicBox_divBSpan" v-if="index==1"
-										style="background:#808080; color:#fff">{{index+1}}</span>
+										style="background:rgba(255,126,0,.6); color:#fff">{{index+1}}</span>
 									<span class="dynamicBox_divBSpan" v-if="index==2"
-										style="background:#B6B6B6; color:#fff">{{index+1}}</span>
+										style="background:rgba(255,126,0,.3); color:#fff">{{index+1}}</span>
 									<span class="dynamicBox_divBSpan" v-if="index>2">{{index+1}}</span>
 									{{item.message}}
 								</div>
@@ -484,7 +486,7 @@
 					<div id="headline">
 						<p class="headline_tit">校园环境</p>
 						<p class="headline_titNext">高配置学习环境让你安心学习</p>
-						<div
+						<div 
 							style="position: absolute; left:50%;top:50px; margin-left: -130px; opacity:0.3; width: 35px; height: 35px; background-color: #6232E5; border-radius: 50%;">
 						</div>
 						<div
@@ -557,6 +559,8 @@
 			var vm = new Vue({
 				el: '#app',
 				data: {
+					// imgUrl:"http://192.168.0.68/hd_guanwang/admin/php/images/",
+					url:"http://192.168.0.68/hd_guanwang/admin/php/",
 					uploadShow:false,
 					teamTalents: [ //人才培训及发展计划
 						{
@@ -996,7 +1000,8 @@
 						"辉达精神",
 						"关于辉达"
 					],
-					url:"http://192.168.0.30/admin/php/"
+					dataItem:[]//课程大纲的所有数据
+					
 				},
 				methods: {
 					skip(index){
@@ -1024,6 +1029,7 @@
 						let campus=this.url+"environment.php?name="+val
 						axios.get(campus).then(data => {
 							this.campusImgs=data.data
+							console.log(this.campusImgs)
 						})
 					},
 					campusNavClick(val, index) {
@@ -1279,12 +1285,13 @@
 						})
 					},
 					outlineItem(val) {
-						let url=this.url+"course_center.php?id="+val
-						axios.get(url).then(data=>{
-							let dataItem=data.data
-							this.outlinebodyTitleA=dataItem.bodyTitle
-							this.outlinebodyTitleItem=dataItem.bodyItem
+						this.dataItem.forEach(item=>{
+							if(val.title==item.title){
+								this.outlinebodyTitleA=item.bodyTitle
+								this.outlinebodyTitleItem=item.bodyItem
+							}
 						})
+						
 					},
 					topText() {
 						this.topTextShow = true
@@ -1339,7 +1346,7 @@
 							"color": "#3258E5"
 						})
 						console.log(item,index)
-						this.outlineItem(index+1)
+						this.outlineItem(item)
 						this.courseItems.forEach((items,indexs) => {
 								if (items.title==item.title) {
 									items.img=items.iconA
@@ -1348,8 +1355,11 @@
 								}
 						})
 						
+					},
+					
+					IcsWebSdkJs(){
+						IcsWebSdkJs.show()
 					}
-
 				},
 				mounted() {
 					$(document).scroll(function(){
@@ -1419,6 +1429,8 @@
 						}, 2000)
 					// 接口地址
 					// 轮播图
+					IcsWebSdkJs.init('https://bot.4paradigm.com/web/chat/29186/36d37c38-4d44-4576-90fb-03c7c44b4911')
+					this.IcsWebSdkJs()
 					let carouse=this.url+"banners.php?id=5"
 					axios.get(carouse).then(data => {
 						if(data.status==200){
@@ -1426,12 +1438,27 @@
 							console.log(this.uploadShow)
 							clearInterval(set)
 							this.srcImg=data.data.imgUrls
+							console.log(this.srcImg)
 						}
 					})
 					// 师资
 					let teacherUrl=this.url+"faculty.php"
 					axios.get(teacherUrl).then(data => {
 						this.teacherItem=data.data
+					})
+					// 课程大纲
+					let url=this.url+"course_center.php?id=all"
+					axios.get(url).then(data=>{
+						this.dataItem=data.data
+						// 页面初始化是默认数据
+						console.log(this.dataItem,"this.dataItem")
+						this.dataItem.forEach(item=>{
+							if(this.courseItems[0].title==item.title){
+								this.outlinebodyTitleA=item.bodyTitle
+								this.outlinebodyTitleItem=item.bodyItem
+							}
+						})
+						
 					})
 					// 新闻资讯
 					let press=this.url+"dynamic.php"

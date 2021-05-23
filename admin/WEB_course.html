@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Web前端课程大纲</title>
+		<link rel="stylesheet" type="text/css" href="css/public.css" />
+		<link href="css/adminStyle.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" type="text/css" href="css/mui.css" />
+		<link rel="stylesheet" type="text/css" href="css/banner.css" />
+		<link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.min.css" />
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/mui.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/axios.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+		<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<div class="wrap">
+				<div class="page-title">
+					<span class="modular fl"><i class="add_user"></i><em>Web前端课程大纲</em></span>
+				</div>
+				<form>
+					<table class="list-style" style="text-align: center;">
+						<tr style="text-align: center;">
+							<!-- <td style="width:10%;">类型</td> -->
+							<td style="width:8%;">标题</td>
+							<td style="width:7%;">小标题</td>
+							<td style="width:5%;">课时</td>
+							<td style="width:15%;">主要内容</td>
+							<td style="width:15%;">可解决问题</td>
+							<td style="width:15%;">掌握能力</td>
+							<td style="width:8%;">编辑</td>
+						</tr>
+						<tr  v-for="(item,index) in list" :key="index">
+							<!-- <td >{{item.title}}</td> -->
+							<td>{{item.ui_title}}</td>
+							<td>{{item.small_title}}</td>
+							<td>{{item.ui_hour}}</td>
+							<td style="text-align: left;">
+								<p v-for="(conB,i) in item.conB" :key="i">{{i+1}}、{{conB}}</p>
+							</td>
+							<td style="text-align: left;">
+								<p v-for="(conC,i) in item.conC" :key="i">{{i+1}}、{{conC}}</p>
+							</td>
+							<td style="text-align: left;">
+								<p v-for="(conD,i) in item.conD" :key="i">{{i+1}}、{{conD}}</p>
+							</td>
+							<td>
+								<a title="编辑" @click="compile(item.id,index)" data-toggle="modal"
+									data-target="#myModal">
+									<span>编辑</span>
+								</a>
+								<a title="删除" @click="del(item.id)">
+									<span>删除</span>
+								</a>
+							</td>
+							<!-- 模态框 -->
+							<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+								aria-labelledby="myModalLabel" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h4 class="modal-title" id="myModalLabel">
+												数据编辑
+											</h4>
+										</div>
+										<div class="modal-body">
+											<form role="form">
+												<div class="form-group">
+													<label>标题</label>
+													<input type="text" v-model="ui_title" class="form-control " placeholder="文本输入">
+													<label>小标题</label>
+													<input type="text" v-model="small_title" class="form-control " placeholder="文本输入">
+													<label>课时</label>
+													<input type="text" v-model="ui_hour"  class="form-control " placeholder="文本输入">
+													<label>主要内容</label>
+													<!-- <textarea rows="3" cols="1" v-for="conb in conB" :value="conb" class="form-control " placeholder="文本输入"></textarea> -->
+													<textarea rows="3" cols="1" v-for="(conb,b) in conB" v-model="conB[b]" class="form-control " placeholder="文本输入"></textarea>
+													<a style="margin: 50%;" @click="pop_up(conB)">
+														<span class="glyphicon glyphicon-plus"></span>
+													</a>
+													<label>可解决问题</label>
+													<textarea rows="3" cols="1" v-for="(conc,c) in conC"  v-model="conC[c]" class="form-control " placeholder="文本输入"></textarea>
+													<a style="margin: 50%;" @click="pop_up(conC)">
+														<span class="glyphicon glyphicon-plus"></span>
+													</a>
+													<label>掌握能力</label>
+													<textarea rows="3" cols="1" v-for="(cond,d) in conD"  v-model="conD[d]" class="form-control " placeholder="文本输入"></textarea>
+													<a style="margin: 50%;" @click="pop_up(conD)">
+														<span class="glyphicon glyphicon-plus"></span>
+													</a>
+												</div>
+
+											</form>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+											</button>
+											<button type="button" class="btn btn-primary" @click="put_in()">
+												提交更改
+											</button>
+										</div>
+									</div><!-- /.modal-content -->
+								</div><!-- /.modal -->
+							</div>
+						</tr>
+						<tr>
+							<td colspan="7">
+								<a style="margin: 50%;" @click="add()"  data-toggle="modal" data-target="#myModal">
+									<span class="glyphicon glyphicon-plus"></span>
+								</a>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+		<script type="text/javascript">
+			new Vue({
+				el: '#app',
+				data: {
+					list: [],
+					newLx: '', 
+					title:'Web前端',
+					ui_title:'', // 标题
+					small_title:'',
+					ui_hour:'',  // 课时
+					conB:[],   // 主要内容
+					conC:[],   // 可解决问题
+					conD:[],    // 掌握能力
+					id:0
+				},
+				methods: {
+					// 提交
+					put_in() {
+						console.log(this.title,this.ui_title,this.small_title,this.ui_hour,this.conB,this.conC,this.conD)
+						if (this.ui_title == '' || this.small_title == '' || this.ui_hour == '' || this.conB == '' || this.conC == '' || this.conD == '') {
+							alert('不能为空')
+							return false
+						}
+						console.log(JSON.stringify(this.conB))
+						console.log(this.id)
+						var url = "http://192.168.0.68/hd_guanwang/admin/php/add_ui_course_center.php?id=" + this.id + "&title=" + this.title+ "&ui_title=" + this.ui_title + "&small_title=" + this.small_title + "&ui_hour=" +this.ui_hour + '&conB=' + JSON.stringify(this.conB) + '&conC=' + JSON.stringify(this.conC) + '&conD=' + JSON.stringify(this.conD)
+						axios.get(url).then(res => {
+							console.log(res)
+							if (res.data == 'ok') {
+								$('#myModal').modal('hide')
+								alert('修改成功')
+								this.load()
+							} else {
+								alert('修改失败')
+							}
+						})
+					},
+					// 添加
+					add(){
+						this.list.push({})
+						this.id='add'
+						this.ui_title=''
+						this.small_title=''
+						this.ui_hour=''
+						this.conB=[]
+						this.conC=[]
+						this.conD=[]
+					},
+					// 模态框
+					compile(id, index) {
+						console.log(this.list[index])
+						console.log(this.list[index].title)
+						this.id=this.list[index].id
+						this.ui_title=this.list[index].ui_title
+						this.small_title=this.list[index].small_title
+						this.ui_hour=this.list[index].ui_hour
+						this.conB=this.list[index].conB
+						this.conC=this.list[index].conC
+						this.conD=this.list[index].conD
+					},
+					// 添加input
+					pop_up(item) {
+						this.load()
+						item.push('')
+					},
+					// 删除
+					del(index) {
+						console.log(index)
+						let url="http://192.168.0.68/hd_guanwang/admin/php/del_ui_course_center.php?id="+index
+						axios.get(url).then(res=>{
+							console.log(res)
+							if(res.data=='ok'){
+								alert('删除成功')
+								this.load()
+							}
+						})
+					},
+					load() {
+						let url = 'http://192.168.0.68/hd_guanwang/admin/php/ui_course_center.php?title=Web前端'
+						axios.get(url).then(res => {
+							console.log(res.data.data.all)
+							this.list = res.data.data.all
+						})
+					},
+				},
+				mounted() {
+					this.load()
+				}
+			})
+		</script>
+	</body>
+</html>
