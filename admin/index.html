@@ -51,7 +51,7 @@
 				$('#pass').focus();
 				return;
 			}
-			let url='http://192.168.0.68/hd_guanwang/admin/php/user.php?user='+user+'&password='+pass;
+			let url='http://localhost/hd_guanwang/admin/php/user.php?user='+user+'&password='+pass;
 			axios.get(url).then(res=>{
 				console.log(res)
 				if(res.data=='ok'){

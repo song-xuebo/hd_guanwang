@@ -137,7 +137,7 @@
 							return false;
 						}
 						// console.log(this.id)
-						var url = "http://192.168.0.68/hd_guanwang/admin/php/add_dynamic.php?id="+this.id+"&img="+imgs+"&message="+this.message+"&info="+JSON.stringify(this.mesArr)
+						var url = "http://localhost/hd_guanwang/admin/php/add_dynamic.php?id="+this.id+"&img="+imgs+"&message="+this.message+"&info="+JSON.stringify(this.mesArr)
 						axios.get(url).then(res => {
 							console.log(res)
 							if (res.data == 'ok') {
@@ -175,7 +175,7 @@
 					// 删除
 					del(index) {
 						console.log(index)
-						let url="http://192.168.0.68/hd_guanwang/admin/php/del_dynamic.php?id="+index
+						let url="http://localhost/hd_guanwang/admin/php/del_dynamic.php?id="+index
 						axios.get(url).then(res=>{
 							console.log(res)
 							if(res.data=='ok'){
@@ -186,7 +186,7 @@
 					},
 					// 初始化图片
 					load() {
-						let url = "http://192.168.0.68/hd_guanwang/admin/php/dynamic.php"
+						let url = "http://localhost/hd_guanwang/admin/php/dynamic.php"
 						axios.get(url).then(res => {
 							console.log(res.data)
 							this.list = res.data
@@ -194,6 +194,9 @@
 					},
 				},
 				mounted() {
+					if(window.sessionStorage.getItem('user')==''|| window.sessionStorage.getItem('user')==null){
+						window.location.href="index.html"
+					}
 					this.load()
 				}
 			})

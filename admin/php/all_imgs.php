@@ -24,7 +24,7 @@
 	 $list=getDir('images');
 	  for($i=0;$i<count($list);$i++)
 	  {
-	  $arr.='http://192.168.0.68/hd_guanwang/admin/php/'.$list[$i].',';//截取字符串
+	  $arr.='http://localhost/hd_guanwang/admin/php/'.$list[$i].',';//截取字符串
 	  }
 	  $newarr = substr($arr,0,strlen($arr)-1);
 	  $arrs= explode(',',$newarr);

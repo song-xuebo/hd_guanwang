@@ -2,7 +2,9 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>辉达</title>
+		<title>辉达教育-北京辉达永盛教育科技有限公司</title>
+		<meta name="keywords" content="辉达永盛教育，求精求强不求大，只做引领和创新。"/>
+		<meta name="description" content="专注IT技术岗前实训、java培训、web前端培训、UI设计培训、优秀IT培训机构、校企共建协同育人。"/>
 		<link rel="icon" href="./images/logos.svg" sizes="50x50">
 		<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
 		<script src="./js/axios.min.js"></script>
@@ -586,7 +588,7 @@ x				<div class="develop lat" v-if="developImg[0]!=''">
 							['']
 						],//所有发展路径图片
 						uploadShow: false,
-						url:"http://192.168.0.68/hd_guanwang/admin/php/",
+						url:"http://localhost/hd_guanwang/admin/php/",
 						searchIndex: 1,
 						topLogo: "Java大数据",
 						teamBoxItem: [ //人才筛选4项标准
@@ -1221,8 +1223,13 @@ x				<div class="develop lat" v-if="developImg[0]!=''">
 					},
 					mounted() {
 						// 客服
-						IcsWebSdkJs.init('https://bot.4paradigm.com/web/chat/29186/36d37c38-4d44-4576-90fb-03c7c44b4911')
+						IcsWebSdkJs.init('https://bot.4paradigm.com/web/chat/29186/38e86931-4096-4c0c-aeef-d1331f07e93f')
 						this.IcsWebSdkJs()
+						console.log($(".code-msg"),"OAUS哦还afahdsofahof")
+						// $(".code-msg").css({
+						// 	"display":"none"
+						// })
+						console.log(document.getElementsByClassName(".code-msg")[0])
 						//头部logo
 						this.searchIndex = window.location.search.substr(-1, 1) //相关专业
 						if (this.searchIndex == "") this.searchIndex = 1
@@ -1253,6 +1260,7 @@ x				<div class="develop lat" v-if="developImg[0]!=''">
 							}, 1000)
 						}, 2000)
 						// 轮播图
+						console.log(this.searchIndex,"this.searchIndex")
 						let carouse = this.url + "banners.php?id=" + this.searchIndex
 						axios.get(carouse).then(data => {
 							if (data.status == 200) {

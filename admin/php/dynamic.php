@@ -5,7 +5,7 @@
 		$res1=$conn->query($sql1);
 		while ($row = $res1->fetch_assoc()){
 			
-			$s='http://192.168.0.68/hd_guanwang/admin/php/images/'.$row['img'];
+			$s='http://localhost/hd_guanwang/admin/php/images/'.$row['img'];
 			unset($row['img']);
 			// echo $s;
 			// $s = substr($s,0,strlen($s)-1);

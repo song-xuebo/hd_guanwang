@@ -115,7 +115,7 @@
 					// 删除
 					del(index) {
 						console.log(index)
-						let url="http://192.168.0.68/hd_guanwang/admin/php/del_faculty.php?id="+index
+						let url="http://localhost/hd_guanwang/admin/php/del_faculty.php?id="+index
 						axios.get(url).then(res=>{
 							// console.log(res)
 							if(res.data=='ok'){
@@ -142,7 +142,7 @@
 						}
 						// console.log(this.id)
 						// console.log(this.avatar)
-						var url = "http://192.168.0.68/hd_guanwang/admin/php/add_faculty.php?id="+this.id+"&img="+imgs+"&user="+this.name+"&info="+this.intro+"&course="+this.course
+						var url = "http://localhost/hd_guanwang/admin/php/add_faculty.php?id="+this.id+"&img="+imgs+"&user="+this.name+"&info="+this.intro+"&course="+this.course
 						axios.get(url).then(res => {
 							console.log(res)
 							if (res.data == 'ok') {
@@ -185,7 +185,7 @@
 					// },
 					// 初始化图片
 					load() {
-						let url = "http://192.168.0.68/hd_guanwang/admin/php/faculty.php?name=all"
+						let url = "http://localhost/hd_guanwang/admin/php/faculty.php?name=all"
 						axios.get(url).then(res => {
 							// console.log(res.data)
 							this.list = res.data
@@ -193,6 +193,9 @@
 					},
 				},
 				mounted() {
+					if(window.sessionStorage.getItem('user')==''|| window.sessionStorage.getItem('user')==null){
+						window.location.href="index.html"
+					}
 					this.load()
 				}
 			})

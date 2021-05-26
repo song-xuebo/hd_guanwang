@@ -5,7 +5,7 @@
 				$sql="select * from news where id='$id'";
 				$res=$conn->query($sql);
 				$row=$res->fetch_assoc();
-				$s='http://192.168.0.68/hd_guanwang/admin/php/images/'.$row['title_img'];
+				$s='http://localhost/hd_guanwang/admin/php/images/'.$row['title_img'];
 				unset($row['title_img']);
 				$row['title_img']=$s;
 				$info['img']=$row['title_img'];//图片

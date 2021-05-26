@@ -133,7 +133,7 @@
 						this.newLx = this.newLx.substring(0, this.newLx.length - 1)
 						// console.log(this.newLx)
 						// console.log(this.id)
-						var url = "http://192.168.0.68/hd_guanwang/admin/php/add_course_center.php?id=" + this.id + "&kczk=" + this.kczx + "&kclx=" +this.kclx + '&newLx=' + this.newLx
+						var url = "http://localhost/hd_guanwang/admin/php/add_course_center.php?id=" + this.id + "&kczk=" + this.kczx + "&kclx=" +this.kclx + '&newLx=' + this.newLx
 						axios.get(url).then(res => {
 							console.log(res)
 							if (res.data == 'ok') {
@@ -170,7 +170,7 @@
 					// 删除
 					del(index) {
 						console.log(index)
-						let url="http://192.168.0.68/hd_guanwang/admin/php/del_course_center.php?id="+index
+						let url="http://localhost/hd_guanwang/admin/php/del_course_center.php?id="+index
 						axios.get(url).then(res=>{
 							console.log(res)
 							if(res.data=='ok'){
@@ -180,7 +180,7 @@
 						})
 					},
 					load() {
-						let url = 'http://192.168.0.68/hd_guanwang/admin/php/course_center.php?id=all'
+						let url = 'http://localhost/hd_guanwang/admin/php/course_center.php?id=all'
 						axios.get(url).then(res => {
 							console.log(res.data)
 							this.list = res.data
@@ -188,6 +188,9 @@
 					},
 				},
 				mounted() {
+					if(window.sessionStorage.getItem('user')==''|| window.sessionStorage.getItem('user')==null){
+						window.location.href="index.html"
+					}
 					this.load()
 				}
 			})

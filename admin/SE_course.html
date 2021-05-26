@@ -142,7 +142,7 @@
 						}
 						console.log(JSON.stringify(this.conB))
 						console.log(this.id)
-						var url = "http://192.168.0.68/hd_guanwang/admin/php/add_ui_course_center.php?id=" + this.id + "&title=" + this.title+ "&ui_title=" + this.ui_title + "&small_title=" + this.small_title + "&ui_hour=" +this.ui_hour + '&conB=' + JSON.stringify(this.conB) + '&conC=' + JSON.stringify(this.conC) + '&conD=' + JSON.stringify(this.conD)
+						var url = "http://localhost/hd_guanwang/admin/php/add_ui_course_center.php?id=" + this.id + "&title=" + this.title+ "&ui_title=" + this.ui_title + "&small_title=" + this.small_title + "&ui_hour=" +this.ui_hour + '&conB=' + JSON.stringify(this.conB) + '&conC=' + JSON.stringify(this.conC) + '&conD=' + JSON.stringify(this.conD)
 						axios.get(url).then(res => {
 							console.log(res)
 							if (res.data == 'ok') {
@@ -185,7 +185,7 @@
 					// 删除
 					del(index) {
 						console.log(index)
-						let url="http://192.168.0.68/hd_guanwang/admin/php/del_ui_course_center.php?id="+index
+						let url="http://localhost/hd_guanwang/admin/php/del_ui_course_center.php?id="+index
 						axios.get(url).then(res=>{
 							console.log(res)
 							if(res.data=='ok'){
@@ -195,7 +195,7 @@
 						})
 					},
 					load() {
-						let url = 'http://192.168.0.68/hd_guanwang/admin/php/ui_course_center.php?title=软件测试'
+						let url = 'http://localhost/hd_guanwang/admin/php/ui_course_center.php?title=软件测试'
 						axios.get(url).then(res => {
 							console.log(res.data.data.all)
 							this.list = res.data.data.all
@@ -203,6 +203,9 @@
 					},
 				},
 				mounted() {
+					if(window.sessionStorage.getItem('user')==''|| window.sessionStorage.getItem('user')==null){
+						window.location.href="index.html"
+					}
 					this.load()
 				}
 			})

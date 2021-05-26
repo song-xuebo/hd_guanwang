@@ -14,7 +14,7 @@
 					$row['imgUrls']=$vegetables;
 					$s=null;
 					foreach($row['imgUrls'] as $value){
-						$s.='http://192.168.0.68/hd_guanwang/admin/php/images/'.$value.',';
+						$s.='http://localhost/hd_guanwang/admin/php/images/'.$value.',';
 					}
 					$s = substr($s,0,strlen($s)-1);
 					$s = explode(',',$s);
@@ -36,7 +36,7 @@
 			$arrs['imgUrls']=$vegetables;
 			$s=null;
 			foreach($arrs['imgUrls'] as $value){
-				$s.='http://192.168.0.68/hd_guanwang/admin/php/images/'.$value.',';
+				$s.='http://localhost/hd_guanwang/admin/php/images/'.$value.',';
 			}
 			$s = substr($s,0,strlen($s)-1);
 			$s = explode(',',$s);

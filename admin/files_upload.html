@@ -18,7 +18,7 @@
 				<div class="page-title">
 					<span class="modular fl"><i class="add_user"></i><em>图片上传</em></span>
 				</div>
-				<form role="form" action="http://192.168.0.68/hd_guanwang/admin/php/upload.php" method="post" enctype="multipart/form-data">
+				<form role="form" action="http://localhost/hd_guanwang/admin/php/upload.php" method="post" enctype="multipart/form-data">
 					<div class="form-group modal-footer">
 						<input type="file" class="file" value="上传图片" name="file">
 						<input type="submit" name="sub" @click="sub" class="btn btn-primary" />
@@ -46,7 +46,7 @@
 			methods: {
 				// 初始化图片
 				loadImage(){
-					let url="http://192.168.0.68/hd_guanwang/admin/php/all_imgs.php"
+					let url="http://localhost/hd_guanwang/admin/php/all_imgs.php"
 					axios.get(url).then(res=>{
 						this.list=res.data
 						// console.log(this.list)
@@ -63,6 +63,9 @@
 				}
 			},
 			mounted() {
+				if(window.sessionStorage.getItem('user')==''|| window.sessionStorage.getItem('user')==null){
+					window.location.href="index.html"
+				}
 				this.loadImage()
 			}
 		})

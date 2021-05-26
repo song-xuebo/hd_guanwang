@@ -127,7 +127,7 @@
 						// console.log(this.id,this.index,this.name,this.value,this.base,this.baseImg,this.text,this.phone)
 						// console.log(this.baseImg)
 						var imgs = $('input[name="imgs"]').val();
-						var url = "http://192.168.0.68/hd_guanwang/admin/php/add_echarts.php?id=" + this.id + "&name=" + this.name +"&value=" + this.value + "&base=" + this.base + "&baseImg=" + imgs + "&text=" + this.text + "&phone=" + this.phone
+						var url = "http://localhost/hd_guanwang/admin/php/add_echarts.php?id=" + this.id + "&name=" + this.name +"&value=" + this.value + "&base=" + this.base + "&baseImg=" + imgs + "&text=" + this.text + "&phone=" + this.phone
 						axios.get(url).then(res => {
 							console.log(res)
 							if (res.data == 'ok') {
@@ -173,7 +173,7 @@
 					// 删除
 					del(index) {
 						console.log(index)
-						let url = "http://192.168.0.68/hd_guanwang/admin/php/del_echarts.php?id=" + index
+						let url = "http://localhost/hd_guanwang/admin/php/del_echarts.php?id=" + index
 						axios.get(url).then(res => {
 							console.log(res)
 							if (res.data == 'ok') {
@@ -184,7 +184,7 @@
 					},
 					// 初始化图片
 					load() {
-						let url = "http://192.168.0.68/hd_guanwang/admin/php/echarts.php"
+						let url = "http://localhost/hd_guanwang/admin/php/echarts.php"
 						axios.get(url).then(res => {
 							console.log(res.data)
 							this.list = res.data
@@ -192,6 +192,9 @@
 					},
 				},
 				mounted() {
+					if(window.sessionStorage.getItem('user')==''|| window.sessionStorage.getItem('user')==null){
+						window.location.href="index.html"
+					}
 					this.load()
 				}
 			})

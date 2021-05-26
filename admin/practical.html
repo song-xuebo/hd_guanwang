@@ -100,7 +100,7 @@
 						return false
 					}
 					console.log(this.id)
-					var url = "http://192.168.0.68/hd_guanwang/admin/php/add_practical.php?id=" + this.id + "&sense=" + this.sense+ "&guarantee=" + this.guarantee + "&img=" + this.img 
+					var url = "http://localhost/hd_guanwang/admin/php/add_practical.php?id=" + this.id + "&sense=" + this.sense+ "&guarantee=" + this.guarantee + "&img=" + this.img 
 					axios.get(url).then(res => {
 						console.log(res)
 						if (res.data == 'ok') {
@@ -124,13 +124,16 @@
 				},
 				// 初始化图片
 				loadImage(){
-					let url="http://192.168.0.68/hd_guanwang/admin/php/practical.php"
+					let url="http://localhost/hd_guanwang/admin/php/practical.php"
 					axios.get(url).then(res=>{
 						this.list=res.data
 					})
 				},
 			},
 			mounted() {
+				if(window.sessionStorage.getItem('user')==''|| window.sessionStorage.getItem('user')==null){
+					window.location.href="index.html"
+				}
 				this.loadImage()
 			}
 		})

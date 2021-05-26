@@ -18,7 +18,7 @@
 	<body>
 		<!-- 背景轮播 -->
 		<div id="box">
-			<div class="wrap">
+			<div class="wrap" style="overflow: auto;">
 				<div class="page-title">
 					<span class="modular fl"><i class="add_user"></i><em>轮播图背景</em></span>
 				</div>
@@ -95,7 +95,7 @@
 						} else {
 							uppic[index].setAttribute("disabled", "disabled")
 						}
-						var url = "http://192.168.0.68/hd_guanwang/admin/php/add_environment.php?name=" + this.name + "&imgUrls=" +this.newLx
+						var url = "http://localhost/hd_guanwang/admin/php/add_environment.php?name=" + this.name + "&imgUrls=" +this.newLx
 						axios.get(url).then(res => {
 							console.log(res)
 							if (res.data == 'ok') {
@@ -122,7 +122,7 @@
 				},
 				// 初始化图片
 				loadImage() {
-					let url = "http://192.168.0.68/hd_guanwang/admin/php/environment.php?name=all"
+					let url = "http://localhost/hd_guanwang/admin/php/environment.php?name=all"
 					axios.get(url).then(res => {
 						console.log(res.data)
 						this.list = res.data
@@ -130,6 +130,9 @@
 				}
 			},
 			mounted() {
+				if(window.sessionStorage.getItem('user')==''|| window.sessionStorage.getItem('user')==null){
+					window.location.href="index.html"
+				}
 				this.loadImage()
 			}
 		})
