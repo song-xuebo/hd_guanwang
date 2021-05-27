@@ -5,7 +5,7 @@
 				$res=$conn->query($sql);
 				while($row=$res->fetch_assoc()){
 					$titleObj['titles']=$row['small_title'];
-					$s='http://localhost/hd_guanwang/admin/php/images/'.$row['title_img'];
+					$s='./php/images/'.$row['title_img'];
 					unset($row['title_img']);
 					// echo $s;
 					// $s = substr($s,0,strlen($s)-1);
@@ -27,7 +27,7 @@
 				$res1=$conn->query($sql1);
 				while($row=$res1->fetch_assoc()){
 					$titleObj1['titles']=$row['small_title'];
-					$s='http://localhost/hd_guanwang/admin/php/images/'.$row['title_img'];
+					$s='./php/images/'.$row['title_img'];
 					unset($row['title_img']);
 					// echo $s;
 					// $s = substr($s,0,strlen($s)-1);
@@ -49,7 +49,7 @@
 				$res2=$conn->query($sql2);
 				while($row=$res2->fetch_assoc()){
 					$titleObj2['titles']=$row['small_title'];
-					$s='http://localhost/hd_guanwang/admin/php/images/'.$row['title_img'];
+					$s='./php/images/'.$row['title_img'];
 					unset($row['title_img']);
 					// echo $s;
 					// $s = substr($s,0,strlen($s)-1);

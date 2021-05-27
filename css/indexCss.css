@@ -12,6 +12,7 @@ img {
 	/* width: 100%; */
 }
 
+
 .lat {
 	width: 1400px;
 	margin: 0 auto;
@@ -702,6 +703,7 @@ img {
 .campusNavTopDiv:first-child {
 	padding-top: 6px;
 	border-top: 4px solid #000;
+	color:#3258E5;
 }
 
 .campusImg {
@@ -757,6 +759,7 @@ img {
 	width: 30%;
 	display: flex;
 	justify-content: space-around;
+	flex-wrap:wrap;
 }
 
 .footingBoxRight .footingBoxRightDiv {
@@ -769,7 +772,7 @@ img {
 .footingBoxRightDiv div {
 	width: calc(100% - 20px);
 	height: 108px;
-	margin-bottom: 32px;
+	margin-bottom: 12px;
 }
 
 .footingBox {

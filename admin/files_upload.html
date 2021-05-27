@@ -12,13 +12,13 @@
 		<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	</head>
 	<body style="background-color: #EEEEEE;">
-		<!-- 背景轮播 -->
+		<!-- 图片上传 -->
 		<div id="box">
 			<div class="wrap" style="padding:0;">
 				<div class="page-title">
 					<span class="modular fl"><i class="add_user"></i><em>图片上传</em></span>
 				</div>
-				<form role="form" action="http://localhost/hd_guanwang/admin/php/upload.php" method="post" enctype="multipart/form-data">
+				<form role="form" action="http://www.hd512.com/admin/php/upload.php" method="post" enctype="multipart/form-data">
 					<div class="form-group modal-footer">
 						<input type="file" class="file" value="上传图片" name="file">
 						<input type="submit" name="sub" @click="sub" class="btn btn-primary" />
@@ -41,20 +41,29 @@
 			data: {
 				list: [],
 				b:'',
-				newLx:[]
+				newLx:[],
+				imgSrc:"./php/",
+				// url:"http://localhost/hd_guanwang/admin/php/",//本地
+				url:"http://www.hd512.com/admin/php/"//线上
 			},
 			methods: {
 				// 初始化图片
 				loadImage(){
-					let url="http://localhost/hd_guanwang/admin/php/all_imgs.php"
+					let url=this.url+"all_imgs.php"
 					axios.get(url).then(res=>{
-						this.list=res.data
-						// console.log(this.list)
-						for (var i = 0; i < this.list.length; i++) {
-							this.b=this.list[i].lastIndexOf('/')
-							this.newLx.push(this.list[i].substring(this.b+1))
-						}
-						// console.log(this.newLx)
+						let datas=res.data
+						let arr=[]
+						datas.forEach(item=>{
+							if(item){
+								arr.push(this.imgSrc+item)
+								this.b=item.lastIndexOf('/')
+								console.log(this.b)
+								this.newLx.push(item.substring(this.b+1))
+							}
+						})
+						console.log(arr)
+						this.list = arr
+						
 					})
 				},
 				sub(){

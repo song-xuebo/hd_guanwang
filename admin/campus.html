@@ -16,7 +16,7 @@
 		<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	</head>
 	<body>
-		<!-- 背景轮播 -->
+		<!-- 校园环境 -->
 		<div id="box">
 			<div class="wrap" style="overflow: auto;">
 				<div class="page-title">
@@ -63,7 +63,10 @@
 		new Vue({
 			el: '#box',
 			data: {
-				list: []
+				list: [],
+				imgSrc:"./php/images/",
+				// url:"http://localhost/hd_guanwang/admin/php/",//本地
+				url:"http://www.hd512.com/admin/php/"//线上
 			},
 			methods: {
 				// 点击编辑切换按钮
@@ -95,7 +98,7 @@
 						} else {
 							uppic[index].setAttribute("disabled", "disabled")
 						}
-						var url = "http://localhost/hd_guanwang/admin/php/add_environment.php?name=" + this.name + "&imgUrls=" +this.newLx
+						var url = this.url+"add_environment.php?name=" + this.name + "&imgUrls=" +this.newLx
 						axios.get(url).then(res => {
 							console.log(res)
 							if (res.data == 'ok') {
@@ -122,10 +125,18 @@
 				},
 				// 初始化图片
 				loadImage() {
-					let url = "http://localhost/hd_guanwang/admin/php/environment.php?name=all"
+					let url = this.url+"environment.php?name=all"
 					axios.get(url).then(res => {
-						console.log(res.data)
-						this.list = res.data
+						let datas=res.data
+						datas.forEach(item=>{
+							// console.log(item,"s")
+							let arr=[]
+							item.img.forEach(itemImg=>{
+								arr.push(this.imgSrc+itemImg)
+							})
+							item.img=arr
+						})
+						this.list=datas
 					})
 				}
 			},

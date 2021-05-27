@@ -567,10 +567,13 @@ x				<div class="develop lat" v-if="developImg[0]!=''">
 								</div>
 								<p>扫码添加客服咨询</p>
 							</div>
+							<div style="width: 100%; margin-left: 40px;">
+								联系方式:13341088022
+							</div>
 						</div>
 					</div>
 					<div class="footingBox">
-						北京辉达IT科技有限公司 版权所有Copyright 2006-2021, All Rights Reserved 苏ICP备16007882号-1 营业执照 增值电信业务经营许可证
+						北京辉达IT科技有限公司 版权所有Copyright 2006-2021, All Rights Reserved 京ICP备13009754号
 					</div>
 				</div>
 			</div>
@@ -580,6 +583,7 @@ x				<div class="develop lat" v-if="developImg[0]!=''">
 				var vm = new Vue({
 					el: "#coursePage",
 					data: {
+						imgSrc:'./admin/php/images/',
 						developImg:[],//当前选中的图片
 						developItem:[
 							['./images/Java development.svg'],
@@ -588,7 +592,8 @@ x				<div class="develop lat" v-if="developImg[0]!=''">
 							['']
 						],//所有发展路径图片
 						uploadShow: false,
-						url:"http://localhost/hd_guanwang/admin/php/",
+						// url:"http://localhost/hd_guanwang/admin/php/",
+						url:"http://www.hd512.com/admin/php/",
 						searchIndex: 1,
 						topLogo: "Java大数据",
 						teamBoxItem: [ //人才筛选4项标准
@@ -1264,11 +1269,13 @@ x				<div class="develop lat" v-if="developImg[0]!=''">
 						let carouse = this.url + "banners.php?id=" + this.searchIndex
 						axios.get(carouse).then(data => {
 							if (data.status == 200) {
-								this.uploadShow = true
-								console.log(this.uploadShow)
+								this.srcImg=[]
+								this.uploadShow=true
 								clearInterval(set)
-								this.srcImg = data.data.imgUrls
-								console.log(this.srcImg)
+								let datas=data.data.imgUrls
+								datas.forEach(item=>{
+									this.srcImg.push(this.imgSrc+item)
+								})
 							}
 						})
 						// 课程大纲outlines: 
@@ -1280,17 +1287,30 @@ x				<div class="develop lat" v-if="developImg[0]!=''">
 						// 师资
 						let teacherUrl = this.url + "faculty.php"
 						axios.get(teacherUrl).then(data => {
-							this.teacherItem = data.data
+							// this.teacherItem = data.data
+							let datas=data.data
+							datas.forEach(item=>{
+								item.img=this.imgSrc+item.img
+							})
+							console.log(datas,"===============")
+							this.teacherItem=datas
 						})
 						// safeguardItem 实训保障1
 						let safUrl = this.url + "practical.php"
 						axios.get(safUrl).then(data => {
-							this.safeguardItem.safeguard=data.data[0]
+							let datas=data.data[0]
+							datas.img=this.imgSrc+datas.img
+							this.safeguardItem.safeguard=datas
 						})
 						//  实训保障2
 						let safsUrl = this.url + "practicals.php"
 						axios.get(safsUrl).then(data => {
-							this.safeguardItem.safeguardVs=data.data
+							console.log(data.data)
+							let datas=data.data
+							datas.forEach(item=>{
+								item.img=this.imgSrc+item.img
+							})
+							this.safeguardItem.safeguardVs=datas
 						})
 						// 学院资讯obtains
 						let obtainsUrl = this.url + "news.php"

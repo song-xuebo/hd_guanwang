@@ -130,7 +130,9 @@
 					conB:[],   // 主要内容
 					conC:[],   // 可解决问题
 					conD:[],    // 掌握能力
-					id:0
+					id:0,
+					// url:"http://localhost/hd_guanwang/admin/php/",//本地
+					url:"http://www.hd512.com/admin/php/"//线上
 				},
 				methods: {
 					// 提交
@@ -142,7 +144,7 @@
 						}
 						console.log(JSON.stringify(this.conB))
 						console.log(this.id)
-						var url = "http://localhost/hd_guanwang/admin/php/add_ui_course_center.php?id=" + this.id + "&title=" + this.title+ "&ui_title=" + this.ui_title + "&small_title=" + this.small_title + "&ui_hour=" +this.ui_hour + '&conB=' + JSON.stringify(this.conB) + '&conC=' + JSON.stringify(this.conC) + '&conD=' + JSON.stringify(this.conD)
+						var url = this.url+"add_ui_course_center.php?id=" + this.id + "&title=" + this.title+ "&ui_title=" + this.ui_title + "&small_title=" + this.small_title + "&ui_hour=" +this.ui_hour + '&conB=' + JSON.stringify(this.conB) + '&conC=' + JSON.stringify(this.conC) + '&conD=' + JSON.stringify(this.conD)
 						axios.get(url).then(res => {
 							console.log(res)
 							if (res.data == 'ok') {
@@ -185,7 +187,7 @@
 					// 删除
 					del(index) {
 						console.log(index)
-						let url="http://localhost/hd_guanwang/admin/php/del_ui_course_center.php?id="+index
+						let url=this.url+"del_ui_course_center.php?id="+index
 						axios.get(url).then(res=>{
 							console.log(res)
 							if(res.data=='ok'){
@@ -195,7 +197,7 @@
 						})
 					},
 					load() {
-						let url = 'http://localhost/hd_guanwang/admin/php/ui_course_center.php?title=UI/UE设计'
+						let url = this.url+'ui_course_center.php?title=UI/UE设计'
 						axios.get(url).then(res => {
 							console.log(res.data.data.all)
 							this.list = res.data.data.all

@@ -94,7 +94,10 @@
 				content:'',
 				img:'',
 				id:0,
-				newLx:''
+				newLx:'',
+				imgSrc:"./php/images/",
+				// url:"http://localhost/hd_guanwang/admin/php/",//本地
+				url:"http://www.hd512.com/admin/php/"//线上
 			},
 			methods: {
 				// 提交
@@ -114,7 +117,7 @@
 					this.newLx = this.newLx.substring(0, this.newLx.length - 1)
 					console.log(this.newLx)
 					console.log(this.id)
-					var url = "http://localhost/hd_guanwang/admin/php/add_practicals.php?id=" + this.id + "&title=" + this.title+ "&content=" + this.newLx + "&img=" + this.img 
+					var url = this.url+"add_practicals.php?id=" + this.id + "&title=" + this.title+ "&content=" + this.newLx + "&img=" + this.img 
 					axios.get(url).then(res => {
 						console.log(res)
 						if (res.data == 'ok') {
@@ -144,9 +147,15 @@
 				},
 				// 初始化图片
 				loadImage(){
-					let url="http://localhost/hd_guanwang/admin/php/practicals.php"
+					let url=this.url+"practicals.php"
 					axios.get(url).then(res=>{
-						this.list=res.data
+						console.log(res.data)
+						let datas=res.data
+						datas.forEach(item=>{
+							item.img=this.imgSrc+item.img
+							console.log(item)
+						})
+						this.list=datas
 					})
 				},
 			},

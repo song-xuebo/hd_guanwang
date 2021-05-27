@@ -12,7 +12,6 @@
 		<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	</head>
 	<body>
-		<!-- 背景轮播 -->
 		<div id="box">
 			<div class="wrap">
 				<div class="page-title">
@@ -101,7 +100,9 @@
 				title_img:'',
 				title_con:[],
 				newLx: [],
-				id:0
+				id:0,
+				// url:"http://localhost/hd_guanwang/admin/php/",//本地
+				url:"http://www.hd512.com/admin/php/"//线上
 			},
 			methods: {
 				// 提交
@@ -120,7 +121,7 @@
 					// console.log(this.newLx)
 					console.log(JSON.stringify(this.newLx) )
 					console.log(this.id)
-					var url = "http://localhost/hd_guanwang/admin/php/add_news.php?id=" + this.id + "&title=" + this.big_title+ "&small_title=" + this.small_title + "&title_img=" + this.title_img + "&title_con=" +  JSON.stringify(this.newLx)
+					var url = this.url+"add_news.php?id=" + this.id + "&title=" + this.big_title+ "&small_title=" + this.small_title + "&title_img=" + this.title_img + "&title_con=" +  JSON.stringify(this.newLx)
 					axios.get(url).then(res => {
 						console.log(res)
 						if (res.data == 'ok') {
@@ -148,7 +149,7 @@
 				// 删除
 				del(index) {
 					console.log(index)
-					let url="http://localhost/hd_guanwang/admin/php/del_news.php?id="+index
+					let url=this.url+"del_news.php?id="+index
 					axios.get(url).then(res=>{
 						console.log(res)
 						if(res.data=='ok'){
@@ -172,9 +173,8 @@
 				},
 				// 初始化图片
 				loadImage() {
-					let url = "http://localhost/hd_guanwang/admin/php/news.php"
+					let url = this.url+"news.php"
 					axios.get(url).then(res => {
-						console.log(res.data)
 						this.list = res.data
 					})
 				},

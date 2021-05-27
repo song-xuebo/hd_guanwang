@@ -107,7 +107,9 @@
 					kclx: '',
 					lx: [],
 					newLx: '',
-					id: 0
+					id: 0,
+					// url:"http://localhost/hd_guanwang/admin/php/",//本地
+					url:"http://www.hd512.com/admin/php/"//线上
 				},
 				methods: {
 					// 提交
@@ -133,7 +135,7 @@
 						this.newLx = this.newLx.substring(0, this.newLx.length - 1)
 						// console.log(this.newLx)
 						// console.log(this.id)
-						var url = "http://localhost/hd_guanwang/admin/php/add_course_center.php?id=" + this.id + "&kczk=" + this.kczx + "&kclx=" +this.kclx + '&newLx=' + this.newLx
+						var url = this.url+"add_course_center.php?id=" + this.id + "&kczk=" + this.kczx + "&kclx=" +this.kclx + '&newLx=' + this.newLx
 						axios.get(url).then(res => {
 							console.log(res)
 							if (res.data == 'ok') {
@@ -170,7 +172,7 @@
 					// 删除
 					del(index) {
 						console.log(index)
-						let url="http://localhost/hd_guanwang/admin/php/del_course_center.php?id="+index
+						let url=this.url+"del_course_center.php?id="+index
 						axios.get(url).then(res=>{
 							console.log(res)
 							if(res.data=='ok'){
@@ -180,7 +182,7 @@
 						})
 					},
 					load() {
-						let url = 'http://localhost/hd_guanwang/admin/php/course_center.php?id=all'
+						let url = this.url+'course_center.php?id=all'
 						axios.get(url).then(res => {
 							console.log(res.data)
 							this.list = res.data

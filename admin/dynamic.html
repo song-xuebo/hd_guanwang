@@ -117,6 +117,9 @@
 					mesCon:'',
 					index:0,
 					id:'',
+					imgSrc:"./php/images/",
+					// url:"http://localhost/hd_guanwang/admin/php/",//本地
+					url:"http://www.hd512.com/admin/php/"//线上
 				},
 				methods: {
 					// 添加input
@@ -137,7 +140,7 @@
 							return false;
 						}
 						// console.log(this.id)
-						var url = "http://localhost/hd_guanwang/admin/php/add_dynamic.php?id="+this.id+"&img="+imgs+"&message="+this.message+"&info="+JSON.stringify(this.mesArr)
+						var url = this.url+"add_dynamic.php?id="+this.id+"&img="+imgs+"&message="+this.message+"&info="+JSON.stringify(this.mesArr)
 						axios.get(url).then(res => {
 							console.log(res)
 							if (res.data == 'ok') {
@@ -175,7 +178,7 @@
 					// 删除
 					del(index) {
 						console.log(index)
-						let url="http://localhost/hd_guanwang/admin/php/del_dynamic.php?id="+index
+						let url=this.url+"del_dynamic.php?id="+index
 						axios.get(url).then(res=>{
 							console.log(res)
 							if(res.data=='ok'){
@@ -186,10 +189,14 @@
 					},
 					// 初始化图片
 					load() {
-						let url = "http://localhost/hd_guanwang/admin/php/dynamic.php"
+						let url = this.url+"dynamic.php"
 						axios.get(url).then(res => {
-							console.log(res.data)
-							this.list = res.data
+							let datas=res.data
+							datas.forEach(item=>{
+								item.img=this.imgSrc+item.img
+							})
+							
+							this.list = datas
 						})
 					},
 				},

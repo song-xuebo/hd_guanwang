@@ -64,7 +64,11 @@
 		new Vue({
 			el: '#box',
 			data: {
-				list: []
+				list: [],
+				imgSrc:"./php/images/",
+				// url:"http://localhost/hd_guanwang/admin/php/",//本地
+				url:"http://www.hd512.com/admin/php/"//线上
+				
 			},
 			methods: {
 				// 点击编辑切换按钮
@@ -96,7 +100,8 @@
 						} else {
 							uppic[index].setAttribute("disabled", "disabled")
 						}
-						var url = "http://localhost/hd_guanwang/admin/php/add_banners.php?name=" + this.name + "&imgUrls=" +this.newLx
+						// 
+						var url = this.url+"add_banners.php?name=" + this.name + "&imgUrls=" +this.newLx
 						axios.get(url).then(res => {
 							console.log(res)
 							if (res.data == 'ok') {
@@ -120,21 +125,25 @@
 					if (this.list[ins].imgUrls.length > 1) {
 						this.list[ins].imgUrls.splice(index, 1)
 					} else {
-						// mui.confirm('确认要删除最后一张图片！', '关闭', (res) => {
-						// 	if (res.index == 0) {
-						// 		return
-						// 	} else {
-						// 		this.list[ins].imgUrls.splice(index, 1)
-						// 	}
-						// })
+						
 						alert('不能删除了')
 					}
 				},
 				// 初始化图片
 				loadImage() {
-					let url = "http://localhost/hd_guanwang/admin/php/banners.php?id=6"
+					let url = this.url+"banners.php?id=6"
 					axios.get(url).then(res => {
 						console.log(res.data)
+						let datas=res.data
+						datas.forEach(item=>{
+							// console.log(item,"s")
+							let arr=[]
+							item.imgUrls.forEach(itemImg=>{
+								arr.push(this.imgSrc+itemImg)
+							})
+							item.imgUrls=arr
+							console.log(item.imgUrls)
+						})
 						this.list = res.data
 					})
 				}

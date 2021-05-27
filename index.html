@@ -409,7 +409,7 @@
 								</div>
 							</div>
 							<div v-if="echaItemShow==false" class="echaItemClass">
-								<h3 style="font-size: 44px;">{{echaItem.name}}基站 <span>正在开发</span></h3>
+								<h3 style="font-size: 44px;">{{echaItem.name}}基站建设中</h3>
 								<div style="width: 52px; height: 600px; position: absolute; left:460px;top:78px;">
 									<div @click="baseImgItemClick(item,index)" class="baseImgItemBox"
 										v-for="(item,index) in baseImgItem" style="">
@@ -494,7 +494,7 @@
 						</div>
 					</div>
 					<div class="campusBoxImg lat">
-						<div class="campusImg" v-for="(item,index) in campusImgs.img">
+						<div class="campusImg" v-for="(item,index) in campusImgs">
 							<img :src="item" alt="" style="width: 100%; height: 100%;">
 						</div>
 					</div>
@@ -542,10 +542,13 @@
 								</div>
 								<p>扫码添加客服咨询</p>
 							</div>
+							<div style="width: 100%; margin-left: 40px;">
+								联系方式:13341088022
+							</div>
 						</div>
 					</div>
 					<div class="footingBox">
-						北京辉达IT科技有限公司 版权所有Copyright 2006-2021, All Rights Reserved 苏ICP备16007882号-1 营业执照 增值电信业务经营许可证
+						北京辉达IT科技有限公司 版权所有Copyright 2006-2021, All Rights Reserved 京ICP备13009754号
 					</div>
 				</div>
 			</div>
@@ -556,8 +559,10 @@
 			var vm = new Vue({
 				el: '#app',
 				data: {
-					// imgUrl:"http://localhost/hd_guanwang/admin/php/images/",
-					url:"http://localhost/hd_guanwang/admin/php/",
+					// imgUrl:"http://www.hd512.com/admin/php/images/",
+					// url:"http://localhost/hd_guanwang/admin/php/",
+					url:"http://www.hd512.com/admin/php/",
+					imgSrc:'./admin/php/images/',
 					uploadShow:false,
 					teamTalents: [ //人才培训及发展计划
 						{
@@ -643,7 +648,7 @@
 					footingBoxLeftC: ["辉达概况", "联系我们", "对外合作", "1024程序员节"],
 					footingBoxLeftD: ["学费价格", "校区分布", "教学团队"],
 					footingBoxLeftF: ["报名流程", "来校地图", "住宿环境"],
-					campusImgs:{},//当前选中
+					campusImgs:[],//当前选中
 					campusNav:["学习环境","校区环境","餐饮环境","宿舍环境","基地环境"],//所有的校园环境图片
 	
 					dynamic:{},
@@ -1013,10 +1018,13 @@
 					dynamicItems(){//获取所有的新闻动态的数据
 						let dynamic=this.url+"dynamic.php"
 						axios.get(dynamic).then(data => {
-							console.log(data,"21111111111111111")
-							this.dynamicItem=data.data
-							this.dynamic=data.data[0]
-							console.log(this.dynamic)
+							let datas=data.data
+							datas.forEach(item=>{
+								item.img=this.imgSrc+item.img
+							})
+							this.dynamicItem=datas
+							this.dynamic=datas[0]
+							console.log(this.dynamic,"222")
 						})
 					},
 					dynamicItemClick(val) {
@@ -1025,20 +1033,23 @@
 					campusItem(val){//校园环境数据
 						let campus=this.url+"environment.php?name="+val
 						axios.get(campus).then(data => {
-							this.campusImgs=data.data
-							console.log(this.campusImgs)
+							this.campusImgs=[]
+							let datas=data.data.img
+							datas.forEach(item=>{
+								this.campusImgs.push(this.imgSrc+item)
+							})
 						})
 					},
 					campusNavClick(val, index) {
-						console.log(val)
-						console.log(index)
 						$(".campusNavTopDiv").css({
 							"border": "none",
 							"padding-top": "10px",
+							"color":"#000"
 						})
 						$(".campusNavTopDiv").eq(index).css({
 							"padding-top": "6px",
-							"border-top": "4px solid #000",
+							"border-top": "4px solid #3258E5",
+							"color":"#3258E5"
 						})
 						this.campusItem(val)
 					},
@@ -1047,7 +1058,13 @@
 						let base=this.url+"echarts.php "
 						axios.get(base).then(data => {
 							console.log(data,"121212")
-							this.baseImgItem=data.data
+							let datas=data.data
+							console.log(datas,"2")
+							datas.forEach(item=>{
+								item.baseImg=this.imgSrc+item.baseImg
+							})
+							console.log(datas,"2s")
+							this.baseImgItem=datas
 							this.echaItem=this.baseImgItem[0]
 						})
 					},
@@ -1434,17 +1451,27 @@
 					let carouse=this.url+"banners.php?id=5"
 					axios.get(carouse).then(data => {
 						if(data.status==200){
+							this.srcImg=[]
 							this.uploadShow=true
 							console.log(this.uploadShow)
 							clearInterval(set)
-							this.srcImg=data.data.imgUrls
-							console.log(this.srcImg)
+							let datas=data.data.imgUrls
+							datas.forEach(item=>{
+								this.srcImg.push(this.imgSrc+item)
+							})
+							// console.log(this.srcImg,"222222222222222222")
 						}
 					})
 					// 师资
 					let teacherUrl=this.url+"faculty.php"
 					axios.get(teacherUrl).then(data => {
-						this.teacherItem=data.data
+						// console.log(data.data,"资")
+						let datas=data.data
+						datas.forEach(item=>{
+							item.img=this.imgSrc+item.img
+						})
+						// console.log(datas)
+						this.teacherItem=datas
 					})
 					// 课程大纲
 					let url=this.url+"course_center.php?id=all"
@@ -1459,11 +1486,6 @@
 							}
 						})
 						
-					})
-					// 新闻资讯
-					let press=this.url+"dynamic.php"
-					axios.get(press).then(data => {
-						console.log(data,"1212")
 					})
 					
 					let thas = this

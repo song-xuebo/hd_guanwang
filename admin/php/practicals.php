@@ -4,7 +4,7 @@
 				$sql="select * from practicals";
 				$res=$conn->query($sql);
 				while ($row = $res->fetch_assoc()){
-					$img='http://localhost/hd_guanwang/admin/php/images/'.$row['img'];
+					$img=$row['img'];
 					unset($row['img']);
 					$row['img']=$img;
 					$vegetables = explode(',', $row['content']);

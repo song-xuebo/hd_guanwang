@@ -119,7 +119,10 @@
 					text: '',
 					phone: '',
 					index: 0,
-					id: 0
+					id: 0,
+					imgSrc:"./php/images/",
+					// url:"http://localhost/hd_guanwang/admin/php/",//本地
+					url:"http://www.hd512.com/admin/php/"//线上
 				},
 				methods: {
 					// 提交
@@ -127,7 +130,7 @@
 						// console.log(this.id,this.index,this.name,this.value,this.base,this.baseImg,this.text,this.phone)
 						// console.log(this.baseImg)
 						var imgs = $('input[name="imgs"]').val();
-						var url = "http://localhost/hd_guanwang/admin/php/add_echarts.php?id=" + this.id + "&name=" + this.name +"&value=" + this.value + "&base=" + this.base + "&baseImg=" + imgs + "&text=" + this.text + "&phone=" + this.phone
+						var url = this.url+"add_echarts.php?id=" + this.id + "&name=" + this.name +"&value=" + this.value + "&base=" + this.base + "&baseImg=" + imgs + "&text=" + this.text + "&phone=" + this.phone
 						axios.get(url).then(res => {
 							console.log(res)
 							if (res.data == 'ok') {
@@ -173,7 +176,7 @@
 					// 删除
 					del(index) {
 						console.log(index)
-						let url = "http://localhost/hd_guanwang/admin/php/del_echarts.php?id=" + index
+						let url =this.url+"del_echarts.php?id=" + index
 						axios.get(url).then(res => {
 							console.log(res)
 							if (res.data == 'ok') {
@@ -184,10 +187,14 @@
 					},
 					// 初始化图片
 					load() {
-						let url = "http://localhost/hd_guanwang/admin/php/echarts.php"
+						let url = this.url+"echarts.php"
 						axios.get(url).then(res => {
-							console.log(res.data)
-							this.list = res.data
+							let datas=res.data
+							datas.forEach(item=>{
+								item.baseImg=this.imgSrc+item.baseImg
+								console.log(item)
+							})
+							this.list=datas
 						})
 					},
 				},

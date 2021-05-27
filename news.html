@@ -54,7 +54,8 @@
 				el:"#newsBox",
 				data:{
 					news:{},//所有资料
-					url:"http://localhost/hd_guanwang/admin/php/",
+					// url:"http://localhost/hd_guanwang/admin/php/",
+					url:"http://www.hd512.com/admin/php/",
 					
 				},
 				methods:{},
@@ -65,6 +66,7 @@
 					axios.get(obtainsUrl).then(data => {
 						this.news=data.data
 						console.log(data.data)
+						this.news.img="./admin/php/images/"+data.data.img
 						console.log(this.news.img)
 					})
 					

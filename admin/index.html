@@ -51,6 +51,7 @@
 				$('#pass').focus();
 				return;
 			}
+			// let url='http://www.hd512.com/admin/php/user.php?user='+user+'&password='+pass;
 			let url='http://localhost/hd_guanwang/admin/php/user.php?user='+user+'&password='+pass;
 			axios.get(url).then(res=>{
 				console.log(res)
